@@ -143,6 +143,22 @@ h6 {
   max-height: 40px;
 }
 
+
+
+#first_row img {
+  max-width: 40%;
+  height: auto;
+  margin-left: 5%;
+}
+
+@media (max-width: 700px) {
+  #first_row img {
+    width: 0;
+  }
+}
+
+
+
 /**
 * Get Startet Button 
 */
@@ -734,9 +750,20 @@ section {
 /*--------------------------------------------------------------
 # Courses
 --------------------------------------------------------------*/
+
+
+
+
+.courses .container #courseContainer {
+  overflow-x: hidden; /* Use auto instead of hidden */
+  white-space: nowrap;
+  display:flow-root; /* Use flex to create a horizontal layout */
+}
+
 .courses .course-item {
   border-radius: 5px;
   border: 1px solid #eef0ef;
+  margin-right: 15px;
 }
 
 .courses .course-content {
@@ -798,6 +825,9 @@ section {
   font-size: 18px;
   color: #657a6d;
 }
+
+
+
 
 /*--------------------------------------------------------------
 # Trainers
