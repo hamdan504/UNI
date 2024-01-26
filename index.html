@@ -32,13 +32,24 @@
     <!-- Template Main CSS File -->
     <link href="/css/style.css" rel="stylesheet" />
 
-    <!-- =======================================================
-  * Template Name: Mentor
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    
+    <!--API for Actualité-->
+
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+  <style>
+    /* Add any custom styles here */
+    .carousel-cell {
+      display: inline-block;
+      width: 33%; /* Set a width to control the number of cells per row */
+      box-sizing: border-box;
+      margin-right: 0px; /* Adjust margin as needed */
+    }
+    .carousel{
+      padding-inline: 0px;
+    }
+  </style>
+
   </head>
 
   <body>
@@ -75,29 +86,74 @@
         <nav id="navbar" class="navbar order-last order-lg-0">
           <ul>
             <li><a class="active" href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="courses.html">Courses</a></li>
-            <li><a href="trainers.html">Trainers</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-
-            <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            
+            <li class="dropdown"><a href="#"><span>Institut</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
-                <li><a href="#">Drop Down 1</a></li>
-                <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <li class="dropdown"><a href="#"><span>ISIMM</span> <i class="bi bi-chevron-right"></i></a>
                   <ul>
-                    <li><a href="#">Deep Drop Down 1</a></li>
-                    <li><a href="#">Deep Drop Down 2</a></li>
-                    <li><a href="#">Deep Drop Down 3</a></li>
-                    <li><a href="#">Deep Drop Down 4</a></li>
-                    <li><a href="#">Deep Drop Down 5</a></li>
+                    <li><a href="#">Présentation</a></li>
+                
+                        <li><a href="#">Conseils Scientifique</a></li>             
+                        <li><a href="#">Département</a></li>
+                         <li><a href="#">4C</a></li>
+                        <li><a href="#">commité de qualité</a></li>
+                        </li>
+                  </ul>
+              
+                </li>
+
+                <li class="dropdown"><a href="#"><span>Vie Etudiante</span> <i class="bi bi-chevron-right"></i></a>
+                  <ul>
+                    <li><a href="#">Centre 4C</a></li>
+                    <li><a href="#">Resto-universitaire</a></li>
+                    <li><a href="#">Foyer</a></li>
+                    <li><a href="#">Université Monastir</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Drop Down 2</a></li>
-                <li><a href="#">Drop Down 3</a></li>
-                <li><a href="#">Drop Down 4</a></li>
+                <li class="dropdown"><a href="#"><span>Vie Associative</span> <i class="bi bi-chevron-right"></i></a>
+                  <ul>
+                    <li><a href="#">Clubs</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">opportunités</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a href="#"><span>International</span> <i class="bi bi-chevron-right"></i></a>
+                  <ul>
+                    <li><a href="#">Programmes de mobilité</a></li>
+                    <li><a href="#">Stages</a></li>
+                    <li><a href="#">Partenariats</a></li>
+                    <li><a href="#">Consultation & offres</a></li>
+                  </ul>
+                </li>
               </ul>
             </li>
+
+
+            <li class="dropdown"><a href="#"><span>Formations</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="about.html">Cycles Ingenierus</a></li>
+                <li><a href="about.html">Licences</a></li>
+                <li><a href="about.html">Masters</a></li>
+                <li><a href="about.html">CPI</a></li>
+              </ul>
+            </li>
+
+
+            <li class="dropdown"><a href="#"><span>Recherche</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="about.html">Lab & unité de recherches</a></li>
+                <li><a href="about.html">Projet de recherche</a></li>
+              </ul>
+            </li>
+            
+            <li class="dropdown"><a href="#"><span>Entreprise</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="about.html">Entreprises partenaires</a></li>
+                <li><a href="about.html">publier stages</a></li>
+                <li><a href="#">Contactez nous</a></li>
+              </ul>
+            </li>
+
             <li><a href="contact.html">Contact</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
@@ -402,134 +458,108 @@
       <!-- End Features Section -->
 
 <!-- ======= News Section ======= -->
+
+
+
+
 <section id="popular-courses" class="courses">
   <div class="container" data-aos="fade-up">
     <div class="section-title">
       <h2>information</h2>
       <p>Actualité</p>
     </div>
-    <div class="row" data-aos="zoom-in" data-aos-delay="100" id="courseContainer">
-      <!-- Your course items go here -->
-      <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+
+
+<div class="carousel" data-flickity='{ "groupCells": true , "wrapAround": true}'>
+  <div class="carousel-cell-group">
+    <div class="carousel-cell">      
         <div class="course-item">
           <img src="/img/act_event.jpg" class="img-fluid" alt="..." />
           <div class="course-content">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <h4>@tous</h4>
+            </div>
+            <h3><a href="course-details.html">event extreme challenge</a></h3>
+            <p>competitive programming challenge with any oop language</p>
           </div>
-          <h3><a href="course-details.html">event extreme challenge</a></h3>
-          <p>competitive programming challenge with any oop language</p>
         </div>
-      </div>
-      </div>
-                  <!-- End Course Item-->
-
-                  <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-
-                    <div class="course-item">
-                      <img src="/img/act_rattrapage.jpg" class="img-fluid" alt="..." />
-                      <div class="course-content">
-                        <div
-                          class="d-flex justify-content-between align-items-center mb-3"
-                        >
-                          <h4>Licence TIC</h4>
-                        </div>
-
-                        <h3>
-                          <a href="course-details.html">Ratrappage TD Data Analysis</a>
-                        </h3>
-                        <p>
-                          groupe td4 ratrappage le 12/12/2023 dans la salle A22
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- End Course Item-->
-
-                  <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-
-                    <div class="course-item">
-                      <img src="/img/act_liste.jpg" class="img-fluid" alt="..." />
-                      <div class="course-content">
-                        <div
-                          class="d-flex justify-content-between align-items-center mb-3"
-                        >
-                          <h4>Master</h4>
-                        </div>
-
-                        <h3>
-                          <a href="course-details.html">liste master pro</a>
-                        </h3>
-                        <p>
-                          Liste des selectionnes en master pro en data engineering
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- End Course Item-->
-
-                  <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-
-                    <div class="course-item">
-                      <img src="/img/act_liste.jpg" class="img-fluid" alt="..." />
-                      <div class="course-content">
-                        <div
-                          class="d-flex justify-content-between align-items-center mb-3"
-                        >
-                          <h4>Master</h4>
-                        </div>
-
-                        <h3>
-                          <a href="course-details.html">liste master pro</a>
-                        </h3>
-                        <p>
-                          Liste des selectionnes en master pro en data engineering
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-
-
-                  <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-
-                    <div class="course-item">
-                      <img src="/img/act_liste.jpg" class="img-fluid" alt="..." />
-                      <div class="course-content">
-                        <div
-                          class="d-flex justify-content-between align-items-center mb-3"
-                        >
-                          <h4>Master</h4>
-                        </div>
-
-                        <h3>
-                          <a href="course-details.html">liste master pro</a>
-                        </h3>
-                        <p>
-                          Liste des selectionnes en master pro en data engineering
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-
-
+      </div>   
+    <div class="carousel-cell">      
+        <div class="course-item">
+          <img src="/img/act_event.jpg" class="img-fluid" alt="..." />
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>@tous</h4>
+            </div>
+            <h3><a href="course-details.html">event extreme challenge</a></h3>
+            <p>competitive programming challenge with any oop language</p>
           </div>
-
-          
         </div>
+      </div>    
+    <div class="carousel-cell">      
+        <div class="course-item">
+          <img src="/img/act_event.jpg" class="img-fluid" alt="..." />
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>@tous</h4>
+            </div>
+            <h3><a href="course-details.html">event extreme challenge</a></h3>
+            <p>competitive programming challenge with any oop language</p>
+          </div>
+        </div>
+      </div>   
+  </div>
+  
+  <div class="carousel-cell-group">
+    <div class="carousel-cell">      
+        <div class="course-item">
+          <img src="/img/act_event.jpg" class="img-fluid" alt="..." />
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>@tous</h4>
+            </div>
+            <h3><a href="course-details.html">event extreme challenge</a></h3>
+            <p>competitive programming challenge with any oop language</p>
+          </div>
+        </div>
+      </div>   
+    <div class="carousel-cell">      
+        <div class="course-item">
+          <img src="/img/act_event.jpg" class="img-fluid" alt="..." />
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>@tous</h4>
+            </div>
+            <h3><a href="course-details.html">event extreme challenge</a></h3>
+            <p>competitive programming challenge with any oop language</p>
+          </div>
+        </div>
+      </div>    
+    <div class="carousel-cell">      
+        <div class="course-item">
+          <img src="/img/act_event.jpg" class="img-fluid" alt="..." />
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>@tous</h4>
+            </div>
+            <h3><a href="course-details.html">event extreme challenge</a></h3>
+            <p>competitive programming challenge with any oop language</p>
+          </div>
+        </div>
+      </div>   
+  </div>
+
+  <!-- Add more carousel-cell-group elements as needed -->
+</div>
+
+
       </section>
-      <!-- End Popular Courses Section -->
-
 
 
 
 
     </main>
-    <!-- End #main -->
 
-<<<<<<< HEAD
-=======
     <!-- ======= Footer ======= -->
     <footer id="footer">
       <div class="footer-top">
@@ -634,7 +664,6 @@
       </div>
     </footer>
     <!-- End Footer -->
->>>>>>> refs/remotes/origin/main
 
     <!-- Vendor JS Files -->
     <script src="/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -651,6 +680,8 @@
 <!-- Include Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- API for actualite -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
   </body>
 </html>
