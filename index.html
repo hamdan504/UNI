@@ -18,12 +18,16 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
    <!-- Vendor CSS Files -->
     <link href="/vendor/animate.css/animate.min.css" rel="stylesheet" />
     <link href="/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
     <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
     <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
     <link href="/vendor/remixicon/remixicon.css" rel="stylesheet" />
@@ -53,8 +57,10 @@
   </head>
 
   <body>
+    
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
+      
       <div class="container d-flex align-items-center">
         <!-- Left Part -->
         <div id="left_part" class="d-flex flex-column">
@@ -87,7 +93,7 @@
           <ul>
             <li><a class="active" href="index.html">Home</a></li>
             
-            <li class="dropdown"><a href="#"><span>Institut</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#institut"><span>Institut</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li class="dropdown"><a href="#"><span>ISIMM</span> <i class="bi bi-chevron-right"></i></a>
                   <ul>
@@ -104,7 +110,7 @@
 
                 <li class="dropdown"><a href="#"><span>Vie Etudiante</span> <i class="bi bi-chevron-right"></i></a>
                   <ul>
-                    <li><a href="#">Centre 4C</a></li>
+                    <li><a href="">Centre 4C</a></li>
                     <li><a href="#">Resto-universitaire</a></li>
                     <li><a href="#">Foyer</a></li>
                     <li><a href="#">Université Monastir</a></li>
@@ -129,7 +135,7 @@
             </li>
 
 
-            <li class="dropdown"><a href="#"><span>Formations</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#formation"><span>Formations</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="about.html">Cycles Ingenierus</a></li>
                 <li><a href="about.html">Licences</a></li>
@@ -139,14 +145,14 @@
             </li>
 
 
-            <li class="dropdown"><a href="#"><span>Recherche</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="recherche"><span>Recherche</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="about.html">Lab & unité de recherches</a></li>
                 <li><a href="about.html">Projet de recherche</a></li>
               </ul>
             </li>
             
-            <li class="dropdown"><a href="#"><span>Entreprise</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="entreprise"><span>Entreprise</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="about.html">Entreprises partenaires</a></li>
                 <li><a href="about.html">publier stages</a></li>
@@ -154,7 +160,7 @@
               </ul>
             </li>
 
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="footer">Contact</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -162,40 +168,46 @@
     </div>
 
     <div id="third_column" class="d-flex flex-column justify-content-center ml-auto">
-      <!-- Sign-up Button -->
-      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">Sign In</button>
-    </div>
+
 
 
     
-<!-- Sign-in Modal -->
-<div class="modal" id="basicModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Add your sign-in form elements here -->
-        <form>
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter your username">
+<!-- Button to trigger the modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
+  Sign In
+</button>
+
+<!-- Sign In Modal -->
+<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
           </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+          <div class="modal-body">
+              <!-- Sign In Form -->
+              <form>
+                  <div class="form-group">
+                      <label for="username">Username:</label>
+                      <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                  </div>
+                  <div class="form-group">
+                      <label for="password">Password:</label>
+                      <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Sign In</button>
+              </form>
           </div>
-          <button type="submit" class="btn btn-primary">Sign In</button>
-        </form>
       </div>
-    </div>
   </div>
 </div>
-
-  </div>
+</div>
 </header><!-- End Header -->
+
+
 
 
     <!-- ======= Hero Section ======= -->
@@ -216,8 +228,9 @@
 
   <main id="main">
 
+    
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <section id="institut" class="about">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
@@ -243,6 +256,12 @@
 
       </div>
       <!-- End About Section -->
+
+
+
+      
+
+
 
       <!-- ======= Counts Section ======= -->
       <section id="counts" class="counts section-bg">
@@ -293,7 +312,7 @@
       <!-- End Counts Section -->
 
       <!-- ======= Why Us Section ======= -->
-      <section id="why-us" class="why-us">
+      <section id="formation" class="why-us">
         <div class="container" data-aos="fade-up">
           <div class="row">
             <div class="col-lg-4 d-flex align-items-stretch">
@@ -640,18 +659,11 @@
         </div>
       </div>
 
+      
+
       <div class="container d-md-flex py-4">
         <div class="me-md-auto text-center text-md-start">
           <div class="copyright">
-            &copy; Copyright <strong><span>Mentor</span></strong
-            >. All Rights Reserved
-          </div>
-          <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
           </div>
         </div>
         <div class="social-links text-center text-md-right pt-3 pt-md-0">
@@ -665,23 +677,19 @@
     </footer>
     <!-- End Footer -->
 
+
     <!-- Vendor JS Files -->
     <script src="/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="/vendor/aos/aos.js"></script>
     <script src="/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="/vendor/php-email-form/validate.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
 
     <!-- Template Main JS File -->
     <script src="/js/main.js"></script>
 
-    <!-- Include jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Include Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- API for actualite -->
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-
-  </body>
+</body>
 </html>
+
+
