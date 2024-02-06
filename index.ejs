@@ -500,17 +500,17 @@
 <div class="carousel" data-flickity='{ "groupCells": true , "wrapAround": true}'>
   <div class="carousel-cell-group">
     <div class="carousel-cell">      
-        <div class="course-item">
-          <img src="/img/act_event.jpg" class="img-fluid" alt="..." />
+      <div class="course-item">
+          <img src="<%= data.image %>" class="img-fluid" alt="..." />
           <div class="course-content">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4>@tous</h4>
-            </div>
-            <h3><a href="course-details.html">event extreme challenge</a></h3>
-            <p>competitive programming challenge with any oop language</p>
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4><%= data.title %></h4>
+              </div>
+              <h3><%= data.description %></h3>
+              <p><%= data.content %></p>
           </div>
-        </div>
-      </div>   
+      </div>
+  </div> 
     <div class="carousel-cell">      
         <div class="course-item">
           <img src="/img/act_event.jpg" class="img-fluid" alt="..." />
