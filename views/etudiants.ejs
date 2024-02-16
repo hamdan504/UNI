@@ -1,0 +1,165 @@
+<!-- etudiants.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Management</title>
+  </head>
+  <body>
+    <h1>Student Management</h1>
+
+    <!-- Add Student Form -->
+    <h2>Add Student</h2>
+    <form action="/students/add" method="post">
+      <label for="nom">Nom:</label>
+      <input type="text" name="nom" required />
+      <br />
+
+      <label for="prenom">Prénom:</label>
+      <input type="text" name="prenom" required />
+      <br />
+
+      <label for="cin">CIN:</label>
+      <input type="text" name="cin" required />
+      <br />
+
+      <label for="numeroInscription">Numéro d'inscription:</label>
+      <input type="text" name="numeroInscription" required />
+      <br />
+
+      <label for="dateNaissance">Date de naissance:</label>
+      <input type="date" name="dateNaissance" required />
+      <br />
+
+      <label for="lieuNaissance">Lieu de naissance:</label>
+      <input type="text" name="lieuNaissance" required />
+      <br />
+
+      <label for="sexe">Sexe:</label>
+      <input type="text" name="sexe" required />
+      <br />
+
+      <label for="codePostal">Code Postal:</label>
+      <input type="text" name="codePostal" required />
+      <br />
+
+      <label for="adresseLocale">Adresse locale:</label>
+      <input type="text" name="adresseLocale" required />
+      <br />
+
+      <label for="telephonePersonnel">Téléphone personnel:</label>
+      <input type="text" name="telephonePersonnel" required />
+      <br />
+
+      <label for="email">Adresse Email:</label>
+      <input type="email" name="email" required />
+      <br />
+
+      <label for="specialite">Spécialité:</label>
+      <select name="specialite" required>
+        <option value="Licence en sciences de l'informatique">
+          Licence en sciences de l'informatique
+        </option>
+        <option
+          value="Licence en technologie des informations et communications (L-TIC)"
+        >
+          Licence en technologie des informations et communications (L-TIC)
+        </option>
+        <option value="Licence en mathématiques appliquées (L-M)">
+          Licence en mathématiques appliquées (L-M)
+        </option>
+        <option
+          value="Licence en électronique électrotechnique et automatique (L-EEA)"
+        >
+          Licence en électronique électrotechnique et automatique (L-EEA)
+        </option>
+        <option
+          value="Licence en mesure et instrumentation et métrologie (L-MIM)"
+        >
+          Licence en mesure et instrumentation et métrologie (L-MIM)
+        </option>
+        <option value="Licence en systèmes embarqués (L-SE)">
+          Licence en systèmes embarqués (L-SE)
+        </option>
+        <option value="Diplôme national d'ingénieur en électronique(ING)">
+          Diplôme national d'ingénieur en électronique(ING)
+        </option>
+        <option value="Cycle préparatoire intégré (CPI)">
+          Cycle préparatoire intégré (CPI)
+        </option>
+        <option
+          value="Mastère de recherche en microélectronique et instrumentation (MR-micro)"
+        >
+          Mastère de recherche en microélectronique et instrumentation
+          (MR-micro)
+        </option>
+        <option value="Mastère de recherche en génie logiciel (MR-GL)">
+          Mastère de recherche en génie logiciel (MR-GL)
+        </option>
+        <option value="Mastère professionnel en génie logiciel (MP-GL)">
+          Mastère professionnel en génie logiciel (MP-GL)
+        </option>
+        <option value="Mastère professionnel en Data Science (MPDS)">
+          Mastère professionnel en Data Science (MPDS)
+        </option>
+      </select>
+      <br />
+
+      <label for="niveauEtudes">Niveau d'études:</label>
+      <select name="niveauEtudes" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+      <br />
+
+      <label for="groupeTD">Groupe TD:</label>
+      <select name="groupeTD" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <br />
+
+      <label for="etablissementAuPrecedente"
+        >Etablissement de l’AU précédente:</label
+      >
+
+      <input type="text" name="etablissementAuPrecedente" required />
+      <br />
+
+      <button type="submit">Add Student</button>
+    </form>
+
+    <!-- Edit and Delete Students -->
+    <h2>Edit / Delete Students</h2>
+    <ul>
+      <% students.forEach(student => { %>
+      <li>
+        <%= student.nom %> <%= student.prenom %> - <%= student.age %>
+        <!-- Adjust the displayed attributes -->
+
+        <!-- Include other new attributes in your form -->
+
+        <form
+          action="/students/edit/<%= student._id %>"
+          method="get"
+          style="display: inline"
+        >
+          <button type="submit">Edit</button>
+        </form>
+        <form
+          action="/students/delete/<%= student._id %>?_method=DELETE"
+          method="post"
+          style="display: inline"
+        >
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Management</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      margin-top: 50px;
+    }
+    .tab-content {
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <ul class="nav nav-tabs" id="eventTabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="actualite-tab" data-toggle="tab" href="#actualite" role="tab" aria-controls="actualite" aria-selected="true">Actualite</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="demande-tab" data-toggle="tab" href="#demande" role="tab" aria-controls="demande" aria-selected="false">Demande</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="emploi-tab" data-toggle="tab" href="#emploi" role="tab" aria-controls="emploi" aria-selected="false">Emploi</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="notes-tab" data-toggle="tab" href="#notes" role="tab" aria-controls="notes" aria-selected="false">Notes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="enseignat-tab" data-toggle="tab" href="#enseignat" role="tab" aria-controls="enseignat" aria-selected="false">Enseignat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="stages-tab" data-toggle="tab" href="#stages" role="tab" aria-controls="stages" aria-selected="false">Stages</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="etudiants-tab" data-toggle="tab" href="#etudiants" role="tab" aria-controls="etudiants" aria-selected="false">Etudiants</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="admin-tab" data-toggle="tab" href="#admin" role="tab" aria-controls="etudiants" aria-selected="false">Admin</a>
+    </li>
+  </ul>
+  <div class="tab-content mt-4">
+    <div class="tab-pane fade show active" id="actualite" role="tabpanel" aria-labelledby="actualite-tab">
+      <div class="container form-container">
+        <h2 class="text-center mb-4">Add Actualite Form</h2>
+        <form action="/login/actualite/add" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+          </div>
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="public-cible">Public Cible:</label>
+            <input type="text" class="form-control" id="public-cible" name="publicCible" placeholder="Enter public cible">
+          </div>
+          <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" class="form-control-file" id="image" name="image">
+          </div>
+          <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" class="form-control" id="date" name="date">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="demande" role="tabpanel" aria-labelledby="demande-tab">
+      <div class="text-center mt-4">VOIR DEMANDES</div>
+    </div>
+    <div class="tab-pane fade" id="emploi" role="tabpanel" aria-labelledby="emploi-tab">
+      <div class="text-center mt-4">Emploi managment</div>
+    </div>
+    <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="notes-tab">
+      <div class="text-center mt-4">Notes managment</div>
+    </div>
+    <div class="tab-pane fade" id="enseignat" role="tabpanel" aria-labelledby="enseignat-tab">
+      <div class="text-center mt-4">Enseignat managment</div>
+    </div>
+    <div class="tab-pane fade" id="stages" role="tabpanel" aria-labelledby="stages-tab">
+      <div class="text-center mt-4">Stages managment</div>
+    </div>
+    <div class="tab-pane fade" id="etudiants" role="tabpanel" aria-labelledby="etudiants-tab">
+      <div class="text-center mt-4">Etudiants managment</div>
+    </div>
+    <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="admin-tab">
+      <div class="text-center mt-4">Admin managment</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
