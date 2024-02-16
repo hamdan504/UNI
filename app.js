@@ -227,7 +227,10 @@ app.get("/logout", (req, res) => {
 
 app.get("/login/actualite", async (req, res) => {
   try{
-  res.render("actualite_view");
+    const students = await Student.find();
+    const idara = await Admin.find();
+
+  res.render("actualite_view",{students,idara});
   }catch(error){
     console.log("houni l8alta");
     console.log(error);
@@ -424,7 +427,7 @@ app.post("/addAdmin", async (req, res) => {
     await newAdmin.save();
 
     // Redirect to the "/admins" page after adding the admin
-    res.redirect("/admins");
+    res.redirect("/login/actualite");
   } catch (err) {
     // Handle any errors
     console.error(err);
@@ -433,7 +436,8 @@ app.post("/addAdmin", async (req, res) => {
 });
 
 app.delete("/deleteAdmin/:id", async (req, res) => {
-  try {
+  if (theAdminIsRoot) {
+    try {
     // Extract the admin ID from the request parameters
     const adminId = req.params.id;
 
@@ -441,12 +445,19 @@ app.delete("/deleteAdmin/:id", async (req, res) => {
     await Admin.findByIdAndDelete(adminId);
 
     // Redirect to the "/admins" page after deleting the admin
-    res.redirect("/admins");
-  } catch (err) {
-    // Handle any errors
-    console.error(err);
-    res.status(500).send("Internal Server Error");
+    res.redirect("/login/actualite");
+    }catch (err) {
+      // Handle any errors
+      console.error(err);
+      res.status(500).send("Internal Server Error");
+    }
   }
+    else{
+      res.send("barra al3eb b3id");
+
+    }
+  
+
 });
 
 

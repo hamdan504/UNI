@@ -13,51 +13,55 @@
     <!-- Add Student Form -->
     <h2>Add Student</h2>
     <form action="/students/add" method="post">
-      <label for="nom">Nom:</label>
-      <input type="text" name="nom" required />
-      <br />
-
+      
+      <div class="form-group">
+        <label for="nom">Nom:</label>
+        <input type="text" name="nom" required />
+      </div>
+      <div class="form-group">
       <label for="prenom">Prénom:</label>
       <input type="text" name="prenom" required />
-      <br />
-
+</div>
+      <div class="form-group">
       <label for="cin">CIN:</label>
       <input type="text" name="cin" required />
-      <br />
-
+</div>
+      <div class="form-group">
       <label for="numeroInscription">Numéro d'inscription:</label>
       <input type="text" name="numeroInscription" required />
-      <br />
-
+</div>
+      <div class="form-group">
       <label for="dateNaissance">Date de naissance:</label>
       <input type="date" name="dateNaissance" required />
-      <br />
-
+</div>
+      <div class="form-group">
       <label for="lieuNaissance">Lieu de naissance:</label>
       <input type="text" name="lieuNaissance" required />
-      <br />
-
+</div>
+      <div class="form-group">
       <label for="sexe">Sexe:</label>
       <input type="text" name="sexe" required />
-      <br />
-
+</div>
+      <div class="form-group">
       <label for="codePostal">Code Postal:</label>
       <input type="text" name="codePostal" required />
-      <br />
-
+</div>
+      <div class="form-group">
       <label for="adresseLocale">Adresse locale:</label>
       <input type="text" name="adresseLocale" required />
-      <br />
-
+</div>
+      <div class="form-group">
       <label for="telephonePersonnel">Téléphone personnel:</label>
       <input type="text" name="telephonePersonnel" required />
-      <br />
-
+</div>
+      <div class="form-group">
       <label for="email">Adresse Email:</label>
       <input type="email" name="email" required />
-      <br />
-
+</div>
+      <div class="form-group">
       <label for="specialite">Spécialité:</label>
+        </div>
+      <div class="form-group">
       <select name="specialite" required>
         <option value="Licence en sciences de l'informatique">
           Licence en sciences de l'informatique
@@ -105,7 +109,9 @@
           Mastère professionnel en Data Science (MPDS)
         </option>
       </select>
-      <br />
+      </div>
+            <div class="form-group">
+
 
       <label for="niveauEtudes">Niveau d'études:</label>
       <select name="niveauEtudes" required>
@@ -113,8 +119,10 @@
         <option value="2">2</option>
         <option value="3">3</option>
       </select>
-      <br />
+      </div>
+            <div class="form-group">
 
+            
       <label for="groupeTD">Groupe TD:</label>
       <select name="groupeTD" required>
         <option value="1">1</option>
@@ -122,16 +130,15 @@
         <option value="3">3</option>
         <option value="4">4</option>
       </select>
-      <br />
-
-      <label for="etablissementAuPrecedente"
-        >Etablissement de l’AU précédente:</label
-      >
-
-      <input type="text" name="etablissementAuPrecedente" required />
-      <br />
-
+      </div>
+      <div class="form-group">
+        <label for="etablissementAuPrecedente"
+          >Etablissement de l’AU précédente:</label>
+        <input type="text" name="etablissementAuPrecedente" required />
+        </div>
+      <div class="form-group">
       <button type="submit">Add Student</button>
+      </div>
     </form>
 
     <!-- Edit and Delete Students -->
