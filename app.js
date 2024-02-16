@@ -5,9 +5,9 @@ const session = require('express-session');
 const bcrypt = require("bcrypt");
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
-const Student = require("./admin/Admin/src/studentModel");
-const Actualite = require('./admin/Admin/src/actualiteModel');
-const Admin = require("./admin/Admin/src/adminModel");
+const Student = require("./admin/src/studentModel");
+const Actualite = require('./admin/src/actualiteModel');
+const Admin = require("./admin/src/adminModel");
 var theAdminIsRoot = false;
 const path = require('path');
 
