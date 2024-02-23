@@ -1,0 +1,199 @@
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+      
+        <div class="container d-flex align-items-center">
+          <!-- Left Part -->
+          <div id="left_part" class="d-flex flex-column">
+            <img
+              src="/img/logo.png"
+              href="index.html"
+              style="width: 60; height: 80px"
+            />
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+          </div>
+  
+          <!-- Right Part -->
+          <div
+            id="right_part"
+            class="d-flex flex-column justify-content-center"
+            style="margin-left: 100px"
+          >
+            <!-- First Row -->
+            <div id="first_row">
+              <img
+                src="/img/nav.png"
+                alt="ministere"
+                />
+            </div>
+  
+        <!-- Second Row -->
+        <div id="second_row">
+  
+          <nav id="navbar" class="navbar order-last order-lg-0 collapse navbar-collapse">
+            <!-- Nav Links -->
+            <ul>
+              <li><a class="active" href="index.html">Home</a></li>
+              
+              <li class="dropdown"><a href="/menu_institut"><span>Institut</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li class="dropdown"><a href="#"><span>ISIMM</span> <i class="bi bi-chevron-right"></i></a>
+                    <ul>
+                      <li><a href="#">Présentation</a></li>
+                  
+                          <li><a href="#">Conseils Scientifique</a></li>             
+                          <li><a href="#">Département</a></li>
+                          <li><a href="#">4C</a></li>
+                          <li><a href="#">commité de qualité</a></li>
+                          </li>
+                    </ul>
+                
+                  </li>
+  
+                  <li class="dropdown"><a href="#"><span>Vie Etudiante</span> <i class="bi bi-chevron-right"></i></a>
+                    <ul>
+                      <li><a href="">Centre 4C</a></li>
+                      <li><a href="#">Resto-universitaire</a></li>
+                      <li><a href="#">Foyer</a></li>
+                      <li><a href="#">Université Monastir</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="#"><span>Vie Associative</span> <i class="bi bi-chevron-right"></i></a>
+                    <ul>
+                      <li><a href="#">Clubs</a></li>
+                      <li><a href="#">Events</a></li>
+                      <li><a href="#">opportunités</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a href="#"><span>International</span> <i class="bi bi-chevron-right"></i></a>
+                    <ul>
+                      <li><a href="#">Programmes de mobilité</a></li>
+                      <li><a href="#">Stages</a></li>
+                      <li><a href="#">Partenariats</a></li>
+                      <li><a href="#">Consultation & offres</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+  
+  
+              <li class="dropdown"><a href="/views/home.ejs"><span>Formations</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="about.html">Cycles Ingenierus</a></li>
+                  <li><a href="about.html">Licences</a></li>
+                  <li><a href="about.html">Masters</a></li>
+                  <li><a href="about.html">CPI</a></li>
+                </ul>
+              </li>
+  
+  
+              <li class="dropdown"><a href="/recherche"><span>Recherche</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="about.html">Lab & unité de recherches</a></li>
+                  <li><a href="about.html">Projet de recherche</a></li>
+                </ul>
+              </li>
+              
+              <li class="dropdown"><a href="/entreprise"><span>Entreprise</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="about.html">Entreprises partenaires</a></li>
+                  <li><a href="about.html">publier stages</a></li>
+                  <li><a href="#">Contactez nous</a></li>
+                </ul>
+              </li>
+  
+              <li><a href="#footer">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav>
+        </div>
+      </div>
+  
+      <div id="third_column" class="d-flex flex-column justify-content-center ml-auto">
+  
+  
+  
+      
+  <!-- Button to trigger the modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
+    Sign In
+  </button>
+   
+  <!-- Sign In Modal -->
+  <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Sign In Form -->
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                    <div><a data-toggle="modal" data-target="#signupModal" data-dismiss="modal">sign-up</a></div>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  
+  <div class="modal" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="signInModalLabel">Sign up</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Sign In Form -->
+                <form>
+                    <div class="form-group">
+                        <label for="username">Name & surname:</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                      <label for="username">cin:</label>
+                      <input type="number" class="form-control" id="username" placeholder="Enter your username">
+                  </div>
+                  <div class="form-group">
+                    <label for="username">Email:</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                  <label for="username">Telephone:</label>
+                  <input type="text" class="form-control" id="username" placeholder="Enter your username">
+              </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Confirm Password:</label>
+                      <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                  </div>
+                    <button type="submit" class="btn btn-primary">Create account</button>
+                    <button type="submit" class="btn btn-primary" a data-toggle="modal" data-target="#signInModal" data-dismiss="modal">sign-in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  
+  </div>
+  </header><!-- End Header -->
+  
