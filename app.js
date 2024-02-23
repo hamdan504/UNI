@@ -4,6 +4,9 @@ const methodOverride = require("method-override");
 const session = require('express-session');
 const bcrypt = require("bcrypt");
 const multer = require('multer');
+const fs = require("fs");
+const PDFNotes = require("./admin/src/PdfNotesModel");
+const PDF = require("./admin/src/PdfEmploiModel");
 const cloudinary = require('cloudinary').v2;
 const Student = require("./admin/src/studentModel");
 const Actualite = require('./admin/src/actualiteModel');
@@ -15,12 +18,13 @@ const app = express();
 const port = 3000;
 
 app.use(express.static(path.join(__dirname, 'assets')));
-app.use('/pages', express.static(path.join(__dirname, 'pages')));
+app.use(express.static(path.join(__dirname, 'Uni', 'views', 'menu')));
 // Set the views directory
 app.set('views', 'C:/uni/views');
-
+app.set('view engine', 'ejs');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 
@@ -35,6 +39,8 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+
+
 cloudinary.config({ 
   cloud_name: 'dwzy7clpv', 
   api_key: '335752399965959', 
@@ -43,41 +49,10 @@ cloudinary.config({
 
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://mariem:WecrMJfHDGZ7Jh1c@cluster2.8cbx6bk.mongodb.net/ISIMM_Test",{
-  useNewUrlParser:true,
-  useUnifiedTopology:true,
-});
+// mongoose.connect("mongodb+srv://mariem:WecrMJfHDGZ7Jh1c@cluster2.8cbx6bk.mongodb.net/ISIMM_Test",{
+// });
 
-
-
-
-// Navbar routes
-app.post("/institut", function (req, res) {
-
-  res.send('menuinstitut');
-});
-app.post("/formation", function (req, res) {
-
-  res.send('/menu/formation');
-});
-app.get("/recherche", function (req, res) {
-
-  res.send('/menu/recherche');
-});
-app.post("/entreprise", function (req, res) {
-
-  res.send('/menu/entreprise');
-});
-
-
-app.set('view engine', 'ejs');
-
-const uri = 'mongodb+srv://mariem:WecrMJfHDGZ7Jh1c@cluster2.8cbx6bk.mongodb.net/ISIMM_Test';
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-
-const db = client.db('ACTUALITE');
-const collection = db.collection('act');
+mongoose.connect("mongodb://localhost:27017/");
 
 
 app.get('/', async (req, res) => {
@@ -96,14 +71,27 @@ app.get('/', async (req, res) => {
 
 
 
+// Navbar routes
+app.get('/institut', (req, res) => {
+  const filePath = path.join(__dirname, 'views', 'menu', 'institut.html');
+  res.sendFile(filePath);
+});
 
 
+app.get("/formation", function (req, res) {
+  const filePath = path.join(__dirname, 'views', 'menu', 'institut.html');
+  res.sendFile(filePath);
+});
 
+app.get("/recherche", function (req, res) {
+  const filePath = path.join(__dirname, 'views', 'menu', 'institut.html');
+  res.sendFile(filePath);
+});
 
-
-
-
-
+app.get('/entreprise', function (req, res) {
+  const filePath = path.join(__dirname, 'views', 'menu', 'institut.html');
+  res.sendFile(filePath);
+})
 
 
 
@@ -230,7 +218,10 @@ app.get("/login/actualite", async (req, res) => {
     const students = await Student.find();
     const idara = await Admin.find();
 
-  res.render("actualite_view",{students,idara});
+    const pdfnotes = await PDFNotes.find({});
+    const pdfs = await PDF.find({});
+
+  res.render("actualite_view",{students,idara,pdfnotes,pdfs,});
   }catch(error){
     console.log("houni l8alta");
     console.log(error);
@@ -462,6 +453,161 @@ app.delete("/deleteAdmin/:id", async (req, res) => {
 
 
 
+const storage_pdf = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads_pdf/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now() + ".pdf");
+  },
+});
+const upload_pdf = multer({ storage_pdf: storage_pdf });
+
+
+
+
+app.post("/upload2", upload_pdf.single("pdf"), async (req, res) => {
+  try {
+    const filename = req.body.filename; // Récupère le nom du fichier PDF à partir du champ de saisie de texte
+    const newPDF = new PDFNotes({
+      filename: filename, // Utilise le nom du fichier fourni par l'utilisateur
+      contentType: req.file.mimetype,
+      data: fs.readFileSync(req.file.path),
+    });
+    await newPDF.save();
+    fs.unlinkSync(req.file.path);
+    console.log(data);
+    res.redirect("/notes");
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .send(
+"error"
+      );
+  }
+});
+
+app.post("/upload", upload_pdf.single("pdf"), async (req, res) => {
+  try {
+    const filename = req.body.filename; // Récupère le nom du fichier PDF à partir du champ de saisie de texte
+    const newPDF = new PDF({
+      filename: filename, // Utilise le nom du fichier fourni par l'utilisateur
+      contentType: req.file.mimetype,
+      data: fs.readFileSync(req.file.path),
+    });
+    await newPDF.save();
+    fs.unlinkSync(req.file.path);
+    res.redirect("/emploi");
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .send(
+        "Erreur lors de l'enregistrement du fichier dans la base de données."
+      );
+  }
+});
+
+// Route pour récupérer un PDF par son ID
+app.get("/pdf/:id", async (req, res) => {
+  try {
+    const pdfId = req.params.id;
+    const pdf = await PDF.findById(pdfId);
+    if (!pdf) {
+      return res.status(404).send("PDF non trouvé");
+    }
+    res.setHeader("Content-Type", pdf.contentType);
+    res.setHeader(
+      "Content-Disposition",
+      'inline; filename="' + pdf.filename + '"'
+    );
+    res.send(pdf.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la récupération du PDF");
+  }
+});
+
+app.post("/pdf/:id/delete", async (req, res) => {
+  try {
+    const pdfId = req.params.id;
+
+    // Récupérer le document PDF à supprimer
+    const pdf = await PDF.findById(pdfId);
+
+    if (!pdf) {
+      return res.status(404).send("PDF non trouvé");
+    }
+    await pdf.deleteOne();
+    res.redirect("/emploi");
+  } catch (error) {
+    console.error("Erreur lors de la suppression du PDF:", error);
+    res.status(500).send("Erreur lors de la suppression du PDF");
+  }
+});
+
+
+// Route pour télécharger un PDF par son ID
+app.get("/pdf_notes/:id", async (req, res) => {
+  try {
+    const pdfId = req.params.id;
+    const pdf = await PDFNotes.findById(pdfId);
+    if (!pdf) {
+      return res.status(404).send("PDF non trouvé");
+    }
+    res.setHeader("Content-Type", pdf.contentType);
+    res.setHeader(
+      "Content-Disposition",
+      'inline; filename="' + pdf.filename + '"'
+    );
+    res.send(pdf.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la récupération du PDF");
+  }
+});
+
+// Route pour supprimer un PDF par son ID
+app.post("/pdf_notes/:id/delete", async (req, res) => {
+  try {
+    const pdfId = req.params.id;
+
+    // Récupérer le document PDF à supprimer
+    const pdf = await PDFNotes.findById(pdfId);
+
+    if (!pdf) {
+      return res.status(404).send("PDF non trouvé");
+    }
+    await pdf.deleteOne();
+    res.redirect("/actualite_view");
+  } catch (error) {
+    console.error("Erreur lors de la suppression du PDF:", error);
+    res.status(500).send("Erreur lors de la suppression du PDF");
+  }
+});
+
+// Route pour téléverser un nouveau PDF
+app.post("/upload_pdf", upload_pdf.single("pdf"), async (req, res) => {
+  try {
+    const filename = req.body.filename;
+    const newPDF = new PDFNotes({
+      filename: filename,
+      contentType: req.file.mimetype,
+      data: fs.readFileSync(req.file.path),
+    });
+    await newPDF.save();
+    fs.unlinkSync(req.file.path);
+    res.redirect("/notes"); // Redirige vers la page "notes" après téléversement
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .send(
+        "Erreur lors de l'enregistrement du fichier dans la base de données."
+      );
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
