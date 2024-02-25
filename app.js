@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const multer = require('multer');
 const fs = require("fs");
 const PDFNotes = require("./admin/src/PdfNotesModel");
-const PDF = require("./admin/src/PdfEmploiModel");
+const PDFEmploi = require("./admin/src/PdfEmploiModel");
 const cloudinary = require('cloudinary').v2;
 const Student = require("./admin/src/studentModel");
 const Actualite = require('./admin/src/actualiteModel');
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Multer configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/') // Save uploaded files to the 'uploads' directory
+    cb(null, 'uploads_act/') // Save uploaded files to the 'uploads' directory
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname) // Use the original filename for the saved file
@@ -53,16 +53,39 @@ const mongoose = require("mongoose");
 // });
 
 mongoose.connect("mongodb://localhost:27017/");
+// app.use(
+//   session({
+//     secret: 'secretkey',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//       maxAge: 5 * 60 * 1000, // 5 minute in milliseconds
+//       sameSite: 'strict', // Ensures cookies are only sent in same-site requests
+//       secure: true // Ensures cookies are only sent over HTTPS
+//     }
+//   })
+// );
+
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: false
+}));
 
 
 app.get('/', async (req, res) => {
   try {
     // Fetch actualite data from the database
     const actualiteData = await Actualite.find(); // Adjust the query as per your schema
-    console.log("tirana tirana lalala")
-    console.log(actualiteData)
-    // Render the HTML page with EJS template and pass the actualite data
-    res.render('index', { actualiteData });
+    const isLoggedIn = req.session.isLoggedIn;
+
+    if (isLoggedIn) {
+      console.log(isLoggedIn);
+      res.render("index", { actualiteData, isStudent: true, isLoggedIn });
+    } else {
+      console.log(isLoggedIn);
+      res.render("index", { actualiteData, isStudent: false, isLoggedIn });
+    }
   } catch (error) {
     console.error("Error fetching actualite data:", error);
     res.status(500).send("Error fetching actualite data: " + error.message);
@@ -73,42 +96,79 @@ app.get('/', async (req, res) => {
 
 // Navbar routes
 app.get('/institut', (req, res) => {
-  const filePath = path.join(__dirname, 'views', 'menu', 'institut.html');
+  const filePath = path.join(__dirname, 'views','menu','institut.html');
   res.sendFile(filePath);
 });
 
 
 app.get("/formation", function (req, res) {
-  const filePath = path.join(__dirname, 'views', 'menu', 'institut.html');
+  const filePath = path.join(__dirname,'institut.ejs');
   res.sendFile(filePath);
 });
 
 app.get("/recherche", function (req, res) {
-  const filePath = path.join(__dirname, 'views', 'menu', 'institut.html');
+  const filePath = path.join(__dirname,'institut.ejs');
   res.sendFile(filePath);
 });
 
 app.get('/entreprise', function (req, res) {
-  const filePath = path.join(__dirname, 'views', 'menu', 'institut.html');
+  const filePath = path.join(__dirname,'institut.ejs');
   res.sendFile(filePath);
 })
 
+app.get('/myspace', async (req, res) => {
+  const pdfnotes = await PDFNotes.find({});
+  res.render("myspace",{pdfnotes});
+})
+
+app.post("/login_student", async (req, res) => {
+    try {
+      const check = await Student.findOne({ email: req.body.signin_email});
+      console.log(check);
+      console.log(req.body.signin_email);
+      if (check == null) {
+        return res.send("Username not found");
+      }
+
+      const isPasswordMatch = await bcrypt.compare(
+        req.body.signin_password.trim(),
+        check.password
+      );
+
+      if (isPasswordMatch) {
+        req.session.isLoggedIn = true;
+        res.redirect("/");
+      } else {
+        return res.send("Wrong password");
+      }
+    } catch (error) {
+      console.error(error);
+      return res.send("Something went wrong");
+    }
+  });
 
 
+  app.post("/logout_student", (req, res) => {
+    // Set isLoggedIn to false in the session
+    req.session.isLoggedIn = false;
+    // Redirect the user to the home page
+    res.redirect("/");
+});
+
+
+app.post("/student_notes", async (req,res) =>{
+  try {
+     const td = req.body.class_name;
+     const pdf_notes = await PDFNotes.find({filename: td});
+     res.send(pdf_notes.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error in signup. Please try again.");
+  }
+});
 //------------------------------------------------------------------//
 
-app.use(
-  session({
-    secret: 'secretkey',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      maxAge: 5 * 60 * 1000, // 5 minute in milliseconds
-      sameSite: 'strict', // Ensures cookies are only sent in same-site requests
-      secure: true // Ensures cookies are only sent over HTTPS
-    }
-  })
-);
+
 
 
 
@@ -182,7 +242,7 @@ app.post("/login", async (req, res) => {
       }
 
       const isPasswordMatch = await bcrypt.compare(
-        req.body.password,
+        req.body.password.trim(),
         check.password
       );
 
@@ -219,7 +279,7 @@ app.get("/login/actualite", async (req, res) => {
     const idara = await Admin.find();
 
     const pdfnotes = await PDFNotes.find({});
-    const pdfs = await PDF.find({});
+    const pdfs = await PDFEmploi.find({});
 
   res.render("actualite_view",{students,idara,pdfnotes,pdfs,});
   }catch(error){
@@ -284,6 +344,7 @@ app.post("/students/add", async (req, res) => {
       niveauEtudes,
       groupeTD,
       etablissementAuPrecedente,
+      password,
     } = req.body;
 
     const newStudent = new Student({
@@ -302,10 +363,11 @@ app.post("/students/add", async (req, res) => {
       niveauEtudes,
       groupeTD,
       etablissementAuPrecedente,
+      password,
     });
 
     await newStudent.save();
-    res.redirect("/etudiants");
+    res.redirect("/login/actualite");
   } catch (error) {
     if (
       error.code === 11000 &&
@@ -314,7 +376,7 @@ app.post("/students/add", async (req, res) => {
       // Error code 11000 indicates a duplicate key error (unique constraint violation)
       res.status(400).send("CIN or numeroInscription already exists.");
     } else {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
   }
 });
@@ -453,52 +515,75 @@ app.delete("/deleteAdmin/:id", async (req, res) => {
 
 
 
-const storage_pdf = multer.diskStorage({
+const storage_note = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads_pdf/");
+    cb(null, "uploads_notes/");
   },
   filename: function (req, file, cb) {
     cb(null, file.fieldname + "-" + Date.now() + ".pdf");
   },
 });
-const upload_pdf = multer({ storage_pdf: storage_pdf });
+const upload_note = multer({ storage: storage_note });
+
+
+const storage_emploi = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads_emploi/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now() + ".pdf");
+  },
+});
+const upload_emploi = multer({ storage: storage_emploi });
 
 
 
-
-app.post("/upload2", upload_pdf.single("pdf"), async (req, res) => {
+app.post("/upload2", upload_note.single("pdf_file_note"), async (req, res) => {
   try {
-    const filename = req.body.filename; // Récupère le nom du fichier PDF à partir du champ de saisie de texte
+    const filename = req.body.filename;
+    const pdfFile = req.file;
+    
+    console.log("Uploaded file path:", pdfFile.path);
+    
+    if (!fs.existsSync(pdfFile.path)) {
+      throw new Error("Uploaded file not found at the specified path");
+    }
+
     const newPDF = new PDFNotes({
-      filename: filename, // Utilise le nom du fichier fourni par l'utilisateur
-      contentType: req.file.mimetype,
-      data: fs.readFileSync(req.file.path),
+      filename: filename, 
+      contentType: pdfFile.mimetype,
+      data: fs.readFileSync(pdfFile.path), // Corrected path here
     });
     await newPDF.save();
-    fs.unlinkSync(req.file.path);
-    console.log(data);
-    res.redirect("/notes");
+    fs.unlinkSync(pdfFile.path);
+    res.redirect("/login/actualite");
+
   } catch (error) {
     console.log(error);
-    res
-      .status(500)
-      .send(
-"error"
-      );
+    res.status(500).send("error");
   }
 });
 
-app.post("/upload", upload_pdf.single("pdf"), async (req, res) => {
+
+app.post("/upload", upload_emploi.single("pdf_file_emploi"), async (req, res) => {
   try {
-    const filename = req.body.filename; // Récupère le nom du fichier PDF à partir du champ de saisie de texte
-    const newPDF = new PDF({
-      filename: filename, // Utilise le nom du fichier fourni par l'utilisateur
-      contentType: req.file.mimetype,
-      data: fs.readFileSync(req.file.path),
+    const filename = req.body.filename;
+    const pdfFile = req.file;
+    
+    console.log("Uploaded file path:", pdfFile.path);
+    
+    if (!fs.existsSync(pdfFile.path)) {
+      throw new Error("Uploaded file not found at the specified path");
+    }
+
+    const newPDF = new PDFEmploi({
+      filename: filename, 
+      contentType: pdfFile.mimetype,
+      data: fs.readFileSync(pdfFile.path), // Corrected path here
     });
     await newPDF.save();
-    fs.unlinkSync(req.file.path);
-    res.redirect("/emploi");
+    fs.unlinkSync(pdfFile.path);
+    res.redirect("/login/actualite");
   } catch (error) {
     console.log(error);
     res
@@ -587,27 +672,6 @@ app.post("/pdf_notes/:id/delete", async (req, res) => {
   }
 });
 
-// Route pour téléverser un nouveau PDF
-app.post("/upload_pdf", upload_pdf.single("pdf"), async (req, res) => {
-  try {
-    const filename = req.body.filename;
-    const newPDF = new PDFNotes({
-      filename: filename,
-      contentType: req.file.mimetype,
-      data: fs.readFileSync(req.file.path),
-    });
-    await newPDF.save();
-    fs.unlinkSync(req.file.path);
-    res.redirect("/notes"); // Redirige vers la page "notes" après téléversement
-  } catch (error) {
-    console.error(error);
-    res
-      .status(500)
-      .send(
-        "Erreur lors de l'enregistrement du fichier dans la base de données."
-      );
-  }
-});
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
