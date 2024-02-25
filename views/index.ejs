@@ -86,7 +86,7 @@
           <ul>
             <li><a class="active" href="index.html">Home</a></li>
             
-            <li class="dropdown"><a href="/menu_institut"><span>Institut</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="/institut"><span>Institut</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li class="dropdown"><a href="#"><span>ISIMM</span> <i class="bi bi-chevron-right"></i></a>
                   <ul>
@@ -128,7 +128,7 @@
             </li>
 
 
-            <li class="dropdown"><a href="/views/home.ejs"><span>Formations</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="/institut"><span>Formations</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="about.html">Cycles Ingenierus</a></li>
                 <li><a href="about.html">Licences</a></li>
@@ -138,21 +138,23 @@
             </li>
 
 
-            <li class="dropdown"><a href="/recherche"><span>Recherche</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="/institut"><span>Recherche</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="about.html">Lab & unité de recherches</a></li>
                 <li><a href="about.html">Projet de recherche</a></li>
               </ul>
             </li>
             
-            <li class="dropdown"><a href="/entreprise"><span>Entreprise</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="/institut"><span>Entreprise</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="about.html">Entreprises partenaires</a></li>
                 <li><a href="about.html">publier stages</a></li>
                 <li><a href="#">Contactez nous</a></li>
               </ul>
             </li>
-
+            <% if (isStudent) { %>
+              <li><a href="/myspace" style="color:red ;">My Space</a></li>
+            <% } %>
             <li><a href="#footer">Contact</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
@@ -164,12 +166,16 @@
 
 
 
-    
-<!-- Button to trigger the modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
-  Sign In
-</button>
- 
+      <% if (isLoggedIn) { %>
+        <form action="/logout_student" method="post">
+            <button type="submit" class="btn btn-danger">Sign Out</button>
+          </form>
+<% } else { %>    
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signInModal">
+    Sign In
+  </button>
+<% } %>
+
 <!-- Sign In Modal -->
 <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -182,14 +188,14 @@
           </div>
           <div class="modal-body">
               <!-- Sign In Form -->
-              <form>
+              <form action="/login_student" method="post">
                   <div class="form-group">
-                      <label for="username">Username:</label>
-                      <input type="text" class="form-control" id="username" placeholder="Enter your username">
-                  </div>
+                      <label for="signin_email">Email:</label>
+                      <input type="text" class="form-control" id="signin_email" name="signin_email" placeholder="Enter your Email">
+                    </div>
                   <div class="form-group">
                       <label for="password">Password:</label>
-                      <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                      <input type="password" class="form-control" id="password" placeholder="Enter your password" name="signin_password">
                   </div>
                   <button type="submit" class="btn btn-primary">Sign In</button>
                   <div><a data-toggle="modal" data-target="#signupModal" data-dismiss="modal">sign-up</a></div>

@@ -78,7 +78,7 @@
       <div class="text-center mt-4">VOIR DEMANDES</div>
     </div>
     <div class="tab-pane fade" id="emploi" role="tabpanel" aria-labelledby="emploi-tab">
-      <h1>Liste des PDF</h1>
+      <h1>Liste des Emploi</h1>
       <ul>
         <% pdfs.forEach(pdf => { %>
         <li>
@@ -95,10 +95,11 @@
       <hr />
       <h2>Ajouter un nouveau PDF</h2>
       <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="pdf" accept="application/pdf" />
+        <input type="file" name="pdf_file_emploi" accept="application/pdf" />
         <select name="filename">
-          <option value="ing1-info">CPI1TD1</option>
-          <option value="ing2-info">CPI1TD2</option>
+          <!-- Menu déroulant pour sélectionner le nom du fichier PDF -->
+          <option value="CPI1TD1">CPI1TD1</option>
+          <option value="CPI1TD2">CPI1TD2</option>
           <option value="CPI2TD2">CPI2TD2</option>
           <option value="ING1ELTD1">ING1ELTD1</option>
           <option value="ING1ELTD2">ING1ELTD2</option>
@@ -173,7 +174,7 @@
     <hr />
     <h2>Ajouter un nouveau PDF</h2>
     <form action="/upload2" method="post" enctype="multipart/form-data">
-      <input type="file" name="pdf" accept="application/pdf" />
+      <input type="file" name="pdf_file_note" accept="application/pdf" />
       <select name="filename">
         <!-- Menu déroulant pour sélectionner le nom du fichier PDF -->
         <option value="CPI1TD1">CPI1TD1</option>
@@ -242,7 +243,7 @@
     </div>
     <div class="tab-pane fade" id="etudiants" role="tabpanel" aria-labelledby="etudiants-tab">
       <div class="container form-container">
-        <h2 class="text-center mb-4">Etusiant Form</h2>
+        <h2 class="text-center mb-4">Etudiant Form</h2>
         <form action="/students/add" method="post">
       
           <div class="form-group">
@@ -367,6 +368,12 @@
               >Etablissement de l’AU précédente:</label>
             <input type="text" name="etablissementAuPrecedente" required />
             </div>
+
+            <div class="form-group">
+              <label for="password"
+                >password</label>
+              <input type="text" name="password"/>
+              </div>
           <div class="form-group">
           <button type="submit">Add Student</button>
           </div>
@@ -437,6 +444,5 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

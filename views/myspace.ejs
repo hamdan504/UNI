@@ -1,0 +1,131 @@
+<html>
+    <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+            <title>ISIMM Clone</title>
+            <meta content="" name="description" />
+            <meta content="" name="keywords" />
+        
+            <!-- Favicons -->
+            <link href="/img/favicon.png" rel="icon" />
+            <link href="/img/apple-touch-icon.png" rel="apple-touch-icon" />
+        
+            <!-- Google Fonts -->
+            <link
+              href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+              rel="stylesheet"
+            />
+        
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+            <!-- Template Main CSS File -->
+            <link href="/css/style.css" rel="stylesheet" />
+        
+            
+    </head>
+    <body>
+<%- include('partials/header') %>
+<div class="container mt-5" style="padding-top: 80px;">  
+<ul class="nav nav-pills nav-justified" id="eventTabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="actualite-tab" data-toggle="tab" href="#actualite" role="tab" aria-controls="actualite" aria-selected="true">Actualite</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="demande-tab" data-toggle="tab" href="#demande" role="tab" aria-controls="demande" aria-selected="false">Demande</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="emploi-tab" data-toggle="tab" href="#emploi" role="tab" aria-controls="emploi" aria-selected="false">Emploi</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="notes-tab" data-toggle="tab" href="#notes" role="tab" aria-controls="notes" aria-selected="false">Notes</a>
+    </li>
+  </ul>
+  <div class="tab-pane fade show active" id="actualite" role="tabpanel" aria-labelledby="actualite-tab">
+    <div class="container form-container">
+    </div>
+
+    <div class="tab-pane fade" id="demande" role="tabpanel" aria-labelledby="demande-tab">
+        <div class="text-center mt-4">VOIR DEMANDES</div>
+      </div>
+
+      <div class="tab-pane fade" id="emploi" role="tabpanel" aria-labelledby="demande-tab">
+        <div class="text-center mt-4">VOIR DEMANDES</div>
+      </div>
+
+      <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="demande-tab">
+        <div class="text-center mt-4">VOIR Notes</div>
+        <% pdfnotes.forEach(pdf => { %>
+            <li>
+              <a href="/pdf_notes/<%= pdf._id %>"><%= pdf.filename %></a>
+            </li>
+            <% }); %>
+      </div>
+      <form action="/student_notes" method="post">
+        <select name="class_name">
+          <!-- Menu déroulant pour sélectionner le nom du fichier PDF -->
+          <option value="CPI1TD1">CPI1TD1</option>
+          <option value="CPI1TD2">CPI1TD2</option>
+          <option value="CPI2TD2">CPI2TD2</option>
+          <option value="ING1ELTD1">ING1ELTD1</option>
+          <option value="ING1ELTD2">ING1ELTD2</option>
+          <option value="ING1INFOTD1">ING1INFOTD1</option>
+          <option value="ING1INFOTD2">ING1INFOTD2</option>
+          <option value="ING2INFOTD1">ING2INFOTD1</option>
+          <option value="ING2ELTD1">ING2ELTD1</option>
+          <option value="ING3INFOTD1">ING3INFOTD1</option>
+          <option value="ING3ELTD1">ING3ELTD1</option>
+          <option value="L1_EEA_TD1">L1_EEA_TD1</option>
+          <option value="L1_EEA_TD2">L1_EEA_TD2</option>
+          <option value="L1_EEA_TD3">L1_EEA_TD3</option>
+          <option value="L1_INFO_TD1">L1_INFO_TD1</option>
+          <option value="L1_INFO_TD2">L1_INFO_TD2</option>
+          <option value="L1_INFO_TD3">L1_INFO_TD3</option>
+          <option value="L1_INFO_TD4">L1_INFO_TD4</option>
+          <option value="L1_MATH_TD1">L1_MATH_TD1</option>
+          <option value="L1_TIC_TD1">L1_TIC_TD1</option>
+          <option value="L1_TIC_TD2">L1_TIC_TD2</option>
+          <option value="L1_TIC_TD3">L1_TIC_TD3</option>
+          <option value="L2_INFO_TD1">L2_INFO_TD1</option>
+          <option value="L2_INFO_TD2">L2_INFO_TD2</option>
+          <option value="L2_INFO_TD3">L2_INFO_TD3</option>
+          <option value="L2_INFO_TD4">L2_INFO_TD4</option>
+          <option value="L2_INFO_TD5">L2_INFO_TD5</option>
+          <option value="L2_MATH_TD1">L2_MATH_TD1</option>
+          <option value="L2_MIM_TD1">L2_MIM_TD1</option>
+          <option value="L2_SE_TD1">L2_SE_TD1</option>
+          <option value="L2_SE_TD2">L2_SE_TD2</option>
+          <option value="L2_TIC_TD1">L2_TIC_TD1</option>
+          <option value="L2_TIC_TD2">L2_TIC_TD2</option>
+          <option value="L3_INFO_TD1">L3_INFO_TD1</option>
+          <option value="L3_INFO_TD2">L3_INFO_TD2</option>
+          <option value="L3_INFO_TD3">L3_INFO_TD3</option>
+          <option value="L3_INFO_TD4">L3_INFO_TD4</option>
+          <option value="L3_INFO_TD5">L3_INFO_TD5</option>
+          <option value="L3_MATH_TD1">L3_MATH_TD1</option>
+          <option value="L3_SE_TD1">L3_SE_TD1</option>
+          <option value="L3_SE_TD2">L3_SE_TD2</option>
+          <option value="L3_SE_TD3">L3_SE_TD3</option>
+          <option value="L3_TIC_TD1">L3_TIC_TD1</option>
+          <option value="L3_TIC_TD2">L3_TIC_TD2</option>
+          <option value="MP1_GL_TD1">MP1_GL_TD1</option>
+          <option value="MP1_III_TD1">MP1_III_TD1</option>
+          <option value="MP1_SD_TD1">MP1_SD_TD1</option>
+          <option value="MP2_GL_TD1">MP2_GL_TD1</option>
+          <option value="MP2_III_TD1">MP2_III_TD1</option>
+          <option value="MP2_SD_TD1">MP2_SD_TD1</option>
+          <option value="MR1_EL_TD1">MR1_EL_TD1</option>
+          <option value="MR1_GL_TD1">MR1_GL_TD1</option>
+          <option value="MR2_EL_TD1">MR2_EL_TD1</option>
+          <option value="MR2_GL_TD1">MR2_GL_TD1</option>
+        </select>
+        <button type="submit">ok</button>
+      </form>
+  
+</div>
+</div>
+    </body>
+    </html>
