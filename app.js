@@ -49,10 +49,9 @@ cloudinary.config({
 
 const mongoose = require("mongoose");
 
-// mongoose.connect("mongodb+srv://mariem:WecrMJfHDGZ7Jh1c@cluster2.8cbx6bk.mongodb.net/ISIMM_Test",{
-// });
+ mongoose.connect("mongodb+srv://mariem:WecrMJfHDGZ7Jh1c@cluster2.8cbx6bk.mongodb.net/ISIMM_Test",{
+ });
 
-mongoose.connect("mongodb://localhost:27017/");
 // app.use(
 //   session({
 //     secret: 'secretkey',
@@ -96,8 +95,16 @@ app.get('/', async (req, res) => {
 
 // Navbar routes
 app.get('/institut', (req, res) => {
-  const filePath = path.join(__dirname, 'views','menu','institut.html');
-  res.sendFile(filePath);
+  const isLoggedIn = req.session.isLoggedIn;
+
+  if (isLoggedIn) {
+    console.log(isLoggedIn);
+    res.render("menu/institut", { isStudent: true, isLoggedIn });
+  } else {
+    console.log(isLoggedIn);
+    res.render("menu/institut", {isStudent: false, isLoggedIn });
+  }
+
 });
 
 
@@ -118,8 +125,41 @@ app.get('/entreprise', function (req, res) {
 
 app.get('/myspace', async (req, res) => {
   const pdfnotes = await PDFNotes.find({});
-  res.render("myspace",{pdfnotes});
+  const isLoggedIn = req.session.isLoggedIn;
+
+  if (isLoggedIn) {
+    console.log(isLoggedIn);
+    res.render("myspace", { pdfnotes, isStudent: true, isLoggedIn });
+  } else {
+    console.log(isLoggedIn);
+    res.render("myspace", { pdfnotes, isStudent: false, isLoggedIn });
+  }
 })
+
+
+// app.js
+app.get("/student_notes", async (req, res) => {
+  try {
+    // Récupérer la spécialité sélectionnée à partir des paramètres de requête
+    const specialite = req.query.class_name;
+
+    console.log("Selected specialite:", specialite); // Log the selected specialite
+
+    // Recherchez tous les PDF associés au specialite sélectionné
+    const pdfNotes = await PDFNotes.find({ filename: specialite });
+
+    // Construire une liste de liens HTML pour les PDF
+    const pdfLinks = pdfNotes.map(pdf => `<li><a href="/pdf_notes/${pdf._id}">${pdf.filename}</a></li>`).join('');
+
+    // Envoyer la liste de liens HTML en tant que réponse
+    res.send(pdfLinks);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Erreur lors de la récupération des PDF.");
+  }
+});
+
+
 
 app.post("/login_student", async (req, res) => {
     try {
@@ -228,10 +268,15 @@ const requireAuth = (req, res, next) => {
 
 
 app.post("/login", async (req, res) => {
-  console.log("Request object:", req.body);
+  const students = await Student.find();
+  const idara = await Admin.find();
+
+  const pdfnotes = await PDFNotes.find({});
+  const pdfs = await PDFEmploi.find({});
+
   if (req.body.username == "root" && req.body.password == "root") {
     theAdminIsRoot = true;
-    return res.render("home");
+    return res.render("actualite_view",{students,idara,pdfnotes,pdfs,});
   } else {
     theAdminIsRoot = false;
     try {
@@ -247,7 +292,8 @@ app.post("/login", async (req, res) => {
       );
 
       if (isPasswordMatch) {
-        return res.render("home");
+        return res.render("actualite_view",{students,idara,pdfnotes,pdfs,});
+
       } else {
         return res.send("Wrong password");
       }
