@@ -119,8 +119,9 @@ app.get("/recherche", function (req, res) {
 });
 
 app.get('/entreprise', function (req, res) {
-  const filePath = path.join(__dirname,'institut.ejs');
-  res.sendFile(filePath);
+  const isLoggedIn = req.session.isLoggedIn;
+
+  res.render("menu/entreprise", {isStudent: false, isLoggedIn });
 })
 
 app.get('/myspace', async (req, res) => {
