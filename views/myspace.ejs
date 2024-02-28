@@ -29,8 +29,8 @@
     </head>
     <body>
 <%- include('partials/header') %>
-<div class="container mt-5" style="padding-top: 80px;">  
-<ul class="nav nav-pills nav-justified" id="eventTabs" role="tablist">
+<div class="container mt-5" style="padding-top: 80px;" >  
+<ul class="nav nav-pills nav-justified" id="eventTabs" role="tablist" style="background-color: cadetblue;">
     <li class="nav-item">
       <a class="nav-link active" id="actualite-tab" data-toggle="tab" href="#actualite" role="tab" aria-controls="actualite" aria-selected="true">Actualite</a>
     </li>
@@ -44,7 +44,7 @@
       <a class="nav-link" id="notes-tab" data-toggle="tab" href="#notes" role="tab" aria-controls="notes" aria-selected="false">Notes</a>
     </li>
   </ul>
-  <div class="tab-pane fade show active" id="actualite" role="tabpanel" aria-labelledby="actualite-tab">
+  <div class="tab-pane fade show active" id="actualite" role="tabpanel" aria-labelledby="actualite-tab" style="background-color: darksalmon;">
     <div class="container form-container">
     </div>
 
@@ -56,17 +56,91 @@
         <div class="text-center mt-4">VOIR DEMANDES</div>
       </div>
 
-      <div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="demande-tab">
-        <div class="text-center mt-4">VOIR Notes</div>
-        <% pdfnotes.forEach(pdf => { %>
-            <li>
-              <a href="/pdf_notes/<%= pdf._id %>"><%= pdf.filename %></a>
-            </li>
-            <% }); %>
-      </div>
-      <form action="/student_notes" method="post">
+<!-- HTML -->
+<div class="tab-pane fade" id="notes" role="tabpanel" aria-labelledby="demande-tab">
+  <div class="text-center mt-4">VOIR Notes</div>
+  <ul id="pdfList">
+    <!-- Initially empty -->
+  </ul>
+  <form action="/student_notes" method="get" id="pdfForm">
+    <label for="class_name">Choisir une spécialité :</label>
+    <select name="class_name" id="class_name">
+        <option value="CPI1">CPI1</option>
+        <option value="CPI2">CPI2</option>
+        <option value="ING1EL">ING1EL</option>
+        <option value="ING1INFO">ING1INFO</option>
+        <option value="ING2INFO">ING2INFO</option>
+        <option value="ING2EL">ING2EL</option>
+        <option value="ING3INFO">ING3INFO</option>
+        <option value="ING3EL">ING3EL</option>
+        <option value="L1_EEA">L1_EEA</option>
+        <option value="L1_INFO">L1_INFO</option>
+        <option value="L1_MATH">L1_MATH</option>
+        <option value="L1_TIC">L1_TIC</option>
+        <option value="L2_INFO">L2_INFO</option>
+        <option value="L2_MATH">L2_MATH</option>
+        <option value="L2_MIM">L2_MIM</option>
+        <option value="L2_SE">L2_SE</option>
+        <option value="L2_TIC">L2_TIC</option>
+        <option value="L3_INFO">L3_INFO</option>
+        <option value="L3_MATH">L3_MATH</option>
+        <option value="L3_SE">L3_SE</option>
+        <option value="L3_TIC">L3_TIC</option>
+        <option value="MP1_GL">MP1_GL</option>
+        <option value="MP1_III">MP1_III</option>
+        <option value="MP1_SD">MP1_SD</option>
+        <option value="MP2_GL">MP2_GL</option>
+        <option value="MP2_III">MP2_III</option>
+        <option value="MP2_SD">MP2_SD</option>
+        <option value="MR1_EL">MR1_EL</option>
+        <option value="MR1_GL">MR1_GL</option>
+        <option value="MR2_EL">MR2_EL</option>
+        <option value="MR2_GL">MR2_GL</option>
+      </select>
+      <!-- Ajoutez d'autres options si nécessaire -->
+    </select>
+  </form>
+</div>
+
+
+<script>
+  console.log("Script loaded successfully."); // Check if script is loaded
+  
+  document.getElementById('class_name').addEventListener('change', function() {
+    try {
+      var selectedSpecialite = this.value;
+      var pdfList = document.getElementById('pdfList');
+
+      console.log("Selected option:", selectedSpecialite); // Log the selected option
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/student_notes?class_name=' + selectedSpecialite, true);
+      xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 400) {
+          var newPdfList = xhr.responseText;
+          pdfList.innerHTML = newPdfList;
+        } else {
+          console.error('Erreur lors de la récupération des PDFs');
+        }
+      };
+      xhr.onerror = function() {
+        console.error('Erreur réseau lors de la récupération des PDFs');
+      };
+      xhr.send();
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  });
+</script>
+
+
+
+
+
+
+
+      <!-- <form action="/student_notes" method="post">
         <select name="class_name">
-          <!-- Menu déroulant pour sélectionner le nom du fichier PDF -->
           <option value="CPI1TD1">CPI1TD1</option>
           <option value="CPI1TD2">CPI1TD2</option>
           <option value="CPI2TD2">CPI2TD2</option>
@@ -123,7 +197,7 @@
           <option value="MR2_GL_TD1">MR2_GL_TD1</option>
         </select>
         <button type="submit">ok</button>
-      </form>
+      </form> -->
   
 </div>
 </div>
