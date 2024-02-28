@@ -342,31 +342,99 @@
           </div>
         </form>
 
-        <h2>Edit / Delete Students</h2>
-    <ul>
-      <% students.forEach(student => { %>
-      <li>
-        <%= student.nom %> <%= student.prenom %> - <%= student.age %>
-        <!-- Adjust the displayed attributes -->
+        
 
-        <!-- Include other new attributes in your form -->
+<% var selectedSpecialite = "" %>
 
-        <form
-          action="/students/edit/<%= student._id %>"
-          method="get"
-          style="display: inline"
-        >
-          <button type="submit">Edit</button>
-        </form>
-        <form
-          action="/students/delete/<%= student._id %>?_method=DELETE"
-          method="post"
-          style="display: inline"
-        >
-          <button type="submit">Delete</button>
-        </form>
-      </li>
-      <% }) %>
+<h2>Edit / Delete Students</h2>
+
+<!-- Specialization Filter -->
+<label for="specialiteFilter">Filter by Spécialité:</label>
+<select id="specialiteFilter" onchange="filterStudentsBySpecialite()">
+    <option value="CPI1">CPI1</option>
+    <option value="CPI2">CPI2</option>
+    <option value="ING1EL">ING1EL</option>
+    <option value="ING1INFO">ING1INFO</option>
+    <option value="ING2INFO">ING2INFO</option>
+    <option value="ING2EL">ING2EL</option>
+    <option value="ING3INFO">ING3INFO</option>
+    <option value="ING3EL">ING3EL</option>
+    <option value="L1_EEA">L1_EEA</option>
+    <option value="L1_INFO">L1_INFO</option>
+    <option value="L1_MATH">L1_MATH</option>
+    <option value="L1_TIC">L1_TIC</option>
+    <option value="L2_INFO">L2_INFO</option>
+    <option value="L2_MATH">L2_MATH</option>
+    <option value="L2_MIM">L2_MIM</option>
+    <option value="L2_SE">L2_SE</option>
+    <option value="L2_TIC">L2_TIC</option>
+    <option value="L3_INFO">L3_INFO</option>
+    <option value="L3_MATH">L3_MATH</option>
+    <option value="L3_SE">L3_SE</option>
+    <option value="L3_TIC">L3_TIC</option>
+    <option value="MP1_GL">MP1_GL</option>
+    <option value="MP1_III">MP1_III</option>
+    <option value="MP1_SD">MP1_SD</option>
+    <option value="MP2_GL">MP2_GL</option>
+    <option value="MP2_III">MP2_III</option>
+    <option value="MP2_SD">MP2_SD</option>
+    <option value="MR1_EL">MR1_EL</option>
+    <option value="MR1_GL">MR1_GL</option>
+    <option value="MR2_EL">MR2_EL</option>
+    <option value="MR2_GL">MR2_GL</option>
+  </select>
+
+<!-- List of Students -->
+<ul>
+  <% students.forEach(student => { %>
+  <!-- Check if the selected specialization matches -->
+  <% if (!selectedSpecialite || student.specialite === selectedSpecialite) {
+  %>
+  <li data-specialite="<%= student.specialite %>">
+    <%= student.nom %> <%= student.prenom %> - <%= student.specialite %>
+    <!-- Adjust the displayed attributes -->
+
+    <!-- Include other new attributes in your form -->
+
+    <form
+      action="/students/edit/<%= student._id %>"
+      method="get"
+      style="display: inline"
+    >
+      <button type="submit">Edit</button>
+    </form>
+    <form
+      action="/students/delete/<%= student._id %>?_method=DELETE"
+      method="post"
+      style="display: inline"
+    >
+      <button type="submit">Delete</button>
+    </form>
+  </li>
+  <% } %> <% }) %>
+</ul>
+
+<script>
+  // JavaScript function to filter students by specialization
+  function filterStudentsBySpecialite() {
+    var selectElement = document.getElementById("specialiteFilter");
+    var selectedSpecialite = selectElement.value;
+    var studentListItems = document.querySelectorAll("ul li");
+
+    // Hide/show students based on the selected specialization
+    for (var i = 0; i < studentListItems.length; i++) {
+      var student = studentListItems[i];
+      var studentSpecialite = student.getAttribute("data-specialite"); // Extracting specialization from the data attribute
+
+      // Show all students if no specialization is selected or the student's specialization matches the selected one
+      if (!selectedSpecialite || studentSpecialite === selectedSpecialite) {
+        student.style.display = "list-item";
+      } else {
+        student.style.display = "none";
+      }
+    }
+  }
+</script>
     </ul>
       </div>    </div>
     <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="admin-tab">
