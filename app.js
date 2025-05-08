@@ -2,7 +2,7 @@ const express = require('express');
 const { MongoClient } = require('mongodb');
 const methodOverride = require("method-override");
 const session = require('express-session');
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const multer = require('multer');
 const fs = require("fs");
 const PDFNotes = require("./admin/src/PdfNotesModel");
@@ -20,7 +20,7 @@ const port = 3000;
 app.use(express.static(path.join(__dirname, 'assets')));
 app.use(express.static(path.join(__dirname, 'Uni', 'views', 'menu')));
 // Set the views directory
-app.set('views', 'C:/uni/views');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
