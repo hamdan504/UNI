@@ -1,17 +1,21 @@
-# filepath: c:\Users\ahmed\OneDrive\Desktop\UNI\UNI\Dockerfile
 FROM node:20
 
 # Set the working directory
 WORKDIR /app
 
-# Copy package files and install dependencies
+# Copy package files
 COPY package*.json ./
-RUN npm install
 
-# Copy the rest of the application
+# Clean install dependencies and rebuild if needed
+RUN npm install && npm rebuild
+
+# Copy application files
 COPY . .
 
-# Expose the application port
+# Create required directories
+RUN mkdir -p uploads_act uploads_notes uploads_emploi
+
+# Expose port
 EXPOSE 3000
 
 # Start the application

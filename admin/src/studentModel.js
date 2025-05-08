@@ -1,6 +1,6 @@
 // studentModel.js
 const mongoose = require("mongoose");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const studentSchema = new mongoose.Schema({
   nom: String,
