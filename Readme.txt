@@ -1,40 +1,40 @@
-# 🚀 Deploying a Web Application with a Local CI/CD Pipeline
+# 🚀 UNI - Web Application with CI/CD Pipeline
 
-This document outlines the process of setting up a local CI/CD pipeline for a web application project.
+[![CI/CD Status](https://github.com/hamdan504/UNI/actions/workflows/ci.yml/badge.svg)](https://github.com/hamdan504/UNI/actions)
 
----
+> A modern university website implementation with automated deployment pipeline
 
 ## 1. ✅ Set Up Version Control (1 hour)
 
 The project is already under version control and hosted on GitHub.  
 **Repository URL**: `https://github.com/hamdan504/UNI.git`
 
----
-
 ## 2. 🧱 Develop a Simple Web Application
 
 Our project is a web application inspired by our university website, featuring improvements in both design and architecture.
 
-Here is the app running locally:
-
-**![App Screenshot](RAPPORT-ASSETS\image.png)**
-
----
+### Here is the app running locally:
+![App Running Locally](./RAPPORT-ASSETS/local-app.png)
 
 ## 3. 📦 Containerize the Application
 
 We containerized the application using Docker to ensure consistent deployment across environments.
 
-- **Docker Build Command**
-- **Docker Run Command**
-- **App Running via Docker**
+### Docker Implementation
+* **Docker Build Command**
+  ```bash
+  docker build -t uni-app .
+  ```
 
-**(Insert 3 relevant screenshots here)**
-**![App Screenshot](RAPPORT-ASSETS\docker_build.png)**
-**![App Screenshot](RAPPORT-ASSETS\docker_build_succ.png)**
-**![App Screenshot](RAPPORT-ASSETS\docker_run.png)**
+* **Docker Run Command**
+  ```bash
+  docker run -p 3000:3000 uni-app
+  ```
 
----
+### App Running via Docker
+![Docker Build](./RAPPORT-ASSETS/docker-build.png)
+![Docker Run](./RAPPORT-ASSETS/docker-run.png)
+![App via Docker](./RAPPORT-ASSETS/docker-app.png)
 
 ## 4. 🔄 Set Up Continuous Integration
 
@@ -71,8 +71,92 @@ Total 7 (delta 2), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
 To https://github.com/hamdan504/UNI.git
    37e2016..74a366a  main -> main
-**![App Screenshot](RAPPORT-ASSETS\ci.png)**
+```
+
+![CI Process Screenshot](./RAPPORT-ASSETS/ci.png)
 
 ## 5. 🚀 Continuous Deployment
 
 Our CD pipeline automatically deploys the application when changes are pushed to the main branch and CI checks pass.
+
+### Deployment Process
+![Deployment Process](./RAPPORT-ASSETS/deployment.png)
+
+
+## Infrastructure as Code with Terraform
+
+- download from https://developer.hashicorp.com/terraform/install#windows
+- extract and add the extracted file to path in evironment variables
+- test : 
+![Terraform_version](./RAPPORT-ASSETS/ter.png)
+![Terraform_init](./RAPPORT-ASSETS/ter_succ.png)
+![Terraform_init](./RAPPORT-ASSETS/final.png)
+
+
+
+
+
+How to Run the UNI Docker Container on Another Machine 🐳
+Prerequisites
+Docker installed on the machine
+Git installed on the machine
+Step-by-Step Guide
+
+1. Clone the Repository
+git clone https://github.com/hamdan504/UNI.git
+cd UNI
+
+2. Build and Run the Container
+# Build the Docker image
+docker build -t uni-app .
+
+# Run the container
+docker run -d -p 3000:3000 --name uni-app uni-app
+
+## 📋 Project Features
+
+- 🎨 Modern UI inspired by university websites
+- 🔒 Secure authentication system
+- 📱 Responsive design for mobile and desktop
+- 🚀 Fast loading times and optimized performance
+- 🔄 Automated CI/CD pipeline with GitHub Actions
+
+## 🛠️ Technologies Used
+
+- Frontend: React.js with Tailwind CSS
+- Backend: Node.js with Express
+- Database: MongoDB
+- Containerization: Docker
+- CI/CD: GitHub Actions
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v14+)
+- Docker
+- Git
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/hamdan504/UNI.git
+
+# Change directory
+cd UNI
+
+# Install dependencies
+npm install
+
+# Run locally
+npm start
+```
+
+### Docker Setup
+```bash
+# Build the Docker image
+docker build -t uni-app .
+
+# Run the container
+docker run -p 3000:3000 uni-app
+```
+
