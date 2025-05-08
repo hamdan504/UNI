@@ -1,0 +1,35 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build Docker image
+        run: docker build -t isimm-app .
+
+      - name: Deploy Docker container
+        run: |
+          docker stop isimm-app || true
+          docker rm isimm-app || true
+          docker run -d \
+            -p 3000:3000 \
+            --name isimm-app \
+            --restart unless-stopped \
+            isimm-app
