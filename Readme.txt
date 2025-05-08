@@ -17,7 +17,7 @@ Our project is a web application inspired by our university website, featuring i
 
 Here is the app running locally:
 
-**![App Screenshot](RAPPORT-ASSETS\image.png)**
+![App Screenshot](RAPPORT-ASSETS/image.png)
 
 ---
 
@@ -25,14 +25,14 @@ Here is the app running locally:
 
 We containerized the application using Docker to ensure consistent deployment across environments.
 
-- **Docker Build Command**
-- **Docker Run Command**
-- **App Running via Docker**
+### Docker Build
+![Docker Build](RAPPORT-ASSETS/docker_build.png)
 
-**(Insert 3 relevant screenshots here)**
-**![App Screenshot](RAPPORT-ASSETS\docker_build.png)**
-**![App Screenshot](RAPPORT-ASSETS\docker_build_succ.png)**
-**![App Screenshot](RAPPORT-ASSETS\docker_run.png)**
+### Docker Build Success
+![Docker Build Success](RAPPORT-ASSETS/docker_build_succ.png)
+
+### Docker Run
+![Docker Run](RAPPORT-ASSETS/docker_run.png)
 
 ---
 
@@ -71,8 +71,3 @@ Total 7 (delta 2), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
 To https://github.com/hamdan504/UNI.git
    37e2016..74a366a  main -> main
-**![App Screenshot](RAPPORT-ASSETS\ci.png)**
-
-## 5. 🚀 Continuous Deployment
-
-Our CD pipeline automatically deploys the application when changes are pushed to the main branch and CI checks pass.
