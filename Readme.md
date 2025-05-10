@@ -85,7 +85,7 @@ To https://github.com/hamdan504/UNI.git
 Our CD pipeline automatically deploys the application when changes are pushed to the main branch and CI checks pass.
 
 ### Deployment Process
-![Deployment Process](./RAPPORT-ASSETS/deployment.png)
+![Deployment Process](./RAPPORT-ASSETS/cd.png)
 
 ## Infrastructure as Code with Terraform
 
@@ -96,22 +96,21 @@ Our CD pipeline automatically deploys the application when changes are pushed to
 ![Terraform_init](./RAPPORT-ASSETS/ter_succ.png)
 ![Terraform_init](./RAPPORT-ASSETS/final.png)
 
-How to Run the UNI Docker Container on Another Machine 
-Prerequisites
-Docker installed on the machine
-Git installed on the machine
-Step-by-Step Guide
 
-1. Clone the Repository
+# How to Run the UNI Docker Container on Another Machine 
+Prerequisites
+Docker and  Git installed on the machine
+
+### 1. Clone the Repository
 git clone https://github.com/hamdan504/UNI.git
 cd UNI
 
-2. Build and Run the Container
-# Build the Docker image
+### 2. Build and Run the Container
+#### Build the Docker image
 docker build -t uni-app .
 
-# Run the container
+#### Run the container
 docker run -d -p 3000:3000 --name uni-app uni-app
 
-# Test the app on the browser
+### Test the app on the browser
 http://localhost:3000/
