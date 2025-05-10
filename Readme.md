@@ -4,19 +4,19 @@
 
 > A modern university website implementation with automated deployment pipeline
 
-## 1. ✅ Set Up Version Control (1 hour)
+## 1. Set Up Version Control
 
 The project is already under version control and hosted on GitHub.  
 **Repository URL**: `https://github.com/hamdan504/UNI.git`
 
-## 2. 🧱 Develop a Simple Web Application
+## 2. Develop a Simple Web Application
 
 Our project is a web application inspired by our university website, featuring improvements in both design and architecture.
 
 ### Here is the app running locally:
-![App Running Locally](./RAPPORT-ASSETS/local-app.png)
+![App Running Locally](./RAPPORT-ASSETS/image.png)
 
-## 3. 📦 Containerize the Application
+## 3. Containerize the Application
 
 We containerized the application using Docker to ensure consistent deployment across environments.
 
@@ -40,12 +40,8 @@ We containerized the application using Docker to ensure consistent deployment ac
 ### Docker Run
 ![Docker Run](RAPPORT-ASSETS/docker_run.png)
 
-### App Running via Docker
-![Docker Build](./RAPPORT-ASSETS/docker-build.png)
-![Docker Run](./RAPPORT-ASSETS/docker-run.png)
-![App via Docker](./RAPPORT-ASSETS/docker-app.png)
 
-## 4. 🔄 Set Up Continuous Integration
+## 4. Set Up Continuous Integration
 
 ### Git Commit and Push: GitHub Actions Workflow Setup
 
@@ -84,7 +80,7 @@ To https://github.com/hamdan504/UNI.git
 
 ![CI Process Screenshot](./RAPPORT-ASSETS/ci.png)
 
-## 5. 🚀 Continuous Deployment
+## 5. Continuous Deployment
 
 Our CD pipeline automatically deploys the application when changes are pushed to the main branch and CI checks pass.
 
@@ -100,7 +96,7 @@ Our CD pipeline automatically deploys the application when changes are pushed to
 ![Terraform_init](./RAPPORT-ASSETS/ter_succ.png)
 ![Terraform_init](./RAPPORT-ASSETS/final.png)
 
-How to Run the UNI Docker Container on Another Machine 🐳
+How to Run the UNI Docker Container on Another Machine 
 Prerequisites
 Docker installed on the machine
 Git installed on the machine
@@ -117,49 +113,5 @@ docker build -t uni-app .
 # Run the container
 docker run -d -p 3000:3000 --name uni-app uni-app
 
-## 📋 Project Features
-
-- 🎨 Modern UI inspired by university websites
-- 🔒 Secure authentication system
-- 📱 Responsive design for mobile and desktop
-- 🚀 Fast loading times and optimized performance
-- 🔄 Automated CI/CD pipeline with GitHub Actions
-
-## 🛠️ Technologies Used
-
-- Frontend: React.js with Tailwind CSS
-- Backend: Node.js with Express
-- Database: MongoDB
-- Containerization: Docker
-- CI/CD: GitHub Actions
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (v14+)
-- Docker
-- Git
-
-### Installation
-```bash
-# Clone the repository
-git clone https://github.com/hamdan504/UNI.git
-
-# Change directory
-cd UNI
-
-# Install dependencies
-npm install
-
-# Run locally
-npm start
-```
-
-### Docker Setup
-```bash
-# Build the Docker image
-docker build -t uni-app .
-
-# Run the container
-docker run -p 3000:3000 uni-app
-```
+# Test the app on the browser
+http://localhost:3000/
