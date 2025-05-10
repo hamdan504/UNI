@@ -1,8 +1,8 @@
-# 🚀 UNI - Web Application with CI/CD Pipeline
+# Projet DEVOPS : Deploying a Web Application with CI/CD Pipeline Locally
 
 [![CI/CD Status](https://github.com/hamdan504/UNI/actions/workflows/ci.yml/badge.svg)](https://github.com/hamdan504/UNI/actions)
 
-> A modern university website implementation with automated deployment pipeline
+> ISIMM university website implementation with automated deployment pipeline
 
 ## 1. Set Up Version Control
 
