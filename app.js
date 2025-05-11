@@ -5,14 +5,15 @@ const session = require('express-session');
 const bcrypt = require("bcryptjs");
 const multer = require('multer');
 const fs = require("fs");
-const PDFNotes = require("./admin/src/PdfNotesModel");
-const PDFEmploi = require("./admin/src/PdfEmploiModel");
+const PDFNotes = require("./models/PDFNotes");
+const PDFEmploi = require("./models/PDFEmploi");
 const cloudinary = require('cloudinary').v2;
-const Student = require("./admin/src/studentModel");
-const Actualite = require('./admin/src/actualiteModel');
-const Admin = require("./admin/src/adminModel");
+const Student = require("./models/Student");
+const Actualite = require('./models/Actualite');
+const Admin = require("./models/Admin");
 var theAdminIsRoot = false;
 const path = require('path');
+const sequelize = require('./config/database');
 
 const app = express();
 const port = 3000;
@@ -25,9 +26,6 @@ app.set('view engine', 'ejs');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-
-
 // Multer configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -39,31 +37,20 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-
-
 cloudinary.config({ 
   cloud_name: 'dwzy7clpv', 
   api_key: '335752399965959', 
   api_secret: 'o0UMKQAPeuf6lVsh1zxwJDfpEls' 
 });
 
-const mongoose = require("mongoose");
-
- mongoose.connect("mongodb+srv://mariem:WecrMJfHDGZ7Jh1c@cluster2.8cbx6bk.mongodb.net/ISIMM_Test",{
- });
-
-// app.use(
-//   session({
-//     secret: 'secretkey',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//       maxAge: 5 * 60 * 1000, // 5 minute in milliseconds
-//       sameSite: 'strict', // Ensures cookies are only sent in same-site requests
-//       secure: true // Ensures cookies are only sent over HTTPS
-//     }
-//   })
-// );
+sequelize.authenticate()
+  .then(() => {
+    console.log('Connected to PostgreSQL database');
+    return sequelize.sync();
+  })
+  .catch((err) => {
+    console.error('Unable to connect to database:', err);
+  });
 
 app.use(session({
   secret: 'your-secret-key',
@@ -71,11 +58,10 @@ app.use(session({
   saveUninitialized: false
 }));
 
-
 app.get('/', async (req, res) => {
   try {
     // Fetch actualite data from the database
-    const actualiteData = await Actualite.find(); // Adjust the query as per your schema
+    const actualiteData = await Actualite.findAll();
     const isLoggedIn = req.session.isLoggedIn;
 
     if (isLoggedIn) {
@@ -91,8 +77,6 @@ app.get('/', async (req, res) => {
   }
 });
 
-
-
 // Navbar routes
 app.get('/institut', (req, res) => {
   const isLoggedIn = req.session.isLoggedIn;
@@ -106,7 +90,6 @@ app.get('/institut', (req, res) => {
   }
 
 });
-
 
 app.get("/formation", function (req, res) {
   const filePath = path.join(__dirname,'institut.ejs');
@@ -125,7 +108,7 @@ app.get('/entreprise', function (req, res) {
 })
 
 app.get('/myspace', async (req, res) => {
-  const pdfnotes = await PDFNotes.find({});
+  const pdfnotes = await PDFNotes.findAll();
   const isLoggedIn = req.session.isLoggedIn;
 
   if (isLoggedIn) {
@@ -137,7 +120,6 @@ app.get('/myspace', async (req, res) => {
   }
 })
 
-
 // app.js
 app.get("/student_notes", async (req, res) => {
   try {
@@ -147,10 +129,12 @@ app.get("/student_notes", async (req, res) => {
     console.log("Selected specialite:", specialite); // Log the selected specialite
 
     // Recherchez tous les PDF associés au specialite sélectionné
-    const pdfNotes = await PDFNotes.find({ filename: specialite });
+    const pdfNotes = await PDFNotes.findAll({
+      where: { filename: specialite }
+    });
 
     // Construire une liste de liens HTML pour les PDF
-    const pdfLinks = pdfNotes.map(pdf => `<li><a href="/pdf_notes/${pdf._id}">${pdf.filename}</a></li>`).join('');
+    const pdfLinks = pdfNotes.map(pdf => `<li><a href="/pdf_notes/${pdf.id}">${pdf.filename}</a></li>`).join('');
 
     // Envoyer la liste de liens HTML en tant que réponse
     res.send(pdfLinks);
@@ -160,42 +144,39 @@ app.get("/student_notes", async (req, res) => {
   }
 });
 
-
-
 app.post("/login_student", async (req, res) => {
-    try {
-      const check = await Student.findOne({ email: req.body.signin_email});
-      console.log(check);
-      console.log(req.body.signin_email);
-      if (check == null) {
-        return res.send("Username not found");
-      }
-
-      const isPasswordMatch = await bcrypt.compare(
-        req.body.signin_password.trim(),
-        check.password
-      );
-
-      if (isPasswordMatch) {
-        req.session.isLoggedIn = true;
-        res.redirect("/");
-      } else {
-        return res.send("Wrong password");
-      }
-    } catch (error) {
-      console.error(error);
-      return res.send("Something went wrong");
+  try {
+    const student = await Student.findOne({ 
+      where: { email: req.body.signin_email }
+    });
+    
+    if (!student) {
+      return res.send("Username not found");
     }
-  });
 
+    const isPasswordMatch = await bcrypt.compare(
+      req.body.signin_password.trim(),
+      student.password
+    );
 
-  app.post("/logout_student", (req, res) => {
-    // Set isLoggedIn to false in the session
-    req.session.isLoggedIn = false;
-    // Redirect the user to the home page
-    res.redirect("/");
+    if (isPasswordMatch) {
+      req.session.isLoggedIn = true;
+      res.redirect("/");
+    } else {
+      return res.send("Wrong password");
+    }
+  } catch (error) {
+    console.error(error);
+    return res.send("Something went wrong");
+  }
 });
 
+app.post("/logout_student", (req, res) => {
+  // Set isLoggedIn to false in the session
+  req.session.isLoggedIn = false;
+  // Redirect the user to the home page
+  res.redirect("/");
+});
 
 app.post("/student_notes", async (req,res) =>{
   try {
@@ -208,10 +189,6 @@ app.post("/student_notes", async (req,res) =>{
   }
 });
 //------------------------------------------------------------------//
-
-
-
-
 
 // Set up middleware
 app.use(methodOverride("_method")); // Enable the method-override middleware
@@ -254,7 +231,6 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-
 const requireAuth = (req, res, next) => {
   // Check if the user is logged in
   if (req.session.loggedIn) {
@@ -265,8 +241,6 @@ const requireAuth = (req, res, next) => {
 
   } 
 };
-
-
 
 app.post("/login", async (req, res) => {
   const students = await Student.find();
@@ -305,7 +279,6 @@ app.post("/login", async (req, res) => {
   }
 });
 
-
 app.get("/logout", (req, res) => {
   // Clear the session data
   req.session.destroy(err => {
@@ -317,8 +290,6 @@ app.get("/logout", (req, res) => {
     res.send("/login");
   });
 });
-
-
 
 app.get("/login/actualite", async (req, res) => {
   try{
@@ -358,9 +329,6 @@ app.post("/login/actualite/add", upload.single('image'), async (req, res) => {
   }
 });
 
-
-
-
 app.get("/etudiants", async (req, res) => {
   // Retrieve all students from the database
   const students = await Student.find({});
@@ -375,52 +343,10 @@ app.get("/students/edit/:id", async (req, res) => {
 
 app.post("/students/add", async (req, res) => {
   try {
-    const {
-      nom,
-      prenom,
-      cin,
-      numeroInscription,
-      dateNaissance,
-      lieuNaissance,
-      sexe,
-      codePostal,
-      adresseLocale,
-      telephonePersonnel,
-      email,
-      specialite,
-      niveauEtudes,
-      groupeTD,
-      etablissementAuPrecedente,
-      password,
-    } = req.body;
-
-    const newStudent = new Student({
-      nom,
-      prenom,
-      cin,
-      numeroInscription,
-      dateNaissance,
-      lieuNaissance,
-      sexe,
-      codePostal,
-      adresseLocale,
-      telephonePersonnel,
-      email,
-      specialite,
-      niveauEtudes,
-      groupeTD,
-      etablissementAuPrecedente,
-      password,
-    });
-
-    await newStudent.save();
+    await Student.create(req.body);
     res.redirect("/login/actualite");
   } catch (error) {
-    if (
-      error.code === 11000 &&
-      (error.keyPattern.cin || error.keyPattern.numeroInscription)
-    ) {
-      // Error code 11000 indicates a duplicate key error (unique constraint violation)
+    if (error.name === 'SequelizeUniqueConstraintError') {
       res.status(400).send("CIN or numeroInscription already exists.");
     } else {
       res.status(500).send(error.message);
@@ -431,68 +357,27 @@ app.post("/students/add", async (req, res) => {
 // Example for POST /students/edit/:id route
 app.post("/students/edit/:id", async (req, res) => {
   try {
-    const {
-      nom,
-      prenom,
-      cin,
-      numeroInscription,
-      dateNaissance,
-      lieuNaissance,
-      sexe,
-      codePostal,
-      adresseLocale,
-      telephonePersonnel,
-      email,
-      specialite,
-      niveauEtudes,
-      groupeTD,
-      etablissementAuPrecedente,
-    } = req.body;
-
-    await Student.findByIdAndUpdate(req.params.id, {
-      nom,
-      prenom,
-      cin,
-      numeroInscription,
-      dateNaissance,
-      lieuNaissance,
-      sexe,
-      codePostal,
-      adresseLocale,
-      telephonePersonnel,
-      email,
-      specialite,
-      niveauEtudes,
-      groupeTD,
-      etablissementAuPrecedente,
+    await Student.update(req.body, {
+      where: { id: req.params.id }
     });
-
     res.redirect("/etudiants");
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error in updating student. Please try again.");
+    res.status(500).send("Error in updating student.");
   }
 });
-
 
 app.delete("/students/delete/:id", async (req, res) => {
   try {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      return res.status(400).send("Invalid ID format");
-    }
-
-    console.log("Deleting student with ID:", req.params.id);
-
-    const result = await Student.findOneAndDelete({ _id: req.params.id });
-    console.log("Result:", result);
-
+    await Student.destroy({
+      where: { id: req.params.id }
+    });
     res.redirect("/etudiants");
   } catch (error) {
-    console.error("Error deleting student:", error);
-    res.status(500).send("Internal Server Error: " + error.message);
+    console.error(error);
+    res.status(500).send("Error deleting student: " + error.message);
   }
 });
-
 
 app.get("/admins", async (req, res) => {
   if (theAdminIsRoot) {
@@ -556,11 +441,7 @@ app.delete("/deleteAdmin/:id", async (req, res) => {
       res.send("barra al3eb b3id");
 
     }
-  
-
 });
-
-
 
 const storage_note = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -572,7 +453,6 @@ const storage_note = multer.diskStorage({
 });
 const upload_note = multer({ storage: storage_note });
 
-
 const storage_emploi = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads_emploi/");
@@ -582,8 +462,6 @@ const storage_emploi = multer.diskStorage({
   },
 });
 const upload_emploi = multer({ storage: storage_emploi });
-
-
 
 app.post("/upload2", upload_note.single("pdf_file_note"), async (req, res) => {
   try {
@@ -610,7 +488,6 @@ app.post("/upload2", upload_note.single("pdf_file_note"), async (req, res) => {
     res.status(500).send("error");
   }
 });
-
 
 app.post("/upload", upload_emploi.single("pdf_file_emploi"), async (req, res) => {
   try {
@@ -679,12 +556,10 @@ app.post("/pdf/:id/delete", async (req, res) => {
   }
 });
 
-
 // Route pour télécharger un PDF par son ID
 app.get("/pdf_notes/:id", async (req, res) => {
   try {
-    const pdfId = req.params.id;
-    const pdf = await PDFNotes.findById(pdfId);
+    const pdf = await PDFNotes.findByPk(req.params.id);
     if (!pdf) {
       return res.status(404).send("PDF non trouvé");
     }
@@ -703,22 +578,15 @@ app.get("/pdf_notes/:id", async (req, res) => {
 // Route pour supprimer un PDF par son ID
 app.post("/pdf_notes/:id/delete", async (req, res) => {
   try {
-    const pdfId = req.params.id;
-
-    // Récupérer le document PDF à supprimer
-    const pdf = await PDFNotes.findById(pdfId);
-
-    if (!pdf) {
-      return res.status(404).send("PDF non trouvé");
-    }
-    await pdf.deleteOne();
+    await PDFNotes.destroy({
+      where: { id: req.params.id }
+    });
     res.redirect("/actualite_view");
   } catch (error) {
     console.error("Erreur lors de la suppression du PDF:", error);
-    res.status(500).send("Erreur lors de la suppression du PDF");
+    res.status(500).send("Error deleting PDF");
   }
 });
-
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
