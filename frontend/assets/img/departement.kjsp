@@ -1,0 +1,2798 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<!--[if lte IE 7]> <html class="ie7 oldie no-js" xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"> <![endif]-->
+<!--[if IE 8]> <html class="ie8 oldie no-js" xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"> <!--<![endif]-->
+
+<head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- On interdit le mode de compatibilite IE  -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- Gestion des favicons : soit le lot par defaut soit le lot depose sur l espace FTP dedie  -->
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/favicon-16x16.png">
+
+
+<meta name="description" content="" />
+<meta name="DC.Description" lang="fr-FR" content="" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="Département Informatique intégrée en Langues, Lettres et Langage (I3L) - UFR LLASIC - Université Grenoble Alpes" />
+<meta property="og:site_name" content="UFR LLASIC - Université Grenoble Alpes" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://llasic.univ-grenoble-alpes.fr/menu-principal/departements/departement-informatique-integree-en-langues-lettres-et-langage-i3l--40302.kjsp?RH=LLASIC-FR013" />
+<meta property="og:image" content="https://llasic.univ-grenoble-alpes.fr/medias/photo/departement-i3l_1475143947794-jpg" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+
+
+
+ 
+
+
+
+
+<title>Département Informatique intégrée en Langues, Lettres et Langage (I3L) - UFR LLASIC - Université Grenoble Alpes</title><link rel="canonical" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/departements/departement-informatique-integree-en-langues-lettres-et-langage-i3l--40302.kjsp" />
+
+<link rel="icon" type="image/png" href="https://favicon-ksup.univ-grenoble-alpes.fr/dev-llasic/favicon-16x16.png" />
+
+<meta http-equiv="pragma" content="no-cache" />
+
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+<meta name="DC.Title" content="Département Informatique intégrée en Langues, Lettres et Langage (I3L) - UFR LLASIC - Université Grenoble Alpes" />
+<meta name="DC.Creator" content="Geraldine Gregoire" />
+<meta name="DC.Description" lang="fr-FR" content="" />
+<meta name="DC.Publisher" content="Geraldine Gregoire" />
+<meta name="DC.Date.created" scheme="W3CDTF" content="20160426 00:00:00.0" />
+<meta name="DC.Date.modified" scheme="W3CDTF" content="20220607 15:26:16.0" />
+<meta name="DC.Language" scheme="RFC3066" content="fr-FR" />
+<meta name="DC.Rights" content="Copyright &copy; UFR LLASIC - Université Grenoble Alpes" />
+
+<meta name="author" lang="fr_FR" content="Université Grenoble Alpes" />
+<meta name="Date-Creation-yyyymmdd" content="20160426 00:00:00.0" />
+<meta name="Date-Revision-yyyymmdd" content="20220607 15:26:16.0" />
+<meta name="copyright" content="Copyright &copy; UFR LLASIC - Université Grenoble Alpes" />
+<meta name="reply-to" content="webmaster@univ-grenoble-alpes.fr" />
+<meta name="category" content="Internet" />
+
+
+ 
+
+<meta name="robots" content="index, follow" />
+
+
+<meta name="distribution" content="global" />
+<meta name="identifier-url" content="https://llasic.univ-grenoble-alpes.fr/" />
+<meta name="resource-type" content="document" />
+<meta name="expires" content="-1" />
+
+<meta name="google-site-verification" content="" />
+
+<meta name="Generator" content="K-Sup (6.06.23)" />
+<meta name="Formatter" content="K-Sup (6.06.23)" />
+
+<meta name="viewport" content="width=device-width" />
+
+
+
+
+
+
+<style>
+
+/* Couleurs UAS */
+:root {
+  --fond-blanc-texte: #363636;
+  --fond-blanc-liens: #fd5f46;
+  --fond-blanc: #fff;
+  --fond-blanc-grisclair: #5f5f5f;
+
+  --fond-couleur-principale: #fd5f46;
+  --fond-couleur-principale-texte: #ffffff;
+  --fond-couleur-principale-liens: #ffffff;
+
+  --fond-couleur-secondaire: #2d3039;
+  --fond-couleur-secondaire-texte: #ffffff;
+  --fond-couleur-secondaire-liens: #ffffff;
+  
+  --fond-couleur-neutre: #eceaea;
+  --fond-couleur-neutre-texte: #363636;
+  --fond-couleur-neutre-liens: #fd5f46;
+
+  --focusable-border: #1d81df ;
+  --focusable-outline: black ;
+  --focusable-boxshadow: white;
+}
+
+</style>
+
+
+
+ 
+  
+  
+
+
+  <link rel="stylesheet" type="text/css" media="screen" href="https://llasic.univ-grenoble-alpes.fr/wro/styles_declinaison_satellite/e2a3aecc132b5d5b394e42ae11951ec932f3903a.css"/>
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css" media="screen">
+
+
+
+  
+  
+
+
+
+.bg_blanc,
+.couleur_texte_fond_blanc,
+.bg_blanc a.couleur_texte_fond_blanc,
+.bg_blanc a.lien_couleur_texte,
+.bg_blanc a[class^="lien"].lien_couleur_texte,
+[id="navigation"] li > a,
+.card.cartetoolbox .carte-req-liste-col-6 .liste__objets__style0012,
+[id="contenu-encadres"] [class*="bloc__bg__"] form,
+.choix-profils h3,
+#contenu-encadres div[class*="bg_c_"] .choix-profils a,
+[id="contenu-encadres"] .choix-profils h3.bg__blanc  a[class^="lien"],
+.liste__objets__style0065 .liste__objets__resume,
+.containerlist ul li div.couleur_texte_fond_blanc_hover:hover,
+[id="contenu-encadres"] .bloc__bg__colore .grid__container__multi__col.liste__objets,
+[id="contenu-encadres"] .bloc__bg__colore .grid__container__multi__col.liste__objets .liste__objets__type__thematique,
+.tag__arbre__choix--disponibles .bloc-arbre__resume  {
+  color:#363636;
+}
+
+
+
+html body div#tarteaucitronRoot div#tarteaucitronInfo,
+#tarteaucitron span.tarteaucitronH1,
+#tarteaucitron div#tarteaucitronServices .tarteaucitronTitle button ,
+#tarteaucitron div#tarteaucitronServices .tarteaucitronDetails,
+#tarteaucitron div#tarteaucitronServices .tarteaucitronH3,
+li#tarteaucitronNoServicesTitle.tarteaucitronLine,
+#tarteaucitron #tarteaucitronServices .tarteaucitronLine .tarteaucitronAsk button
+ {
+  color:#363636 !important;
+ }
+
+
+  
+  
+
+
+
+
+.liens_fond_blanc,
+.liens_fond_blanc_hover:hover,
+.bg_blanc a,
+.bg_blanc .tarteaucitronuga__ouvrir__panneau,
+.bg_blanc a[class^="lien"],
+.bg_blanc button,
+.bg_blanc a.couleur_liens_fond_blanc_survol:hover,
+.bg_blanc a.couleur_liens_survol:hover,
+.bg_blanc .liste__objets__style0012 .liste__objets__agenda__date:hover a,
+.bg_blanc .liste__objets__style0012 .liste__objets__agenda__date:hover a span,
+.card.cartetoolbox .carte-req-liste-col-6 .liste__objets__style0012 .liste__objets__agenda__info a,
+.card.cartetoolbox .carte-req-liste-col-6 .liste__objets__style0012 .liste__objets__agenda__date:hover a span,
+.container_depliable_bouton .icon-plus:hover,
+.validation input.reset,
+.search-metadata__search-input .reset,
+.mobile-recherche-contenu-criteres a,
+.containerlist__lien__reset span,
+[id="super__bandeau"] .bandeau__boites__recherche__profils__liste ul li a,
+#contenu-encadres div[class*="bg_c_"] .choix-profils ul li a,
+#contenu-encadres div.bg_c_dominante .choix-profils .choix-3.choix-valide a.action-submit,
+#contenu-encadres div.bg_c_secondaire .choix-profils .choix-3.choix-valide a.action-submit,
+#contenu-encadres div[class*="bg_c_"] .choix-profils,
+.skin_fo_unique_ligne__avec__bg__image .choix-3.choix-valide a.action-submit:hover,
+#contenu-encadres .choix-profils .icon,
+#contenu-encadres .liste__pour__carousel__titre em a,
+
+.liste__objets__style5005 .carousel__lire__la__suite__container a,
+.body__modele--satellite-ui .nav__desktop__niv2 a,
+.body__modele--ui .nav__desktop__niv2 a,
+.body__modele--intranet-ui .nav__desktop__niv2 a,
+.body__modele--sciencespo .nav__desktop__niv2 a,
+[id="contenu-encadres"]  .liste__objets .liste__objets__style0065 a,
+[id="contenu-encadres"]  .liste__objets .liste__objets__style0065 a.liste__objets__lire__la__suite__inline,
+.bg_blanc .bg_c_dominante .call__to__action a,
+.bg_blanc .bg_c_dominante .carte__lien__chevron__2 a,
+.bg_blanc .bg_c_dominante .carte__lien__chevron__3 a,
+.bg_blanc .bg_c_secondaire .call__to__action a,
+.bg_blanc .bg_c_secondaire .carte__lien__chevron__2 a,
+.bg_blanc .bg_c_secondaire .carte__lien__chevron__3 a,
+.liste__objets__style0032 a .icon,
+.bg_c_neutre.bloc__bg__colore .liste__objets__style0032 a .icon,
+.bg_c_neutre.bloc__bg__colore .liste__objets__style0032 a[class^="lien"],
+[id="contenu-encadres"] form[id="search_query_input"] p.search__reset input,
+[id="navigation"] li > a:hover,
+[id="navigation"] li.menu_secondaire-actif > a,
+[id="navigation"] li.sousmenu_secondaire-actif > a,
+.bloc__bg__colore .liste__objets.grid__container__multi__col  .liste__objets__vignette_deco2 a,
+.bloc__bg__colore .liste__objets.grid__container__multi__col__special .liste__objets__carte__4 a,
+
+.tag__arbre__choix--disponibles a  ,
+.tag__arbre__choix--disponibles div,
+.bg_c_secondaire button[id="retour-haut-page"],
+button[id="inceptive-cw-launch"]:hover  
+{
+  color:#fd5f46;
+}
+
+
+
+div#tarteaucitron #tarteaucitronClosePanel .icon,
+#tarteaucitron #tarteaucitronPrivacyUrlDialog,
+div#tarteaucitron #tarteaucitronClosePanel .panneau__consentement__button__libelle {
+  color:#fd5f46 !important;
+}
+
+
+
+
+.bg_liens_fond_dominante,
+.bg_liens_fond_dominante_hover:hover,
+.choix-profils li:hover,
+.bg_blanc .liste__objets__style0012 .liste__objets__agenda__date,
+.card.cartetoolbox .carte-req-liste-col-6 .liste__objets__style0012 .liste__objets__agenda__date,
+.container_depliable_bouton .icon-minus:hover ,
+.validation input.reset:hover,
+.search-metadata__search-input .reset:hover,
+.mobile-recherche-contenu-criteres a:hover,
+.containerlist__lien__reset span:hover,
+[id="super__bandeau"] .bandeau__boites__recherche__profils__liste li:hover,
+[id="super__bandeau"] [id="menus-notifications"] li:hover,
+#contenu-encadres div.bg_c_dominante .choix-profils .choix-3.choix-valide a.action-submit:hover,
+#contenu-encadres div.bg_c_secondaire .choix-profils .choix-3.choix-valide a.action-submit:hover,
+.bg_blanc .bg_c_dominante .call__to__action a:hover,
+.bg_blanc .bg_c_dominante .carte__lien__chevron__2 a:hover,
+.bg_blanc .bg_c_dominante .carte__lien__chevron__3 a:hover,
+.bg_blanc .bg_c_secondaire .call__to__action a:hover,
+.bg_blanc .bg_c_secondaire .carte__lien__chevron__2 a:hover,
+.bg_blanc .bg_c_secondaire .carte__lien__chevron__3 a:hover,
+button.panier-modale__body__action-annuler:hover,
+button.panier-modale__body__action-non:hover,
+[id="contenu-encadres"] form[id="search_query_input"] p.search__reset input:hover,
+[id="contenu-encadres"] form.form__bu p.validation input.reset:hover,
+[id="retour-haut-page"]:hover,
+button[id="inceptive-cw-launch"]
+    {
+    background: #fd5f46;
+  }
+
+
+
+.brd-2_c_liens_fond_dominante,
+.bg_blanc .liste__objets__style0012 .liste__objets__agenda__date,
+.bg_blanc .liste__objets__style0012 .liste__objets__agenda__date:hover,
+.card.cartetoolbox .carte-req-liste-col-6 .liste__objets__style0012 .liste__objets__agenda__date,
+.card.cartetoolbox .carte-req-liste-col-6 .liste__objets__style0012 .liste__objets__agenda__date:hover,
+.container_depliable_bouton .icon-minus:hover,
+.validation input.reset,
+.mobile-recherche-contenu-criteres a,
+.search-metadata__search-input .reset,
+.containerlist__lien__reset span,
+div.bg__blanc .choix-3.choix-valide a.action-submit:hover,
+#contenu-encadres div.bg_c_neutre .choix-profils .choix-3.choix-valide a.action-submit:hover,
+.skin_fo_unique_ligne__avec__bg__image .choix-3.choix-valide a.action-submit:hover ,
+.skin_fo_unique__ligne__video__bg .choix-3.choix-valide a.action-submit:hover,
+.call__to__action a:hover,
+.carte__lien__chevron__2 a:hover,
+.carte__lien__chevron__3 a:hover,
+[id="contenu-encadres"] form input.term-aggregation__item-list__appliquer:hover,
+[id="contenu-encadres"] form[id="search_query_input"] p.search__reset input,
+[id="contenu-encadres"] form[id="search_query_input"] input.submit:hover,
+[id="contenu-encadres"] form.form__bu p.validation input.reset,
+.cartetoolbox .moteur__contenu__interne  [type="submit"]:hover,
+[id="retour-haut-page"],
+button[id="inceptive-cw-launch"]:hover
+{
+    border:2px solid #fd5f46;
+  }
+
+
+
+
+  .body__modele--ui.accueil a:hover .arrow-up,
+  .body__modele--ui.accueil .nav__desktop__niv1:hover .arrow-up,
+  .body__modele--ui.accueil .menu1-actif .arrow-up {
+     width: 0;
+     height: 0;
+     border-left: 7px solid transparent;
+     border-right: 7px solid transparent;
+     border-bottom: 12px solid #fd5f46;
+   }
+
+
+
+
+  
+  
+
+
+
+
+.bg_c_dominante,
+.bg_c_dominante_hover:hover,
+.menu_mobile_boutons button.mobile-notifs:hover .notif__nbre,
+.bg_blanc .bg_c_dominante .liste__objets__style0012 .liste__objets__agenda__date:hover,
+.bg_blanc .bg_c_neutre .liste__objets__style0012 .liste__objets__agenda__date,
+.validation input.submit,
+.mobile-recherche-contenu-form input.submit,
+.search-metadata__search-input .submit:hover,
+.search-metadata__search-input .submit,
+.reseauxsociauxCard .onglet:hover .onglet_libelle_desktop,
+.reseauxsociauxCard .onglet.onglet_rs_actif .onglet_libelle_desktop,
+.skin_fo_unique_ligne__avec__bg__image .choix-3.choix-valide a.action-submit,
+.skin_fo_unique__ligne__video__bg .choix-3.choix-valide a.action-submit,
+div.bg__blanc .choix-3.choix-valide a.action-submit,
+div.bg_c_neutre .choix-3.choix-valide a.action-submit,
+.bg_c_neutre .carte__lien__chevron__2 a,
+.bg_c_neutre .carte__lien__chevron__3 a,
+.card.brd-1_gris_clair .carte__lien__chevron__2 a,
+.card.brd-1_gris_clair .carte__lien__chevron__3 a,
+.call__to__action a,
+.carte__lien__chevron__2 a,
+.carte__lien__chevron__3 a,
+.panier-modale__body__actions button.panier-modale__body__action-ajouter,
+.panier-modale__body__actions_suppression button.panier-modale__body__action-oui,
+.bg_c_secondaire.bloc__bg__colore .liste__objets__style0032 a .icon:hover {
+  background-color: #fd5f46;
+}
+
+
+a.liens_actifs_dominante,
+.bg_blanc a.liens_actifs_dominante,
+a.liens_survol_dominante:hover,
+.bg_c_secondaire a.liens_survol_dominante:hover,
+button.liens_survol_dominante:hover,
+.validation input.submit:hover,
+.bg_blanc .bg_c_secondaire a:hover,
+.bg_blanc .bg_c_secondaire .tarteaucitronuga__ouvrir__panneau:hover,
+.bg_blanc .bg_c_secondaire a.liste__objets__lire__la__suite__inline:hover,
+.bg_blanc .bg_c_secondaire .liste__objets__courriel a:hover,
+.c_dominante,
+.bg_blanc .bg_c_secondaire .liste__objets__style0012 .liste__objets__agenda__info a:hover,
+.bg_blanc .bg_c_dominante .liste__objets__style0012 .liste__objets__agenda__date a,
+.bg_blanc .bg_c_neutre .liste__objets__style0012 .liste__objets__agenda__date:hover a span,
+.menu_mobile_boutons button:hover,
+.menu_mobile_boutons button.menu_mobile_boutons-actif,
+.menu_mobile_boutons .notif__nbre,
+.menu_mobile .menu__traductions li:hover,
+.menu_mobile .menu__traductions li:hover a span,
+.reseauxsociauxCard .onglet .onglet_libelle_desktop,
+[id="mobile-recherche"] .mobile-recherche-contenu-form input.submit:hover,
+.search-metadata__search-input .submit:hover,
+.elastic_plier-deplier__contenu input[type="submit"]:hover,
+[id="bandeau"] .bandeau__boites__recherche__simple button:hover,
+div.bg__blanc .choix-3.choix-valide a.action-submit:hover,
+#contenu-encadres div.bg_c_neutre .choix-profils .choix-3.choix-valide a.action-submit:hover,
+.skin_fo_unique_ligne__avec__bg__image .choix-3.choix-valide a.action-submit:hover,
+#contenu-encadres.bg_blanc .choix-profils .choix-3.choix-valide a.action-submit:hover,
+.bg_c_dominante .liste__objets .liste__objets__style0022 a.liste__objets__lire__la__suite__inline:hover,
+.bg_c_neutre .carte__lien__chevron__2 a:hover,
+.bg_c_neutre .carte__lien__chevron__3 a:hover,
+.card.brd-1_gris_clair .carte__lien__chevron__2 a:hover,
+.card.brd-1_gris_clair .carte__lien__chevron__3 a:hover,
+.bg_blanc .call__to__action a:hover,
+.bg_blanc .carte__lien__chevron__2 a:hover,
+.bg_blanc .carte__lien__chevron__3 a:hover,
+.bg_c_neutre div.call__to__action a:hover,
+.savesearch-actions button:hover,
+button.panier-modale__body__action-ajouter:hover,
+button.panier-modale__body__action-oui:hover,
+.fenetre-partage-url p button:hover,
+.element_couleur_principale_hover:hover,
+.bg_c_secondaire .liste__objets__style0047 .icon:hover,
+.bg_c_dominante .liste__objets__style0032 .icon,
+.bg_blanc .bg_c_dominante li.liste__objets__style0032 .liste__objets__lien__icomoon a[class^="lien"] span,
+.bg_blanc .bg_c_secondaire .liste__objets__style0024 a[class^="lien"].lien_couleur_texte:hover,
+.term-aggregation__item-list__appliquer:hover,
+[id="contenu-encadres"] form[id="search_query_input"] p.search__validation input:hover,
+[id="contenu-encadres"] form.form__bu p.validation input:hover,
+.cartetoolbox .moteur__contenu__interne  [type="submit"]:hover,
+#footer2__deco .tarteaucitronuga__ouvrir__panneau:hover  {
+ color:#fd5f46;
+}
+
+
+
+.brd-2_c_dominante,
+.brd-2_c_principale,
+.bg_blanc .bg_c_neutre .liste__objets__style0012 .liste__objets__agenda__date,
+.bg_blanc .bg_c_neutre .liste__objets__style0012 .liste__objets__agenda__date:hover,
+.validation input.submit,
+.validation input.submit:hover,
+[id="bandeau"] .bandeau__boites__recherche__simple button:hover,
+.reseauxsociauxCard .onglet  .onglet_libelle_desktop,
+.mobile-recherche-contenu-form input.submit,
+.mobile-recherche-contenu-form input.submit:hover,
+.search-metadata__search-input .submit:hover,
+.elastic_plier-deplier__contenu input[type="submit"],
+.savesearch-actions button:hover,
+button.panier-modale__body__action-ajouter:hover,
+button.panier-modale__body__action-oui:hover,
+.fenetre-partage-url p button:hover,
+[id="contenu-encadres"] form[id="search_query_input"] p.search__validation input:hover,
+[id="contenu-encadres"] form.form__bu p.validation input:hover {
+  border: 2px solid #fd5f46;
+}
+
+.filet__deco__motif::before,
+.resume__fiche::before,
+.bloc__image__titre h3:first-child::after,
+.carte__titre__calistoga__avec__filet::after,
+.liste__traductions__miroir__before__resume.liste__traductions__miroir::before {
+  border-bottom: 8px solid #fd5f46;
+}
+
+.toolbox .container_depliable_ouvert,
+.offresstagesemplois__info {
+  border-left: 8px solid #fd5f46;
+}
+
+.brd-top-8_c_dominante {
+  border-top: 8px solid #fd5f46;
+}
+
+.brd-top-6_c_principale {
+  border-top: 6px solid #fd5f46;
+}
+
+
+
+
+.body__modele--satellite-ui .arrow-up,
+.body__modele--intranet-ui .arrow-up,
+.body__modele--intranet-ui .menu1-actif.triangle_cache .arrow-up {
+ width: 0;
+ height: 0;
+ border-left: 7px solid transparent;
+ border-right: 7px solid transparent;
+
+ border-bottom: 12px solid #fd5f46;
+}
+
+
+  
+  
+
+
+
+
+
+.bg_c_dominante,
+.bg_c_dominante a.lien_couleur_texte,
+.bg_c_dominante a[class^="lien"].lien_couleur_texte,
+.bg_c_dominante_hover:hover,
+.bg_c_dominante .liste__objets__style0012 .liste__objets__type__thematique,
+a.couleur_texte_fond_principale {
+  color:#ffffff;
+}
+
+.fond_texte_bg_c_dominante {
+  background: #ffffff;
+}
+
+
+
+
+.bg_c_dominante .carte__titre__calistoga__avec__filet::after {
+  border-bottom: 8px solid #ffffff;
+}
+
+
+  
+  
+
+
+
+
+
+.liens_fond_dominante,
+.bg_c_dominante a,
+.bg_c_dominante .tarteaucitronuga__ouvrir__panneau,
+.bg_c_dominante_hover:hover a,
+.bg_c_dominante_hover:hover a > span,
+.bg_c_dominante a[class^="lien"],
+.bg_c_dominante button,
+.bg_c_dominante .liste__objets em a,
+.bg_c_dominante .liste__objets  .liste__objets__courriel a,
+.bg_c_dominante .liste__objets  a.liste__objets__lire__la__suite__inline,
+.bandeau__boites__recherche__simple  button.bg_c_dominante,
+.validation input.submit,
+button.bg_c_dominante,
+.bg_blanc .bg_c_dominante .liste__objets__style0012 .liste__objets__agenda__info a,
+.bg_blanc .bg_c_dominante .liste__objets__style0012 .liste__objets__agenda__date:hover a,
+.bg_blanc .bg_c_dominante .liste__objets__style0012 .liste__objets__agenda__date:hover a span,
+.bg_blanc .bg_c_neutre .liste__objets__style0012 .liste__objets__agenda__date a,
+.reseauxsociauxCard .onglet:hover .onglet_libelle_desktop,
+.reseauxsociauxCard .onglet.onglet_rs_actif .onglet_libelle_desktop,
+[id="mobile-recherche"] .mobile-recherche-contenu-form input.submit,
+ .search-metadata__search-input .submit,
+.elastic_plier-deplier__contenu input[type="submit"],
+div.bg__blanc .choix-3.choix-valide a.action-submit,
+#contenu-encadres div.bg_c_neutre .choix-profils .choix-3.choix-valide a.action-submit,
+#contenu-encadres.bg_blanc .choix-profils .choix-3.choix-valide a.action-submit,
+.carousel__modele2__telecommande,
+.carousel__modele5__telecommande,
+#skin_fo_unique__ligne__video__bg__remote,
+.mobile-menu-contenu--principal .icon-circle-right,
+.menu_mobile_boutons button.mobile-notifs:hover .notif__nbre,
+.bg_c_secondaire .liste__objets .liste__objets__style0022 a,
+.bg_c_secondaire .liste__objets .liste__objets__style0022 a.liste__objets__lire__la__suite__inline,
+.bg_c_neutre .liste__objets .liste__objets__style0022 a,
+.bg_c_neutre .liste__objets .liste__objets__style0022 a.liste__objets__lire__la__suite__inline,
+.bg_blanc .call__to__action a,
+.bg_blanc .carte__lien__chevron__2 a,
+.bg_blanc .carte__lien__chevron__3 a,
+.bg_c_neutre div.call__to__action a,
+.bg_blanc li.liste__objets__style0032 .liste__objets__lien__icomoon a[class^="lien"] span,
+[id="contenu-encadres"] form.form__bu p.validation input.reset:hover   {
+  color:#ffffff;
+}
+
+
+
+.bg_c_liens_dominante,
+.menu_mobile_boutons button:hover,
+.menu_mobile_boutons button.menu_mobile_boutons-actif,
+.menu_mobile_boutons .notif__nbre,
+.menu_mobile .menu__traductions li:hover,
+.menu_mobile .menu__traductions li:hover a span,
+.bg_blanc .bg_c_dominante .liste__objets__style0012 .liste__objets__agenda__date,
+.bg_blanc .bg_c_neutre .liste__objets__style0012 .liste__objets__agenda__date:hover,
+.validation input.submit:hover,
+.reseauxsociauxCard .onglet .onglet_libelle_desktop,
+[id="mobile-recherche"] .mobile-recherche-contenu-form input.submit:hover,
+ .search-metadata__search-input .submit:hover,
+.elastic_plier-deplier__contenu input[type="submit"]:hover,
+div.bg__blanc .choix-3.choix-valide a.action-submit:hover,
+#contenu-encadres div.bg_c_neutre .choix-profils .choix-3.choix-valide a.action-submit:hover,
+.skin_fo_unique_ligne__avec__bg__image .choix-3.choix-valide a.action-submit:hover,
+.skin_fo_unique__ligne__video__bg .choix-3.choix-valide a.action-submit:hover,
+.bg_blanc .call__to__action a:hover,
+.bg_blanc .carte__lien__chevron__2 a:hover,
+.bg_blanc .carte__lien__chevron__3 a:hover,
+.savesearch-actions button:hover,
+button.panier-modale__body__action-ajouter:hover,
+button.panier-modale__body__action-oui:hover,
+.fenetre-partage-url p button:hover,
+.bg_c_dominante li.liste__objets__style0032 .liste__objets__lien__icomoon a[class^="lien"] span,
+.term-aggregation__item-list__appliquer:hover,
+[id="contenu-encadres"] form[id="search_query_input"] p.search__validation input:hover,
+[id="contenu-encadres"] form.form__bu p.validation input:hover,
+.cartetoolbox .moteur__contenu__interne  [type="submit"]:hover {
+  background: #ffffff;
+}
+
+
+
+.brd-2_c_liens_dominante,
+.bg_blanc .bg_c_dominante .liste__objets__style0012 .liste__objets__agenda__date,
+.bg_blanc .bg_c_dominante .liste__objets__style0012 .liste__objets__agenda__date:hover,
+.menu_mobile_contenu_deplie .mobile-menu-contenu--principal ul .icon,
+.menu_mobile_contenu_deplie .bandeau__boites__recherche__profils__liste .icon,
+.menu_mobile_contenu_deplie .mobile-menu-contenu--notifs .icon,
+#contenu-encadres div.bg_c_dominante .choix-profils .choix-3.choix-valide a.action-submit:hover,
+.bg_blanc .bg_c_dominante .call__to__action a:hover,
+.bg_blanc .bg_c_dominante .carte__lien__chevron__2 a:hover,
+.bg_blanc .bg_c_dominante .carte__lien__chevron__3 a:hover   {
+  border:2px solid #ffffff;
+}
+
+
+
+
+  
+  
+
+
+
+
+.bg_c_secondaire,
+.bg_blanc .bg_c_secondaire .liste__objets__style0012 .liste__objets__agenda__date:hover,
+.liste__objets__style0032 a .icon:hover,
+.bg_c_neutre.bloc__bg__colore .liste__objets__style0032 a .icon:hover ,
+.bg_blanc .bg_c_dominante li.liste__objets__style0032 .liste__objets__lien__icomoon a[class^="lien"] span:hover,
+.bg_c_secondaire_hover:hover {
+  background-color: #2d3039;
+}
+
+
+
+
+  a.liens_actifs_secondaire,
+  a.liens_survol_secondaire:hover,
+  [id="mobile-recherche"] .liens_fond_blanc.icon-cross:hover,
+  button.liens_survol_secondaire:hover,
+  .bg_blanc a:hover,
+  .bg_blanc .tarteaucitronuga__ouvrir__panneau:hover,
+  .bg_c_neutre a[class^="lien"]:hover,
+  .bg_c_dominante .liste__objets em a:hover,
+  .bg_c_dominante .liste__objets .liste__objets__courriel a:hover,
+  .bg_c_dominante .liste__objets a.liste__objets__lire__la__suite__inline:hover,
+  .bg_blanc .bg_c_dominante .liste__objets__style0012 .liste__objets__agenda__info a:hover,
+  .bg_blanc .bg_c_neutre .liste__objets__style0012 .liste__objets__agenda__info a:hover,
+  .containerlist ul li div:hover,
+  .bg_blanc .bg_c_secondaire .liste__objets__style0012 .liste__objets__agenda__date a,
+  .card.cartetoolbox .carte-req-liste-col-6 .liste__objets__style0012 .liste__objets__agenda__info a:hover,
+   [id="skin_fo_unique__ligne__video__bg__buttons"] button:hover,
+   #contenu-encadres div.container__carousel .liste__objets .liste__pour__carousel__titre em a:hover,
+   .body__modele--satellite-ui .nav__desktop__niv2 a:hover,
+   .body__modele--ui .nav__desktop__niv2 a:hover,
+   .body__modele--intranet-ui .nav__desktop__niv2 a:hover,
+   .body__modele--sciencespo .nav__desktop__niv2 a:hover,
+   .bg_c_dominante a.couleur_liens_survol:hover,
+   .bg_c_neutre .liste__objets__style0024 a[class^="lien"].couleur_liens_survol:hover,
+   .liste__objets__style0022 .fond_texte_bg_c_secondaire,
+   .bg_c_secondaire .liste__objets .liste__objets__style0022 a:hover,
+   .bg_c_secondaire .liste__objets .liste__objets__style0022 a.liste__objets__lire__la__suite__inline:hover,
+   .bg_c_neutre .liste__objets .liste__objets__style0022 a.liste__objets__lire__la__suite__inline:hover,
+   [id="contenu-encadres"]  .liste__objets .liste__objets__style0065 a:hover,
+   [id="contenu-encadres"]  .liste__objets .liste__objets__style0065 a.liste__objets__lire__la__suite__inline:hover,
+   .bg_blanc .bg_c_secondaire li.liste__objets__style0032 .liste__objets__lien__icomoon a[class^="lien"] span,
+   .bg_c_dominante.bloc__bg__colore .liste__objets__style0032 a[class^="lien"]:hover,
+   .bg_c_neutre.bloc__bg__colore .liste__objets__style0032 a[class^="lien"]:hover,
+   .element_couleur_secondaire,
+   .element_couleur_secondaire_hover:hover,
+   .panier-modale__header__close:hover,
+   .bg_blanc .liste__objets__style0024 a[class^="lien"]:hover,
+   .bloc__bg__colore .liste__objets.grid__container__multi__col  .liste__objets__vignette_deco2 a:hover,
+
+   .tag__arbre__choix--en--cours__annulation:hover,
+   .tag__arbre__choix--en--cours__container__breadcrumb > a:hover .bloc-arbre__modalite,
+   .tag__arbre__choix--en--cours__container__breadcrumb > a:hover::before 
+   
+   {
+  color:#2d3039;
+}
+
+
+
+.body__modele--ui .arrow-up,
+.body__modele--ui .menu1-actif.triangle_cache .arrow-up {
+   width: 0;
+   height: 0;
+   border-left: 7px solid transparent;
+   border-right: 7px solid transparent;
+
+   border-bottom: 12px solid #2d3039;
+  }
+
+
+  
+  html body #tarteaucitronRoot.tarteaucitronBeforeVisible div#tarteaucitronAlertBig #tarteaucitronPrivacyUrl:hover,
+  #tarteaucitron #tarteaucitronPrivacyUrlDialog:hover,
+  div#tarteaucitron #tarteaucitronClosePanel .icon:hover,
+  div#tarteaucitron #tarteaucitronClosePanel .panneau__consentement__button__libelle:hover {
+    color:#2d3039 !important;
+  } 
+
+  
+
+  
+  
+
+
+
+
+
+.bg_c_secondaire,
+.bg_c_secondaire a.lien_couleur_texte,
+.bg_c_secondaire a[class^="lien"].lien_couleur_texte,
+[id="contenu-encadres"] .liste__objets .liste__objets__style0065  .liste__objets__type__thematique,
+[id="contenu-encadres"] .bg_c_neutre .liste__objets .liste__objets__style0065 .liste__objets__type__thematique,
+.bg_c_secondaire .liste__objets__style0012 .liste__objets__type__thematique,
+a.couleur_texte_fond_secondaire {
+  color:#ffffff;
+}
+
+.fond_texte_bg_c_secondaire {
+  background: #ffffff;
+}
+
+
+
+.bg_c_secondaire .carte__titre__calistoga__avec__filet::after {
+  border-bottom: 8px solid #ffffff;
+}
+
+
+  
+  
+
+
+
+
+.liens_fond_secondaire,
+.bg_c_secondaire a,
+.bg_c_secondaire .tarteaucitronuga__ouvrir__panneau,
+.bg_c_secondaire a[class^="lien"],
+.bg_c_secondaire button,
+.bg_c_secondaire .liste__objets em a,
+.bg_c_secondaire .liste__objets  .liste__objets__courriel a,
+.bg_c_secondaire .liste__objets  a.liste__objets__lire__la__suite__inline,
+.bg_blanc .bg_c_secondaire .liste__objets__style0012 .liste__objets__agenda__info a,
+.bg_blanc .bg_c_secondaire .liste__objets__style0012 .liste__objets__agenda__date:hover a,
+.bg_blanc .bg_c_secondaire .liste__objets__style0012 .liste__objets__agenda__date:hover a span,
+.bg_c_dominante .liste__objets__style0022 a.liste__objets__lire__la__suite__inline,
+.liste__objets__style0032 a .icon:hover,
+.bg_c_neutre.bloc__bg__colore .liste__objets__style0032 a .icon:hover {
+  color:#ffffff;
+}
+
+
+
+.bg_blanc .bg_c_secondaire .liste__objets__style0012 .liste__objets__agenda__date,
+.bg_blanc .bg_c_secondaire .liste__objets__style0032 .icon,
+.couleur_secondaire_hover:hover   {
+  background: #ffffff;
+}
+
+
+
+.bg_blanc .bg_c_secondaire .liste__objets__style0012 .liste__objets__agenda__date,
+.bg_blanc .bg_c_secondaire .liste__objets__style0012 .liste__objets__agenda__date:hover,
+.border_2px_couleur_lien_secondaire   {
+  border:2px solid #ffffff;
+}
+
+
+
+
+/* Special */
+.body__modele--ui .menu1-actif .arrow-up,
+.body__modele--ui li:hover .arrow-up,
+.body__modele--ui .nav__desktop__niv1:hover .arrow-up {
+ width: 0;
+ height: 0;
+ border-left: 7px solid transparent;
+ border-right: 7px solid transparent;
+
+ border-bottom: 12px solid #ffffff;
+}
+
+
+
+
+
+  
+  
+
+
+
+
+
+.bg_c_neutre,
+pre,
+.arbre-item-active > li:hover,
+.tag__arbre__choix--en--cours,
+.arbre__chargement   {
+  background-color: #eceaea;
+}
+
+
+.bg_c_neutre .liste__objets__style0032 .liste__objets__lien__icomoon a[class^="lien"] span:hover {
+  color:#eceaea;
+}
+
+
+[id="navigation"] ul li ul {
+  border-left: 8px solid #eceaea;
+}
+
+
+
+html body div#tarteaucitronRoot.tarteaucitronBeforeVisible  div#tarteaucitronAlertBig,
+html body #tarteaucitronRoot.tarteaucitronBeforeVisible  #tarteaucitronAlertBig, 
+html body div#tarteaucitronRoot.tarteaucitronBeforeVisible  span#tarteaucitronDisclaimerAlert,
+.tarteaucitronBeforeVisible #tarteaucitronAlertBig #tarteaucitronPersonalize2,
+.tarteaucitronBeforeVisible div#tarteaucitronAlertBig #tarteaucitronCloseAlert ,
+html body #tarteaucitronRoot.tarteaucitronBeforeVisible  #tarteaucitronAlertBig #tarteaucitronCloseAlert ,
+.tarteaucitronBeforeVisible div#tarteaucitronAlertBig #tarteaucitronAllDenied2 ,
+[id="contenu-encadres"] span.tarteaucitron-magic-block,
+[id="contenu-encadres"] span.tarteaucitron-magic-block button.tarteaucitronAllow {
+  background-color: #eceaea !important;
+
+}
+
+html body #tarteaucitronRoot.tarteaucitronBeforeVisible #tarteaucitronAlertBig #tarteaucitronPersonalize2:hover,
+.tarteaucitronBeforeVisible div#tarteaucitronAlertBig  #tarteaucitronCloseAlert:hover,
+.tarteaucitronBeforeVisible div#tarteaucitronAlertBig  #tarteaucitronAllDenied2:hover    {
+  color: #eceaea !important;
+}
+
+
+  
+  
+
+
+
+
+
+.bg_c_neutre,
+.bg_c_neutre a.lien_couleur_texte,
+.bg_c_neutre a[class^="lien"].lien_couleur_texte,
+.bg_blanc .bg_c_neutre .liste__objets__style0012 .liste__objets__comp,
+[id="contenu-encadres"] .bg_c_neutre .liste__objets .liste__objets__type__thematique,
+a.couleur_texte_fond_neutre,
+.bg_c_neutre a.couleur_texte_fond_neutre,
+pre,
+.bg_c_neutre .liste__objets__style0012 .liste__objets__type__thematique,
+.tag__arbre__choix--en--cours__container__breadcrumb > a:nth-last-child(1),
+.tag__arbre__choix--en--cours__container__breadcrumb > a:nth-last-child(1)::before,
+.tag__arbre__choix--en--cours__container__breadcrumb > a:nth-last-child(1):hover,
+.tag__arbre__choix--en--cours__titre,
+.tag__arbre__choix--en--cours,
+.tag__arbre__choix--disponibles :hover .bloc-arbre__resume,
+.tag__arbre__choix--en--cours__container__breadcrumb > a:nth-last-child(1):hover .bloc-arbre__modalite
+ {
+  color:#363636;
+}
+
+
+
+
+.bg_c_neutre .liste__objets__style0024:not(:first-child) {
+  border-top:1px solid #363636;
+}
+
+
+
+
+.tarteaucitronBeforeVisible div#tarteaucitronAlertBig div#tarteaucitronDisclaimerAlert,
+html body div#tarteaucitronRoot.tarteaucitronBeforeVisible div#tarteaucitronAlertBig span,
+.tarteaucitronBeforeVisible div#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert b,
+.tarteaucitron-magic-block {
+  color:#363636 !important;
+}
+
+
+  
+  
+
+
+
+
+.bg_c_neutre a,
+.bg_c_neutre a[class^="lien"],
+.bg_c_neutre button,
+.liens_fond_neutre,
+
+.tag__arbre__choix--disponibles a:hover ,
+.tag__arbre__choix--disponibles div:hover,
+button.tag__arbre__choix--en--cours__annulation,
+.tag__arbre__choix--en--cours__container__breadcrumb >  a,
+.tag__arbre__choix--en--cours__container__breadcrumb > a::before
+
+{
+  color:#fd5f46;
+}
+
+
+
+
+.bg_c_liens_neutre {
+  background:  #fd5f46 ;
+}
+
+
+
+
+
+
+.tarteaucitronBeforeVisible div#tarteaucitronAlertBig #tarteaucitronAllDenied2,
+html body #tarteaucitronRoot.tarteaucitronBeforeVisible div#tarteaucitronAlertBig  #tarteaucitronPrivacyUrl,
+html body #tarteaucitronRoot.tarteaucitronBeforeVisible #tarteaucitronAlertBig #tarteaucitronCloseAlert ,
+html body #tarteaucitronRoot.tarteaucitronBeforeVisible #tarteaucitronAlertBig #tarteaucitronPersonalize2,
+[id="contenu-encadres"] span.tarteaucitron-magic-block button {
+  color:#fd5f46 !important;
+}
+
+.tarteaucitronBeforeVisible div#tarteaucitronAlertBig  #tarteaucitronPersonalize2:hover,
+.tarteaucitronBeforeVisible div#tarteaucitronAlertBig  #tarteaucitronAllDenied2:hover,
+html body #tarteaucitronRoot.tarteaucitronBeforeVisible  #tarteaucitronAlertBig #tarteaucitronCloseAlert:hover,
+[id="contenu-encadres"] span.tarteaucitron-magic-block button.tarteaucitronAllow:hover 
+  {
+    background: #fd5f46 !important;
+  }
+
+  .tarteaucitronBeforeVisible div#tarteaucitronAlertBig  #tarteaucitronAllDenied2,
+  html body #tarteaucitronRoot.tarteaucitronBeforeVisible  #tarteaucitronAlertBig  #tarteaucitronCloseAlert,
+  .tarteaucitronBeforeVisible div#tarteaucitronAlertBig #tarteaucitronPersonalize2,
+  [id="contenu-encadres"] span.tarteaucitron-magic-block button {
+    border: 2px solid  #fd5f46 !important;
+  }
+
+
+
+
+
+  /* Accueil : couleur de fond des lignes colorées */
+  .skin_fo_unique__ligne__avec__fond {
+  	background: #eceaea ;
+  	}
+
+
+  /* Satellites et Intranet : bandeau, texte et couleur de fond  */
+   [id="bandeau2__deco"]  {
+    background-color:#eceaea ;
+  	color:#363636 ;
+  }
+
+  /* Triangle Bandeau */
+  .menu_mobile_triangle {
+    border-bottom : 56px solid #2d3039;
+  }
+
+  /* Image SVG illustration bandeau - accueil de langue  */
+
+  .body__modele--ui.accueil [id="bandeau"] {
+    background-image:  url() ;
+  }
+
+  /* Image SVG illustration bandeau - pages interieures  */
+
+  .body__modele--ui:not(.accueil) .couleur_bg_bandeau_illustre {
+    background-image:  url() ;
+  }
+
+  /* Image d illustration sur la 1ere ligne de l accueil de langue */
+
+  .accueil .skin_fo_desktop__container.skin_fo_unique__ligne1 {
+  	/* background-image:  url() ; */
+  	background-image:  url() ;
+  }
+
+
+
+  /* Sciences PO : Image SVG illustration pied de page  */
+  .body__modele--sciencespo .footer__liste__liens {
+    background-image: url();
+  }
+
+  /* Pages libres, gestion des colonnages natifs KSUP */
+
+
+
+
+  /* Responsive - illustration bandeau */
+
+
+  @media screen and (min-width: 1366px) {
+
+    [id="bandeau2"] {
+      background-image:  url() ;
+    }
+
+      
+
+      
+        .body__modele--satellite-ui.accueil [id="bandeau2"],
+        .body__modele--intranet-ui.accueil [id="bandeau2"]  {
+          background-image:  url() ;
+        }
+
+        .accueil .skin_fo_desktop__container.skin_fo_unique__ligne1 {
+          background-image:  url("") ;
+        }
+      
+
+ 
+
+
+
+
+
+
+
+  }
+
+
+  @media screen and (min-width: 1920px) {
+
+    .body__modele--ui:not(.accueil) [id="bandeau"] {
+      background-image:  url() ;
+    }
+
+    .body__modele--ui:not(.accueil) .couleur_bg_bandeau_illustre {
+      background-image:  none ;
+    }
+
+  }
+
+
+</style>
+
+
+
+
+
+   <link rel="start" title="Accueil" href="https://llasic.univ-grenoble-alpes.fr/" />
+
+    
+   <link rel="alternate" type="application/rss+xml" title="Fil RSS des dix derni�res actualit�s" href="https://llasic.univ-grenoble-alpes.fr/adminsite/webservices/export_rss.jsp?NOMBRE=10&amp;CODE_RUBRIQUE=LLASIC&amp;LANGUE=0" />
+
+   
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript" src="https://tarteaucitron.io/load.js?locale=fr&domain=llasic.univ-grenoble-alpes.fr&uuid=4488f37cfc39db19d8aa1f1cb062e7e4997e53f9"></script>
+
+  
+  <script type="text/javascript">
+    (tarteaucitron.job = tarteaucitron.job || []).push('youtube');
+  </script>
+  
+  <script type="text/javascript">
+    (tarteaucitron.job = tarteaucitron.job || []).push('dailymotion');
+  </script>
+  <script type="text/javascript">
+    (tarteaucitron.job = tarteaucitron.job || []).push('googlemapssearch');
+  </script>
+  <script type="text/javascript">
+    (tarteaucitron.job = tarteaucitron.job || []).push('matomocloud');
+  </script>
+  <script type="text/javascript">
+    (tarteaucitron.job = tarteaucitron.job || []).push('acast');
+  </script>
+  <script type="text/javascript">
+    (tarteaucitron.job = tarteaucitron.job || []).push('linkedin');
+  </script>
+  <script type="text/javascript">
+    (tarteaucitron.job = tarteaucitron.job || []).push('soundcloud');
+  </script>
+  <script type="text/javascript">
+    (tarteaucitron.job = tarteaucitron.job || []).push('ausha');
+  </script>
+  <script type="text/javascript">
+    (tarteaucitron.job = tarteaucitron.job || []).push('facebook');
+  </script>
+  <script type="text/javascript">
+    (tarteaucitron.job = tarteaucitron.job || []).push('twitter');
+  </script>
+  <script type="text/javascript">
+    (tarteaucitron.job = tarteaucitron.job || []).push('instagram');
+  </script>
+
+
+
+
+
+
+
+       
+        
+        
+          
+ 
+
+
+   
+
+ 
+       
+
+         
+
+
+
+<!-- Matomo Tag Manager
+on utilise cette balise uniquement sur l environnement de test  -->
+
+
+    <script>
+    var _mtm = window._mtm = window._mtm || [];
+    _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://matomo.univ-grenoble-alpes.fr/js/container_hLXVov4L.js'; s.parentNode.insertBefore(g,s);
+    </script>
+    <!-- End Matomo Tag Manager -->
+
+
+
+         
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+</head>
+
+
+<body id="body" class="fiche defaultstructureksup body__modele--satellite-ui  version_fr_FR ">
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header>
+  <!--  ajouter les accesskeys -->
+
+  
+    <div id="super__bandeau__deco" class="bg_blanc laptop__only desktop__only">
+      <div id="super__bandeau" class="desktop__container ">
+
+        
+        
+
+
+
+
+
+
+
+
+
+    <ul class="super__bandeau__gauche"><!----><li >
+          <span class="icon icon-fleche-precedent laptop__only desktop__only"></span>
+          <span class="icon  icon-circle-right smartphone__only tablette__only"></span>
+          <a href="https://llasic.univ-grenoble-alpes.fr/super-bandeau-menu-de-gauche/universite-grenoble-alpes/" class="couleur_liens_fond_blanc_survol type_rubrique_0004" aria-expanded="false">Université Grenoble Alpes</a></li><!----></ul><!-- fin .super__bandeau__gauche -->
+
+
+		
+
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    </div><!-- Fin #super__bandeau-->
+
+  </div> <!-- Fin #super__bandeau__deco-->
+
+
+  
+
+  <div id="bandeau2__deco" class="couleur_bg_bandeau_illustre">
+ 
+      <div id="bandeau2" class="desktop__container  " role="banner">
+
+        
+
+
+
+                
+
+                  
+                    <div class="print__only">
+                      <img src="https://llasic.univ-grenoble-alpes.fr/uas/dev-llasic/UGA_LOGO_NB_PRINT/UFR_LLASIC_2020_noir-190.png" />
+                    </div>
+
+                  
+
+                  <h1>
+
+                    
+                  
+                        <a href="https://llasic.univ-grenoble-alpes.fr/fr/" title="Retour à la page d'accueil" aria-label="Retour à la page d'accueil">
+                    
+
+                       <img class="bandeau__logo__site" src="https://llasic.univ-grenoble-alpes.fr/uas/dev-llasic/UGA_LOGO_PAGE_INTERIEURE/UFR_LLASIC_2020.svg" alt="" />
+                    </a>        
+
+                    <div id="baselines" class="  afficher__baseline__secondaire ">
+                        <span>UFR LLASIC</span><span>Langage, lettres, arts du spectacle, information et communication, journalisme</span>                      
+                    </div>
+                  </h1> 
+
+
+
+
+                  
+      			
+
+
+
+    		
+
+          
+ 
+
+              <button class="modale-recherche bg_c_dominante brd-2_c_principale laptop__only desktop__only" aria-controls="modal"  aria-expanded="false">
+                <span class="icon icon-recherche"></span>
+                <span class="bouton__libelle">Recherche</span>
+              </button>
+ 
+            
+
+
+      </div>
+      <!-- fin #bandeau -->
+  </div>
+  <!-- fin #bandeau2__deco -->
+
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Menu mobile -->
+  <div class="menu_mobile bg_c_dominante smartphone__only tablette__only">
+  <!-- Contient les boutons -->
+  <div class="menu_mobile_boutons">
+    <button class="mobile-menu-principal brd-top-1-lat-10-dominante_hover" aria-expanded="false" aria-label="Déplier le menu principal ">
+      <span class="icon icon-burger_menu"></span>
+      <span class="bouton__libelle tablette__only ">Menu</span>
+    </button>
+		
+    <button class="modale-recherche brd-top-1-lat-10-dominante_hover" aria-expanded="false" aria-label="Recherche">
+      <span class="icon icon-recherche "></span>
+      <span class="bouton__libelle tablette__only">Recherche</span>
+    </button>
+		
+
+		<!-- Menu Categorie de rubrique Profils s il existe, depend de la case UAS cochee  -->
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+		
+
+	<!-- Triangle decoratif -->
+	<span class="menu_mobile_triangle"></span>
+
+
+  </div>
+
+  <!-- Contient le contenu déplié -->
+  <div class="menu_mobile_contenu_deplie bg_c_dominante">
+
+  <!--  menu principal déplié-->
+  <div class="mobile-menu-contenu--principal  invisible ">
+
+
+		 	
+
+
+		  		<ul class=" "><!---->
+
+						
+						<li class="nav__niv1__liste menumobile1-actif" >
+						<span class="nav__niv1__liste__container">
+              <button >
+								<span class="icon  icon-plus"></span>
+							</button>
+
+							<a class="nav__niv1__liste__element" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/" class="type_rubrique_0001" aria-expanded="false">UFR LLASIC</a>
+
+						
+						</span>
+
+							
+							<ul class="nav__niv2__liste invisible" ><!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/equipe-et-contacts/" class="type_rubrique_0001">Équipe et contacts</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/sites-d-implantation/" class="type_rubrique_0001">Sites d'implantation</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/departements/" class="type_rubrique_0001">Départements</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/faculte-h3s/" class="type_rubrique_0001">Faculté H3S</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/recherche/" class="type_rubrique_0001">Recherche</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/associations/" class="type_rubrique_0001">Associations</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/projets/" class="type_rubrique_0001">Projets</a>
+									</li>
+									
+								<!----></ul>
+						</li>
+						
+					<!---->
+
+						
+						<li class="nav__niv1__liste" >
+						<span class="nav__niv1__liste__container">
+              <button >
+								<span class="icon  icon-plus"></span>
+							</button>
+
+							<a class="nav__niv1__liste__element" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/" class="type_rubrique_0001" aria-expanded="false">Formations</a>
+
+						
+						</span>
+
+							
+							<ul class="nav__niv2__liste invisible" ><!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/par-domaine/" class="type_rubrique_0001">Par domaine</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/par-niveau/" class="type_rubrique_0001">Par niveau</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/formation-continue-et-alternance/" class="type_rubrique_0001">Formation continue et alternance</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/formation-a-distance/" class="type_rubrique_0001">Formation à distance</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/preparation-aux-concours/" class="type_rubrique_0001">Préparation aux concours</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/la-langue-des-signes-francaise-lsf-/" class="type_rubrique_0001">La langue des signes française (LSF)</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/services-numeriques/" class="type_rubrique_0001">Services numériques</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/ofc-et-etc/" class="type_rubrique_0001">OFC et ETC</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/contacts-scolarite/" class="type_rubrique_0001">Contacts scolarité</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/salle-de-creativite/" class="type_rubrique_0001">Salle de créativité</a>
+									</li>
+									
+								<!----></ul>
+						</li>
+						
+					<!---->
+
+						
+						<li class="nav__niv1__liste" >
+						<span class="nav__niv1__liste__container">
+              <button >
+								<span class="icon  icon-plus"></span>
+							</button>
+
+							<a class="nav__niv1__liste__element" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/scolarite/" class="type_rubrique_0001" aria-expanded="false">Scolarité</a>
+
+						
+						</span>
+
+							
+							<ul class="nav__niv2__liste invisible" ><!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/scolarite/candidatures/" class="type_rubrique_0001">Candidatures</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/scolarite/inscriptions-administratives-ia-/" class="type_rubrique_0001">Inscriptions administratives (IA)</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/scolarite/inscriptions-pedagogiques-ip-web-/" class="type_rubrique_0001">Inscriptions pédagogiques (IP web)</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/scolarite/retrait-des-diplomes/" class="type_rubrique_0001">Retrait des diplômes</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/scolarite/gestionnaires-de-scolarite/" class="type_rubrique_0001">Gestionnaires de scolarité</a>
+									</li>
+									
+								<!----></ul>
+						</li>
+						
+					<!---->
+
+						
+						<li class="nav__niv1__liste" >
+						<span class="nav__niv1__liste__container">
+              <button >
+								<span class="icon  icon-plus"></span>
+							</button>
+
+							<a class="nav__niv1__liste__element" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/bibliotheques/" class="type_rubrique_0001" aria-expanded="false">Bibliothèques</a>
+
+						
+						</span>
+
+							
+							<ul class="nav__niv2__liste invisible" ><!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/bibliotheques/bulles-bibliotheque-d-ufr-langage-lettres-et-spectacle/" class="type_rubrique_0001">Bulles, bibliothèque d'UFR Langage, lettres et spectacle</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/bibliotheques/information-et-communication/" class="type_rubrique_0001">Information et communication</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/bibliotheques/droit-et-lettres/" class="type_rubrique_0001">Droit et lettres</a>
+									</li>
+									
+								<!----></ul>
+						</li>
+						
+					<!---->
+
+						
+						<li class="nav__niv1__liste" >
+						<span class="nav__niv1__liste__container">
+              <button >
+								<span class="icon  icon-plus"></span>
+							</button>
+
+							<a class="nav__niv1__liste__element" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/international/" class="type_rubrique_0001" aria-expanded="false">International</a>
+
+						
+						</span>
+
+							
+							<ul class="nav__niv2__liste invisible" ><!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/international/etudier-a-l-etranger/" class="type_rubrique_0001">Étudier à l'étranger</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/international/venir-etudier-a-l-ufr-llasic/" class="type_rubrique_0001">Venir étudier à l'UFR LLASIC</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/international/stage-experience-pro/" class="type_rubrique_0001">Stage, expérience pro</a>
+									</li>
+									
+								<!----></ul>
+						</li>
+						
+					<!---->
+
+						
+						<li class="nav__niv1__liste" >
+						<span class="nav__niv1__liste__container">
+              <button >
+								<span class="icon  icon-plus"></span>
+							</button>
+
+							<a class="nav__niv1__liste__element" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/partenaires/" class="type_rubrique_0001" aria-expanded="false">Partenaires</a>
+
+						
+						</span>
+
+							
+							<ul class="nav__niv2__liste invisible" ><!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/partenaires/taxe-d-apprentissage/" class="type_rubrique_0001">Taxe d'apprentissage</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/partenaires/recruter-vos-futurs-collaborateurs/" class="type_rubrique_0001">Recruter vos futurs collaborateurs</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/partenaires/collaborations/" class="type_rubrique_0001">Collaborations</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/partenaires/formation-tout-au-long-de-la-vie/" class="type_rubrique_0001">Formation tout au long de la vie</a>
+									</li>
+									
+								<!----></ul>
+						</li>
+						
+					<!---->
+
+						
+						<li class="nav__niv1__liste" >
+						<span class="nav__niv1__liste__container">
+              <button >
+								<span class="icon  icon-plus"></span>
+							</button>
+
+							<a class="nav__niv1__liste__element" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/agenda/" class="type_rubrique_0001" aria-expanded="false">Agenda</a>
+
+						
+						</span>
+
+							
+							<ul class="nav__niv2__liste invisible" ><!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/agenda/bibliotheque-bulles/" class="type_rubrique_0001">Bibliothèque Bulles</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/agenda/formations-etudiants/" class="type_rubrique_0001">Formations, étudiants</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/agenda/recherche/" class="type_rubrique_0001">Recherche</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/agenda/l-ouvre-boite-uga/" class="type_rubrique_0001">L'Ouvre-boîte UGA</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/agenda/agenda-uga/" class="type_rubrique_0001">Agenda UGA</a>
+									</li>
+									
+								<!---->
+								
+									<li class="nav__niv2__liste__element"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/agenda/sfr-creation/" class="type_rubrique_0001">SFR Création</a>
+									</li>
+									
+								<!----></ul>
+						</li>
+						
+					<!---->
+
+
+
+				</ul>
+
+
+				
+
+        
+				
+
+
+
+
+
+
+
+
+
+    <ul class="super__bandeau__gauche"><!----><li >
+          <span class="icon icon-fleche-precedent laptop__only desktop__only"></span>
+          <span class="icon  icon-circle-right smartphone__only tablette__only"></span>
+          <a href="https://llasic.univ-grenoble-alpes.fr/super-bandeau-menu-de-gauche/universite-grenoble-alpes/" class="couleur_liens_fond_blanc_survol type_rubrique_0004" aria-expanded="false">Université Grenoble Alpes</a></li><!----></ul><!-- fin .super__bandeau__gauche -->
+
+
+		
+
+
+
+
+		</div><!-- .mobile-menu-contenu -->
+
+    <!-- Bloc deplié pour le menu profils sauf si cochee en page d accueil  -->
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+  </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+    <div id="menudesktop_deco" class="menudesktop__modele--satellite-ui  laptop__only desktop__only bg_c_dominante">
+      <div id="menudesktop" role="navigation"  aria-expanded="false">
+				
+        
+
+
+
+
+
+
+		<ul id="menudesktop__liste" class=""><!---->
+
+				
+				<li class="menu1-actif">
+
+
+				<a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/" class=" type_rubrique_0001">
+					 	<span>UFR LLASIC</span>
+						<span class="arrow-up laptop__only desktop__only"></span>
+					 </a>
+				</li>
+				
+		 <!---->
+
+				
+				<li >
+
+
+				<a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/" class=" type_rubrique_0001">
+					 	<span>Formations</span>
+						<span class="arrow-up laptop__only desktop__only"></span>
+					 </a>
+				</li>
+				
+		 <!---->
+
+				
+				<li >
+
+
+				<a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/scolarite/" class=" type_rubrique_0001">
+					 	<span>Scolarité</span>
+						<span class="arrow-up laptop__only desktop__only"></span>
+					 </a>
+				</li>
+				
+		 <!---->
+
+				
+				<li >
+
+
+				<a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/bibliotheques/" class=" type_rubrique_0001">
+					 	<span>Bibliothèques</span>
+						<span class="arrow-up laptop__only desktop__only"></span>
+					 </a>
+				</li>
+				
+		 <!---->
+
+				
+				<li >
+
+
+				<a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/international/" class=" type_rubrique_0001">
+					 	<span>International</span>
+						<span class="arrow-up laptop__only desktop__only"></span>
+					 </a>
+				</li>
+				
+		 <!---->
+
+				
+				<li >
+
+
+				<a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/partenaires/" class=" type_rubrique_0001">
+					 	<span>Partenaires</span>
+						<span class="arrow-up laptop__only desktop__only"></span>
+					 </a>
+				</li>
+				
+		 <!---->
+
+				
+				<li >
+
+
+				<a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/agenda/" class=" type_rubrique_0001">
+					 	<span>Agenda</span>
+						<span class="arrow-up laptop__only desktop__only"></span>
+					 </a>
+				</li>
+				
+		 <!----></ul><!-- #menu_principal -->
+
+				
+      </div>
+    </div>
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</header>
+
+  
+
+ 
+<main id="page">
+
+	
+			<div id="fil__ariane__deco" class="desktop__container">
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div id="fil__ariane" class="bg_blanc ">
+				<span class="fil__ariane__message invisible">Vous êtes ici</span><a class="align__self__center " href="https://llasic.univ-grenoble-alpes.fr/fr/">Accueil</a><span class="icon icon-fleche_menu align__self__center liens_fond_blanc"></span><a class="align__self__center" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/">UFR LLASIC</a><span class="icon icon-fleche_menu align__self__center liens_fond_blanc"></span><a class="align__self__center" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/departements/"><em>Départements</em></a>
+			</div>
+
+				
+
+	 		</div>
+
+		
+
+	
+
+
+	<div id="page_deco" class="desktop__container">
+		<div id="contenu-encadres" class="type_avec_nav_avec_encadres bg_blanc">
+			<div id="avec_nav_avec_encadres" class="contenu" role="main">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+    <h2 class="titre__page__centre ">Département Informatique intégrée en Langues, Lettres et Langage (I3L)</h2>
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="partage_page_ui flex__container">
+
+  <span class="partage_page_ui_impression partage_page_ui_libelle tablette__only laptop__only desktop__only">Imprimer</span>
+  <button class="element_couleur_secondaire_hover tablette__only laptop__only desktop__only" title="Imprimer" onclick="window.print(); return false;">
+    <span aria-hidden="true" class="icon icon-printer"></span>
+  </button>
+
+  
+
+      <span class="partage_page_ui_liens partage_page_ui_libelle">Partager</span>
+       <a class="js-share-action partage_rs_facebook " href="https://www.facebook.com/sharer/sharer.php?s=100&u=https://llasic.univ-grenoble-alpes.fr/menu-principal/departements/departement-informatique-integree-en-langues-lettres-et-langage-i3l--40302.kjsp?RH=LLASIC-FR013" title="Partager sur Facebook">
+        <span aria-hidden="true" class="icon icon-facebook"></span>
+        <span class="actions-fiche__libelle visually-hidden">Partager sur Facebook</span>
+      </a>
+
+       <a target="_blank" class="js-share-action partage_rs_twitter"
+       href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fllasic.univ-grenoble-alpes.fr%2Fmenu-principal%2Fdepartements%2Fdepartement-informatique-integree-en-langues-lettres-et-langage-i3l--40302.kjsp%3FRH%3DLLASIC-FR013&text=D%C3%A9partement+Informatique+int%C3%A9gr%C3%A9e+en+Langues%2C+L..." title="Partager sur Twitter">
+         <span aria-hidden="true" class="icon icon-twitter"></span>
+         <span class="actions-fiche__libelle visually-hidden">Partager sur Twitter</span>
+       </a>
+
+       <a target="_blank" class="js-share-action partage_rs_linkedin "
+       href="https://www.linkedin.com/shareArticle?mini=true&url=https://llasic.univ-grenoble-alpes.fr/menu-principal/departements/departement-informatique-integree-en-langues-lettres-et-langage-i3l--40302.kjsp?RH=LLASIC-FR013" title="Partager sur LinkedIn">
+         <span aria-hidden="true" class="icon  icon-linkedin22"></span>
+         <span class="actions-fiche__libelle visually-hidden">Partager sur LinkedIn</span>
+       </a>
+
+       <button class="url-partage-link"  aria-label="Partager le lien" aria-haspopup="dialog"> 
+         <span class="icon icon-link"></span>
+       </button>
+
+   
+
+</div><!-- .partage_page_ui -->
+
+    
+
+
+    
+      <div class="surtitre__fiche bg_c_secondaire">
+        <div class="surtitre__fiche__thematiques">
+          
+            <span>Département</span>
+          
+        </div><!-- .surtitre__fiche__thematiques -->
+      </div><!-- .surtitre__fiche -->
+    
+
+    <figure class="photo__fiche"><img itemprop="image" src="https://llasic.univ-grenoble-alpes.fr/medias/photo/departement-i3l_1475143947794-jpg" alt="" title=""></figure><!-- .photo -->
+
+    
+      
+
+
+
+
+
+
+
+
+
+  
+
+
+
+    
+
+    <div class="toolbox">
+    
+        <h3 class="intertitre__fiche ">Organisation</h3>
+          <div class="paragraphe__fiche">
+            Co-directeurs : <a class="mailto" href="mailto:Fabien%2ERinvegal%40univ-grenoble-alpes%2Efr?Subject=&amp;body=" title="Fabien Rinvegal">Fabien Rinvegal</a> (semestre 1) ; <a class="mailto" href="mailto:Olivier%2EKraif%40univ-grenoble-alpes%2Efr?Subject=&amp;body=" title="Olivier Kraif ">Olivier Kraif </a>(semestre 2)<br>
+Gestionnaire de scolarité : <a class="mailto" href="mailto:llasic-master-idl%2540univ-grenoble-alpes%252Efr?Subject=&amp;body=" title="llasic-master-idl@univ-grenoble-alpes.fr">llasic-master-idl@univ-grenoble-alpes.fr</a>, Tél. 04 57 42 25 55
+          </div><!-- .paragraphe__fiche -->
+
+
+          
+
+	    
+
+
+		    
+          <h3 class="intertitre__fiche  ">Activités</h3>
+            <div class="paragraphe__fiche">
+              <div style="text-align: justify;">Rattaché à l’UFR LLASIC, le département Informatique intégrée en Langues, Lettres et Langage (I3L) dispense transversalement ses enseignements dans les UFR LLASIC et LE : les objets des disciplines de LLASIC et LE sont observés par les <strong>outils</strong>, les <strong>raisonnements </strong>et les <strong>modèles de l’informatique</strong>.</div>
+            </div><!-- .paragraphe__fiche -->
+
+		    
+
+		 	
+        <h3 class="intertitre__fiche  ">Formations</h3>
+          <div class="paragraphe__fiche">
+		        	<div style="text-align: justify;">I3L prend en charge dès la première année de licence les <strong>bases de cette informatique des humanités jusqu’aux formations avancées dans les masters des deux UFR</strong> qui construisent les <strong>nouveaux métiers des humanités et numérique</strong>, en particulier le <a href="https://formations.univ-grenoble-alpes.fr/fr/catalogue-2021/master-XB/master-sciences-du-langage-IBC7OSQ4/parcours-industrie-de-la-langue-IBC7YS7U.html" title="Parcours Industrie de la langue" class="lien_externe">Parcours Industrie de la langue</a> spécifiquement dédié au <strong>traitement automatique de l’écrit et de la parole</strong> en I3L, et avec une contribution large dans le <a href="https://formations.univ-grenoble-alpes.fr/fr/catalogue-2021/master-XB/master-didactique-des-langues-IBC8AWN0/parcours-didactique-des-langues-et-ingenierie-pedagogique-numerique-IBC8IPVM.html" title="Parcours Didactique des langues et ingénierie pédagogique numérique" class="lien_externe">Parcours Didactique des langues et ingénierie pédagogique numérique</a>.</div>
+	        </div><!-- .paragraphe__fiche -->
+		    
+
+		    
+
+		    
+
+
+      </div><!-- .toolbox -->
+
+        
+        	<div class="dates__modification__fiche">
+              Publié le&nbsp; 26 avril 2016
+        			
+                    <br/>
+                    Mis à jour le&nbsp; 7 juin 2022 
+            </div><!-- .dates__modification__fiche -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> <!-- .contenu -->
+
+
+	
+
+
+
+
+
+
+
+
+
+<div id="encadres" role="complementary">		 							<div class="encadre_auto_fiche encadre--1">					<h3 class="encadre__titre--1">Coordonnées</h3> 					<div class="encadre_contenu encadre__contenu--1 ">														<span class="villes__fiche element__block__fiche">								 	Saint-Martin-d'Hères								</span>																			 <div class="paragraphe__fiche ">									Bâtiment Stendhal I, 1er étage<br\>1180 avenue Centrale<br />38400 Saint-Martin-d'Hères								</div><!-- .paragraphe__fiche -->																																			<div class="paragraphe__fiche ">									                  	<span class="element__block__fiche">Tél.&nbsp;:04 76 82 43 17</span>																		              </div><!-- .paragraphe__fiche -->																										</div><!-- .encadre__contenu--1 -->				</div><!-- .encadre--1 -->								
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="encadre_rubrique encadre--2"><h3 class="encadre__titre--2">Consulter les formations</h3><div class="encadre_contenu encadre__contenu--2">
+			
+<a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/par-niveau/formations-par-niveau-d-etudes-17092.kjsp?RH=LLASIC-FR013" class="lien_interne">&gt; Par niveau</a><br>
+<a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/par-domaine/domaines-d-enseignements-17085.kjsp?RH=LLASIC-FR013&amp;RF=LLASIC-FR021" class="lien_interne">&gt; Par domaine</a><br>
+<a class="lien_interne" href="https://intranet.univ-grenoble-alpes.fr/mon-espace-llasic/equipe-et-contacts/annuaire-ec-scolarite-ufr-llasic-837445.kjsp?RH=LLASIC-FR013" title="> Annuaire responsabilités pédagogiques ">&gt; Annuaire responsabilités pédagogiques </a><br>
+<br>
+
+		</div><!-- .encadre_contenu .encadre__contenu -->
+	</div><!-- .encadre_rubrique .paragraphe -->
+
+	<div class="encadre_rubrique encadre--4"><h3 class="encadre__titre--4">T&#233;l&#233;charger</h3><div class="encadre_contenu encadre__contenu--4">
+			
+<a class="lien_interne" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/formations/schema-formation-llasic-830545.kjsp?RH=LLASIC-FR013" title="">&gt; Schéma récapitulatif de l'offre de formation de l'UFR LLASIC<br>
+<img alt="NOF LALSIC 2021" src="https://llasic.univ-grenoble-alpes.fr/medias/photo/schema-formations-ufr-llasic-2021_1615566272179-jpg?ID_FICHE=1926" style="width: 250px; height: 177px; float: none;" title="NOF LALSIC 2021"></a><br>
+<br>
+
+		</div><!-- .encadre_contenu .encadre__contenu -->
+	</div><!-- .encadre_rubrique .paragraphe -->
+
+	<div class="encadre_rubrique encadre--6"><h3 class="encadre__titre--6">Catalogue des formations</h3><div class="encadre_contenu encadre__contenu--6">
+			
+<div class="encadre_contenu encadre__contenu--6">Retrouvez toutes les formations proposées par l'Université Grenoble Alpes dans le catalogue en ligne : <a class="lien_externe" href="http://formations.univ-grenoble-alpes.fr"><strong>formations.univ-grenoble-alpes.fr</strong></a></div>
+		</div><!-- .encadre_contenu .encadre__contenu -->
+	</div><!-- .encadre_rubrique .paragraphe -->
+
+	<div class="encadre_rubrique encadre--2"><h3 class="encadre__titre--2">T&#233;l&#233;charger</h3><div class="encadre_contenu encadre__contenu--2">
+			
+<a class="lien_interne" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/equipe-et-contacts/organigramme-llasic-page-1-web-801147.kjsp?RH=LLASIC-FR013" title="> Organigramme de l'UFR LLASIC">&gt;&nbsp;Organigramme de l'UFR&nbsp;LLASIC</a><br>
+<a href="https://www.univ-grenoble-alpes.fr/medias/photo/plan-campus-smh-maj2017_1500299663784-jpg?INLINE=FALSE" class="lien_interne">&gt; Plan du campus</a><br>
+<a href="https://llasic.univ-grenoble-alpes.fr/medias/photo/plan-batiments-stendhal_1466517300062-jpg?ID_FICHE=1926&amp;INLINE=FALSE" title="Télécharger 'Plan des bâtiments Stendhal' [JPG - 142 Mo]" class="lien_interne">&gt; Plan des bâtiments Stendhal</a><br>
+<br>
+
+		</div><!-- .encadre_contenu .encadre__contenu -->
+	</div><!-- .encadre_rubrique .paragraphe -->
+
+	<div class="encadre_rubrique encadre--1"><h3 class="encadre__titre--1">Coordonn&#233;es</h3><div class="encadre_contenu encadre__contenu--1">
+			
+Université Grenoble Alpes<br>
+UFR LLASIC<br>
+Bâtiment Stendhal B, 3e étage<br>
+1180 rue des Universités<br>
+38400 Saint-Martin-d'Hères<br>
+Courriel : <a href="mailto:llasic%40univ-grenoble-alpes%2Efr" class="mailto"><span class="Object" id="OBJ_PREFIX_DWT3548_ZmEmailObjectHandler" role="link"><span class="Object" id="OBJ_PREFIX_DWT3553_ZmEmailObjectHandler" role="link">llasic@univ-grenoble-alpes.fr</span></span></a>
+		</div><!-- .encadre_contenu .encadre__contenu -->
+	</div><!-- .encadre_rubrique .paragraphe -->
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div><!-- #encadres -->
+
+
+
+
+	<div class="paragraphe__fiche partage_deco">
+
+	
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="partage_page_ui flex__container">
+
+  <span class="partage_page_ui_impression partage_page_ui_libelle tablette__only laptop__only desktop__only">Imprimer</span>
+  <button class="element_couleur_secondaire_hover tablette__only laptop__only desktop__only" title="Imprimer" onclick="window.print(); return false;">
+    <span aria-hidden="true" class="icon icon-printer"></span>
+  </button>
+
+  
+
+      <span class="partage_page_ui_liens partage_page_ui_libelle">Partager</span>
+       <a class="js-share-action partage_rs_facebook " href="https://www.facebook.com/sharer/sharer.php?s=100&u=https://llasic.univ-grenoble-alpes.fr/menu-principal/departements/departement-informatique-integree-en-langues-lettres-et-langage-i3l--40302.kjsp?RH=LLASIC-FR013" title="Partager sur Facebook">
+        <span aria-hidden="true" class="icon icon-facebook"></span>
+        <span class="actions-fiche__libelle visually-hidden">Partager sur Facebook</span>
+      </a>
+
+       <a target="_blank" class="js-share-action partage_rs_twitter"
+       href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fllasic.univ-grenoble-alpes.fr%2Fmenu-principal%2Fdepartements%2Fdepartement-informatique-integree-en-langues-lettres-et-langage-i3l--40302.kjsp%3FRH%3DLLASIC-FR013&text=D%C3%A9partement+Informatique+int%C3%A9gr%C3%A9e+en+Langues%2C+L..." title="Partager sur Twitter">
+         <span aria-hidden="true" class="icon icon-twitter"></span>
+         <span class="actions-fiche__libelle visually-hidden">Partager sur Twitter</span>
+       </a>
+
+       <a target="_blank" class="js-share-action partage_rs_linkedin "
+       href="https://www.linkedin.com/shareArticle?mini=true&url=https://llasic.univ-grenoble-alpes.fr/menu-principal/departements/departement-informatique-integree-en-langues-lettres-et-langage-i3l--40302.kjsp?RH=LLASIC-FR013" title="Partager sur LinkedIn">
+         <span aria-hidden="true" class="icon  icon-linkedin22"></span>
+         <span class="actions-fiche__libelle visually-hidden">Partager sur LinkedIn</span>
+       </a>
+
+       <button class="url-partage-link"  aria-label="Partager le lien" aria-haspopup="dialog"> 
+         <span class="icon icon-link"></span>
+       </button>
+
+   
+
+</div><!-- .partage_page_ui -->
+
+	
+	</div><!-- .partage_deco -->
+
+
+
+
+</div><!-- #contenu-encadres -->
+
+		
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<div id="navigation_deco" class="laptop__only desktop__only">
+			<div id="navigation" role="navigation" class="">
+
+
+				
+							<h2 class="laptop__only desktop__only bg_c_dominante ">
+								<a class="liens_survol_secondaire" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/">UFR LLASIC</a>
+							</h2>
+
+						
+
+					<ul id="menu_secondaire"  > 
+							<li ><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/equipe-et-contacts/" class="couleur_texte_menu_secondaire type_rubrique_0001">
+										Équipe et contacts
+									</a></li>
+							<li ><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/sites-d-implantation/" class="couleur_texte_menu_secondaire type_rubrique_0001">
+										Sites d'implantation
+									</a></li>
+							<li class="menu_secondaire-actif"><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/departements/" class="couleur_texte_menu_secondaire type_rubrique_0001">
+										Départements
+									</a></li>
+							<li ><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/faculte-h3s/" class="couleur_texte_menu_secondaire type_rubrique_0001">
+										Faculté H3S
+									</a></li>
+							<li ><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/recherche/" class="couleur_texte_menu_secondaire type_rubrique_0001">
+										Recherche
+									</a></li>
+							<li ><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/associations/" class="couleur_texte_menu_secondaire type_rubrique_0001">
+										Associations
+									</a></li>
+							<li ><a href="https://llasic.univ-grenoble-alpes.fr/menu-principal/projets/" class="couleur_texte_menu_secondaire type_rubrique_0001">
+										Projets
+									</a></li></ul><!-- #menu_secondaire -->
+			</div><!-- #navigation -->
+		</div>
+			
+
+		
+
+		
+		
+
+
+			<div class="separateur"></div>
+		</div><!-- #page_deco -->
+
+	</main> <!-- #page -->
+
+
+							<div id="footer2__deco" class="footer__deco bg_c_secondaire">
+								<div class="desktop__container footer__container footer__liste__liens">
+										
+										
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="footer__logo laptop__only desktop__only">
+
+		<ul class="footer__logo__liste flex__container flex__direction__column">
+			
+				<li>
+
+				
+					 	<img src="/medias/photo/logo-uga-blanc-pied-sans-marge_1645519836618-png" title=" Université Grenoble Alpes" />
+				
+
+
+				</li>
+
+			
+		</ul>
+	</div><!-- fin .footer__logo -->
+
+
+
+
+
+										
+										
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+		<div class="footer__adresse">
+			Université Grenoble Alpes<br>
+UFR LLASIC<br>
+Bâtiment Stendhal B<br>
+1180 rue des Universités<br>
+38400 Saint-Martin-d'Hères
+		</div><!-- fin .footer__adresse -->
+	
+
+
+
+
+										
+										
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+			<ul class="footer__liens">
+				 
+					
+	 
+					<li>
+							<a class="liens_survol_dominante" href="https://llasic.univ-grenoble-alpes.fr/liens-pied-de-page/contact/">Contact</a>
+						</li></li>
+				 
+					
+	 
+					<li>
+							<a class="liens_survol_dominante" href="https://llasic.univ-grenoble-alpes.fr/liens-pied-de-page/plan-de-site/">Plan de site</a>
+						</li></li>
+				 
+					
+	 
+					<li>
+							<a class="liens_survol_dominante" href="https://llasic.univ-grenoble-alpes.fr/liens-pied-de-page/credits/">Crédits</a>
+						</li></li>
+				 
+					
+	 
+					<li>
+							<a class="liens_survol_dominante" href="https://llasic.univ-grenoble-alpes.fr/liens-pied-de-page/mentions-legales/">Mentions Légales</a>
+						</li></li>
+				 
+					
+	 
+					<li>
+							<a class="liens_survol_dominante" href="https://llasic.univ-grenoble-alpes.fr/liens-pied-de-page/contact-et-reclamation/">Contact et réclamation</a>
+						</li></li>
+				 
+					
+	 
+					<li>
+							<a class="liens_survol_dominante" href="https://llasic.univ-grenoble-alpes.fr/liens-pied-de-page/intranet-leo/">Intranet LEO</a>
+						</li></li>
+				 
+					
+	 
+					<li>
+							<a class="liens_survol_dominante" href="https://llasic.univ-grenoble-alpes.fr/liens-pied-de-page/intranet-ufr-llasic/">Intranet UFR LLASIC</a>
+						</li></li>
+				 
+					
+	 
+					<li>
+							<a class="liens_survol_dominante" href="https://llasic.univ-grenoble-alpes.fr/liens-pied-de-page/donnees-personnelles/">Données personnelles</a>
+						</li></li>
+				 
+					
+	 
+					
+						<li class="tarteaucitronuga__ouvrir__panneau">Gestion des cookies</li></li>
+				 
+					
+	 
+					<li>
+							<a class="liens_survol_dominante" href="https://llasic.univ-grenoble-alpes.fr/liens-pied-de-page/accessibilite-non-conforme/">Accessibilité : non conforme</a>
+						</li></li>
+				
+			</ul><!-- fin .footer__liens -->
+
+		
+
+
+										
+										
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+										
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+										<button id="retour-haut-page" type="button" class="inactif  " aria-label="Revenir en haut de la page">
+											<span class="icon icon-arrow-up2"></span>
+										</button>
+
+
+
+								</div>
+								<!-- fin .desktop__container -->
+								<div class="separateur__ie7"> </div>
+						</div>
+						<!-- fin #footer2__deco -->
+
+
+
+
+
+			
+
+			<span id="url-fiche__libelle" class="print__only">URL de page</span>
+			<a id="url-fiche" class="invisible" href="https://llasic.univ-grenoble-alpes.fr/menu-principal/departements/departement-informatique-integree-en-langues-lettres-et-langage-i3l--40302.kjsp?RH=LLASIC-FR013">https://llasic.univ-grenoble-alpes.fr/menu-principal/departements/departement-informatique-integree-en-langues-lettres-et-langage-i3l--40302.kjsp?RH=LLASIC-FR013</a>
+
+			<span id="titre-fiche__libelle" class="print__only">Titre de page</span>
+			<span id="titre-fiche-print" class="invisible" ></span>
+
+			<div id="libelles-js" style="display:none;">
+			  <span id="libelle-vousetes">Vous êtes</span>
+			  <span id="libelle-vousrecherchez">Vous souhaitez</span>
+			  <span id="libelle-valider">Valider</span>
+			  <span id="libelle-partager-libelle">Partager le lien</span>
+			  <span id="libelle-partager-copier">Copier</span>
+			  <span id="libelle-partager-copie">Copié</span>
+			  <span id="libelle-partager-fermer-la-fenetre">Fermer la fenêtre modale</span>
+			  <span id="libelle-partager-url-page">Partager l'URL de cette page</span>	
+			 
+			  <span id="libelle-mailto-recommande">Je recommande cette page :</span>
+  			<span id="libelle-mailto-consultable">Consultable à cette adresse :</span>
+  			<span id="libelle-panier-ajouter-info">La page sera alors accessible depuis votre menu "Mes favoris".</span>
+				<span id="libelle-stop-video">Arrêter la vidéo</span>
+			  <span id="libelle-jouer-video">Jouer la vidéo</span>
+			  <span id="libelle-stop-son">Couper le son</span>
+			  <span id="libelle-jouer-son">Jouer le son</span>
+			  <span id="libelle-bot-libanswers">Chat : Une question ?</span>
+			  <span id="libelle-bot-robofabrica">Chatbot Robo Fabrica</span>
+			  <span id="libelle-bot-matomo">Statistiques de fréquentation Matomo</span>
+			  <span id="libelle-bot-twitter-x">X (anciennement Twitter)</span>
+			</div>
+
+			
+			
+
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="mobile-recherche" class="mobile-recherche-contenu visually-hidden" >
+
+    <h3>Que recherchez-vous ?</h3>
+    <span class="icon icon-cross liens_fond_blanc"></span>
+    <div class="mobile-recherche-contenu-form" itemscope itemtype="http://schema.org/WebSite">
+      <meta itemprop="url" content="https://llasic.univ-grenoble-alpes.fr/"/>
+      <form class=" flex__container " action="https://llasic.univ-grenoble-alpes.fr/servlet/search" method="get" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+        <meta itemprop="target" content="https://llasic.univ-grenoble-alpes.fr/servlet/search?beanKey=150bfcee-1f87-11e7-a0e0-b753bedcad22&l=0&q={q}"/>
+        <input type="hidden" name="beanKey" value="150bfcee-1f87-11e7-a0e0-b753bedcad22" />
+        
+            <input type="hidden" name="site" value="LLASIC" />
+        
+        <input type="hidden" name="l" value="0"/>
+        <input type="hidden" name="RH" value="LLASIC-FR013"/>
+        <p class="mobile-recherche-contenu-motcle">
+          <span class="icon icon-search"></span>
+          <input itemprop="query-input" name="q" role="search" type="text" id="MOTS_CLEFS" value="" placeholder="Saisissez les mot-clés" title="Rechercher par mots-clés"/>
+        </p>
+        <input class=" submit bg_c_dominante brd-2_c_principale "  type="submit" value="Valider" />
+      </form>
+
+      <p class="mobile-recherche-contenu-criteres ">
+        <a  href="/servlet/search?beanKey=150bfcee-1f87-11e7-a0e0-b753bedcad22">
+          <span class="reset">Plus de critères</span>
+        </a>
+      </p>
+
+    </div>
+    <!-- fin .mobile-recherche-contenu-form  -->
+
+</div><!-- #mobile-recherche -->
+
+
+			
+
+
+			
+
+			
+
+
+
+
+
+			
+ 
+
+ 				<script type="text/javascript" src="https://llasic.univ-grenoble-alpes.fr/wro/scripts_jsp_unique2_modele_epe_footer/7446141ba32a7af49a0844cec9e8e39d8aec716f.js"></script>
+
+					
+					
+						<script type="text/javascript" src="https://llasic.univ-grenoble-alpes.fr/wro/scriptsFo_fr_FR/198fda7e62ee7f305c0b7b738c7a586a0d1fe676.js"></script>
+					
+
+					
+
+ 	 	   
+
+			 
+			<!-- Script de designSystem		 -->
+	 	 	<script type="text/javascript" src="https://llasic.univ-grenoble-alpes.fr/wro/scripts_designsystem/83225694ec2570ac96308fe3e2a1e890079d2993.js"></script>
+
+ 			<link rel="stylesheet" type="text/css" media="print" href="https://llasic.univ-grenoble-alpes.fr/wro/styles_jsp_unique2_print/c5478d50733407822bb5e86c2476d1d3ac7b2052.css"/>
+
+		
+
+
+
+
+		<!--Hostname : ksup-engine-3.u-ga.fr-->
+	</body>
+</html>
+

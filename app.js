@@ -1,34 +1,34 @@
 const express = require('express');
 const cors = require('cors'); 
-const { MongoClient } = require('mongodb');
 const methodOverride = require("method-override");
 const session = require('express-session');
 const bcrypt = require("bcryptjs");
 const multer = require('multer');
 const fs = require("fs");
-const PDFNotes = require("./models/PDFNotes");
-const PDFEmploi = require("./models/PDFEmploi");
+const PDFNotes = require("./backend/models/PDFNotes");
+const PDFEmploi = require("./backend/models/PDFEmploi");
 const cloudinary = require('cloudinary').v2;
-const Student = require("./models/Student");
-const Actualite = require('./models/Actualite');
-const Admin = require("./models/Admin");
+const Student = require("./backend/models/Student");
+const Actualite = require('./backend/models/Actualite');
+const Admin = require("./backend/models/Admin");
 var theAdminIsRoot = false;
 const path = require('path');
-const sequelize = require('./config/database');
+const sequelize = require('./backend/config/database');
 
 const app = express();
-const port = 3000;
+
+// Define the port variable
+const port = process.env.PORT;
 
 app.use(cors({
-  origin: process.env.ALLOWED_ORIGINS 
-    ? process.env.ALLOWED_ORIGINS.split(',')
-    : ['http://localhost:3000']
+  origin: process.env.FRONTEND_URL || 'http://localhost:3001',
+  credentials: true
 }));
 
-app.use(express.static(path.join(__dirname, 'assets')));
+app.use(express.static(path.join(__dirname, 'frontend', 'assets')));
 app.use(express.static(path.join(__dirname, 'Uni', 'views', 'menu')));
 // Set the views directory
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'frontend', 'views'));
 app.set('view engine', 'ejs');
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Multer configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads_act/') // Save uploaded files to the 'uploads' directory
+    cb(null, path.join(__dirname, 'backend/uploads/actualite')) // Save uploaded files to the 'uploads' directory
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname) // Use the original filename for the saved file
@@ -187,12 +187,14 @@ app.post("/logout_student", (req, res) => {
 
 app.post("/student_notes", async (req,res) =>{
   try {
-     const td = req.body.class_name;
-     const pdf_notes = await PDFNotes.find({filename: td});
-     res.send(pdf_notes.data);
+    const td = req.body.class_name;
+    const pdf_notes = await PDFNotes.findOne({
+      where: { filename: td }
+    });
+    res.send(pdf_notes.data);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error in signup. Please try again.");
+    res.status(500).send("Error retrieving notes.");
   }
 });
 //------------------------------------------------------------------//
@@ -215,22 +217,23 @@ app.post("/signup", async (req, res) => {
 
   try {
     // Check if the username already exists
-    const existingUser = await Admin.findOne({ username });
+    const existingUser = await Admin.findOne({ 
+      where: { username: username }
+    });
     if (existingUser) {
-      return res.send(
-        "Username already exists. Please choose a different username."
-      );
+      return res.send("Username already exists. Please choose a different username.");
     }
-
-    // Create a new user in the database
-    const newUser = new Admin({ username, password });
 
     // Hash the password
     const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(newUser.password, saltRounds);
-    newUser.password = hashedPassword;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    await newUser.save();
+    // Create a new admin
+    await Admin.create({
+      username,
+      password: hashedPassword
+    });
+
     res.send("Signup successful!");
   } catch (error) {
     console.error(error);
@@ -250,39 +253,34 @@ const requireAuth = (req, res, next) => {
 };
 
 app.post("/login", async (req, res) => {
-  const students = await Student.find();
-  const idara = await Admin.find();
+  try {
+    const students = await Student.findAll();
+    const idara = await Admin.findAll();
+    const pdfnotes = await PDFNotes.findAll();
+    const pdfs = await PDFEmploi.findAll();
 
-  const pdfnotes = await PDFNotes.find({});
-  const pdfs = await PDFEmploi.find({});
-
-  if (req.body.username == "root" && req.body.password == "root") {
-    theAdminIsRoot = true;
-    return res.render("actualite_view",{students,idara,pdfnotes,pdfs,});
-  } else {
-    theAdminIsRoot = false;
-    try {
-      const check = await Admin.findOne({ username: req.body.username });
-
-      if (check == null) {
-        return res.send("Username not found");
-      }
-
-      const isPasswordMatch = await bcrypt.compare(
-        req.body.password.trim(),
-        check.password
-      );
-
-      if (isPasswordMatch) {
-        return res.render("actualite_view",{students,idara,pdfnotes,pdfs,});
-
-      } else {
-        return res.send("Wrong password");
-      }
-    } catch (error) {
-      console.error(error);
-      return res.send("Something went wrong");
+    if (req.body.username === "root" && req.body.password === "root") {
+      theAdminIsRoot = true;
+      return res.render("actualite_view", { students, idara, pdfnotes, pdfs });
     }
+
+    const admin = await Admin.findOne({ 
+      where: { username: req.body.username }
+    });
+
+    if (!admin) {
+      return res.send("Username not found");
+    }
+
+    const isPasswordMatch = admin.password === req.body.password;
+    if (isPasswordMatch) {
+      return res.render("actualite_view", { students, idara, pdfnotes, pdfs });
+    } else {
+      return res.send("Wrong password");
+    }
+  } catch (error) {
+    console.error(error);
+    return res.send("Something went wrong");
   }
 });
 
@@ -299,53 +297,59 @@ app.get("/logout", (req, res) => {
 });
 
 app.get("/login/actualite", async (req, res) => {
-  try{
-    const students = await Student.find();
-    const idara = await Admin.find();
+  try {
+    const students = await Student.findAll();
+    const idara = await Admin.findAll();
+    const pdfnotes = await PDFNotes.findAll();
+    const pdfs = await PDFEmploi.findAll();
 
-    const pdfnotes = await PDFNotes.find({});
-    const pdfs = await PDFEmploi.find({});
-
-  res.render("actualite_view",{students,idara,pdfnotes,pdfs,});
-  }catch(error){
-    console.log("houni l8alta");
-    console.log(error);
+    res.render("actualite_view", { students, idara, pdfnotes, pdfs });
+  } catch(error) {
+    console.log("Error:", error);
+    res.status(500).send("Internal Server Error");
   }
 });
 
 app.post("/login/actualite/add", upload.single('image'), async (req, res) => {
   try {
-    // Upload file to Cloudinary
     const result = await cloudinary.uploader.upload(req.file.path);
-
-    // Save the Cloudinary image URL along with other form data
-    const newAct = new Actualite({
+    
+    const newActualite = await Actualite.create({
       title: req.body.title,
       description: req.body.description,
       publicCible: req.body.publicCible,
-      imageURL: result.secure_url // URL of the uploaded image
+      imageURL: result.secure_url,
+      date: new Date() // Ensure date is set
     });
-    console.log(req.file);
-    console.log(req.body);
-    await newAct.save();
+
+    console.log('Created actualite:', newActualite.toJSON());
     
+    fs.unlinkSync(req.file.path);
     res.redirect("/login/actualite");
   } catch (error) {
-    console.error(error);
+    console.error("Error creating actualite:", error);
     res.status(500).send(`Error in adding actualite: ${error.message}`);
   }
 });
 
 app.get("/etudiants", async (req, res) => {
-  // Retrieve all students from the database
-  const students = await Student.find({});
-  res.render("etudiants", { students });
+  try {
+    const students = await Student.findAll();
+    res.render("etudiants", { students });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error fetching students");
+  }
 });
 
 app.get("/students/edit/:id", async (req, res) => {
-  // Retrieve the student by ID for editing
-  const student = await Student.findById(req.params.id);
-  res.render("edit_etudiant", { editingStudent: student });
+  try {
+    const student = await Student.findByPk(req.params.id);
+    res.render("edit_etudiant", { editingStudent: student });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error fetching student");
+  }
 });
 
 app.post("/students/add", async (req, res) => {
@@ -389,13 +393,9 @@ app.delete("/students/delete/:id", async (req, res) => {
 app.get("/admins", async (req, res) => {
   if (theAdminIsRoot) {
     try {
-      // Fetch all admins from the database
-      const admins = await Admin.find();
-
-      // Render the admin.ejs template, passing the admins array
+      const admins = await Admin.findAll();
       res.render("admin", { admins: admins });
     } catch (err) {
-      // Handle any errors
       console.error(err);
       res.status(500).send("Internal Server Error");
     }
@@ -406,22 +406,9 @@ app.get("/admins", async (req, res) => {
 
 app.post("/addAdmin", async (req, res) => {
   try {
-    // Extract username and password from the request body
-    const { username, password } = req.body;
-
-    // Create a new admin instance
-    const newAdmin = new Admin({
-      username,
-      password,
-    });
-
-    // Save the new admin to the database
-    await newAdmin.save();
-
-    // Redirect to the "/admins" page after adding the admin
+    await Admin.create(req.body);
     res.redirect("/login/actualite");
   } catch (err) {
-    // Handle any errors
     console.error(err);
     res.status(500).send("Internal Server Error");
   }
@@ -430,29 +417,22 @@ app.post("/addAdmin", async (req, res) => {
 app.delete("/deleteAdmin/:id", async (req, res) => {
   if (theAdminIsRoot) {
     try {
-    // Extract the admin ID from the request parameters
-    const adminId = req.params.id;
-
-    // Find the admin by ID and delete it from the database
-    await Admin.findByIdAndDelete(adminId);
-
-    // Redirect to the "/admins" page after deleting the admin
-    res.redirect("/login/actualite");
-    }catch (err) {
-      // Handle any errors
+      await Admin.destroy({
+        where: { id: req.params.id }
+      });
+      res.redirect("/login/actualite");
+    } catch (err) {
       console.error(err);
       res.status(500).send("Internal Server Error");
     }
+  } else {
+    res.send("barra al3eb b3id");
   }
-    else{
-      res.send("barra al3eb b3id");
-
-    }
 });
 
 const storage_note = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads_notes/");
+    cb(null, path.join(__dirname, 'backend/uploads/notes'));
   },
   filename: function (req, file, cb) {
     cb(null, file.fieldname + "-" + Date.now() + ".pdf");
@@ -462,7 +442,7 @@ const upload_note = multer({ storage: storage_note });
 
 const storage_emploi = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads_emploi/");
+    cb(null, path.join(__dirname, 'backend/uploads/emploi'));
   },
   filename: function (req, file, cb) {
     cb(null, file.fieldname + "-" + Date.now() + ".pdf");
@@ -472,24 +452,21 @@ const upload_emploi = multer({ storage: storage_emploi });
 
 app.post("/upload2", upload_note.single("pdf_file_note"), async (req, res) => {
   try {
-    const filename = req.body.filename;
+    const { filename } = req.body;
     const pdfFile = req.file;
-    
-    console.log("Uploaded file path:", pdfFile.path);
     
     if (!fs.existsSync(pdfFile.path)) {
       throw new Error("Uploaded file not found at the specified path");
     }
 
-    const newPDF = new PDFNotes({
-      filename: filename, 
+    await PDFNotes.create({
+      filename,
       contentType: pdfFile.mimetype,
-      data: fs.readFileSync(pdfFile.path), // Corrected path here
+      data: fs.readFileSync(pdfFile.path)
     });
-    await newPDF.save();
+
     fs.unlinkSync(pdfFile.path);
     res.redirect("/login/actualite");
-
   } catch (error) {
     console.log(error);
     res.status(500).send("error");
@@ -498,38 +475,31 @@ app.post("/upload2", upload_note.single("pdf_file_note"), async (req, res) => {
 
 app.post("/upload", upload_emploi.single("pdf_file_emploi"), async (req, res) => {
   try {
-    const filename = req.body.filename;
+    const { filename } = req.body;
     const pdfFile = req.file;
-    
-    console.log("Uploaded file path:", pdfFile.path);
     
     if (!fs.existsSync(pdfFile.path)) {
       throw new Error("Uploaded file not found at the specified path");
     }
 
-    const newPDF = new PDFEmploi({
-      filename: filename, 
+    await PDFEmploi.create({
+      filename,
       contentType: pdfFile.mimetype,
-      data: fs.readFileSync(pdfFile.path), // Corrected path here
+      data: fs.readFileSync(pdfFile.path)
     });
-    await newPDF.save();
+
     fs.unlinkSync(pdfFile.path);
     res.redirect("/login/actualite");
   } catch (error) {
     console.log(error);
-    res
-      .status(500)
-      .send(
-        "Erreur lors de l'enregistrement du fichier dans la base de données."
-      );
+    res.status(500).send("Error saving PDF");
   }
 });
 
 // Route pour récupérer un PDF par son ID
 app.get("/pdf/:id", async (req, res) => {
   try {
-    const pdfId = req.params.id;
-    const pdf = await PDF.findById(pdfId);
+    const pdf = await PDFEmploi.findByPk(req.params.id);
     if (!pdf) {
       return res.status(404).send("PDF non trouvé");
     }
@@ -547,15 +517,9 @@ app.get("/pdf/:id", async (req, res) => {
 
 app.post("/pdf/:id/delete", async (req, res) => {
   try {
-    const pdfId = req.params.id;
-
-    // Récupérer le document PDF à supprimer
-    const pdf = await PDF.findById(pdfId);
-
-    if (!pdf) {
-      return res.status(404).send("PDF non trouvé");
-    }
-    await pdf.deleteOne();
+    await PDFEmploi.destroy({
+      where: { id: req.params.id }
+    });
     res.redirect("/emploi");
   } catch (error) {
     console.error("Erreur lors de la suppression du PDF:", error);
