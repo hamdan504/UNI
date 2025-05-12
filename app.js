@@ -18,6 +18,12 @@ const sequelize = require('./config/database');
 const app = express();
 const port = 3000;
 
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS 
+    ? process.env.ALLOWED_ORIGINS.split(',')
+    : ['http://localhost:3000']
+}));
+
 app.use(express.static(path.join(__dirname, 'assets')));
 app.use(express.static(path.join(__dirname, 'Uni', 'views', 'menu')));
 // Set the views directory
