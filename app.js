@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors'); 
 const { MongoClient } = require('mongodb');
 const methodOverride = require("method-override");
 const session = require('express-session');
