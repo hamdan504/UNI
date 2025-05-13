@@ -1,30 +1,33 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+import { DataTypes } from 'sequelize';
 
-const Actualite = sequelize.define('Actualite', {
-  title: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: false
-  },
-  publicCible: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  imageURL: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  date: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
-    allowNull: false
-  }
-}, {
-  tableName: 'Actualites'
-});
+const Actualite = (sequelize) => {
+  return sequelize.define('Actualite', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    publicCible: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    imageURL: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    date: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
+    }
+  });
+};
 
-module.exports = Actualite;
+export default Actualite;

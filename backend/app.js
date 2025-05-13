@@ -46,11 +46,13 @@ const sequelize = new Sequelize(
   }
 );
 
+// Update model imports to use named imports
 import PDFNotes from "./models/PDFNotes.js";
 import PDFEmploi from "./models/PDFEmploi.js";
 import Student from "./models/Student.js";
 import Actualite from "./models/Actualite.js";
 import Admin from "./models/Admin.js";
+
 var theAdminIsRoot = false;
 
 const app = express();

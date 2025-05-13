@@ -1,36 +1,32 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+import { DataTypes } from 'sequelize';
 
-const Student = sequelize.define('Student', {
-  nom: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  prenom: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  cin: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
-  },
-  numeroInscription: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
-  },
-  email: {
-    type: DataTypes.STRING,
-    unique: true,
-    allowNull: false
-  },
-  password: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
-}, {
-  tableName: 'Students'
-});
+const Student = (sequelize) => {
+  return sequelize.define('Student', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    CIN: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    numeroInscription: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    }
+  });
+};
 
-module.exports = Student;
+export default Student;

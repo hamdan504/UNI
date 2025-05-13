@@ -1,19 +1,25 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+import { DataTypes } from 'sequelize';
 
-const PDFNotes = sequelize.define('PDFNotes', {
-  filename: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  contentType: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  data: {
-    type: DataTypes.BLOB('long'),
-    allowNull: false
-  }
-});
+const PDFNotes = (sequelize) => {
+  return sequelize.define('PDFNotes', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    filename: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    contentType: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    data: {
+      type: DataTypes.BLOB('long'),
+      allowNull: false
+    }
+  });
+};
 
-module.exports = PDFNotes;
+export default PDFNotes;
