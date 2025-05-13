@@ -1,27 +1,68 @@
-const express = require('express');
-const cors = require('cors'); 
-const { MongoClient } = require('mongodb');
-const methodOverride = require("method-override");
-const session = require('express-session');
-const bcrypt = require("bcryptjs");
-const multer = require('multer');
-const fs = require("fs");
-const cloudinary = require('cloudinary').v2;
-const path = require('path');
-const sequelize = require('./config/database');  // Fix import path
-const PDFNotes = require("./models/PDFNotes");
-const PDFEmploi = require("./models/PDFEmploi");
-const Student = require("./models/Student");
-const Actualite = require('./models/Actualite');
-const Admin = require("./models/Admin");
+import dotenv from 'dotenv';
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import methodOverride from 'method-override';
+import session from 'express-session';
+import bcrypt from 'bcryptjs';
+import multer from 'multer';
+import { promises as fs } from 'fs';
+import { v2 as cloudinary } from 'cloudinary';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import { Sequelize } from 'sequelize';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+dotenv.config();
+
+// Validate environment variables
+const requiredEnvVars = ['DB_HOST', 'DB_PORT', 'DB_USERNAME', 'DB_PASSWORD', 'DB_NAME'];
+requiredEnvVars.forEach(varName => {
+  if (!process.env[varName]) {
+    console.error(`Missing required environment variable: ${varName}`);
+    process.exit(1);
+  }
+});
+
+// Improved Sequelize configuration
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USERNAME,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    },
+    logging: console.log
+  }
+);
+
+import PDFNotes from "./models/PDFNotes.js";
+import PDFEmploi from "./models/PDFEmploi.js";
+import Student from "./models/Student.js";
+import Actualite from "./models/Actualite.js";
+import Admin from "./models/Admin.js";
 var theAdminIsRoot = false;
 
 const app = express();
-const port = process.env.PORT || 3005;  // Ensure port has a default value
+const port = process.env.PORT || 3005;
 
+// Enhanced security middleware
+app.use(helmet());
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:3001',
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.static(path.join(__dirname, '../frontend/assets')));
@@ -29,7 +70,7 @@ app.use(express.static(path.join(__dirname, '../frontend/views/menu')));
 // Set the views directory
 app.set('views', path.join(__dirname, '../frontend/views'));
 app.set('view engine', 'ejs');
-const bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Multer configuration
@@ -48,19 +89,6 @@ cloudinary.config({
   api_key: '335752399965959', 
   api_secret: 'o0UMKQAPeuf6lVsh1zxwJDfpEls' 
 });
-
-sequelize.authenticate()
-  .then(() => {
-    console.log('Connected to PostgreSQL database');
-    return sequelize.sync();
-  })
-  .catch((err) => {
-    console.error('Unable to connect to database:', err);
-    // Add more detailed error logging
-    if (err.original) {
-      console.error('Original error:', err.original);
-    }
-  });
 
 app.use(session({
   secret: 'your-secret-key',
@@ -480,10 +508,10 @@ app.post("/upload2", upload_note.single("pdf_file_note"), async (req, res) => {
     const newPDF = new PDFNotes({
       filename: filename, 
       contentType: pdfFile.mimetype,
-      data: fs.readFileSync(pdfFile.path), // Corrected path here
+      data: await fs.readFile(pdfFile.path), // Corrected path here
     });
     await newPDF.save();
-    fs.unlinkSync(pdfFile.path);
+    await fs.unlink(pdfFile.path);
     res.redirect("/login/actualite");
 
   } catch (error) {
@@ -506,10 +534,10 @@ app.post("/upload", upload_emploi.single("pdf_file_emploi"), async (req, res) =>
     const newPDF = new PDFEmploi({
       filename: filename, 
       contentType: pdfFile.mimetype,
-      data: fs.readFileSync(pdfFile.path), // Corrected path here
+      data: await fs.readFile(pdfFile.path), // Corrected path here
     });
     await newPDF.save();
-    fs.unlinkSync(pdfFile.path);
+    await fs.unlink(pdfFile.path);
     res.redirect("/login/actualite");
   } catch (error) {
     console.log(error);
@@ -591,6 +619,27 @@ app.post("/pdf_notes/:id/delete", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// Improved database initialization
+const initializeDB = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection to RDS PostgreSQL established successfully.');
+    
+    await sequelize.sync({ alter: true });
+    console.log('Database synchronized');
+    
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
+  } catch (error) {
+    console.error('Database connection failed:', error);
+    console.error('Details:', error.original || error);
+    process.exit(1);
+  }
+};
+
+// Initialize database and start server
+initializeDB().catch(error => {
+  console.error('Failed to initialize application:', error);
+  process.exit(1);
 });
