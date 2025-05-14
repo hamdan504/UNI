@@ -126,27 +126,43 @@
   new PureCounter();
 
   /**
-   * Fetch actualites
+   * Initialize Swiper
    */
-  const API_URL = 'http://localhost:5000/api';
-
-  const fetchActualites = async () => {
-    try {
-      const response = await fetch(`${API_URL}/actualites`);
-      const actualites = await response.json();
-      const container = document.getElementById('actualites-container');
-      container.innerHTML = actualites.map(a => `
-        <div class="actualite">
-          <h3>${a.title}</h3>
-          <p>${a.description}</p>
-        </div>
-      `).join('');
-    } catch (error) {
-      console.error('Error fetching actualites:', error);
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof Swiper !== 'undefined') {
+      const actualiteSwiper = new Swiper('.carousel', {
+        speed: 600,
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
+        slidesPerView: 'auto',
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 20
+          }
+        }
+      });
     }
-  };
-
-  // Initialize
-  document.addEventListener('DOMContentLoaded', fetchActualites);
+  });
 
 })()

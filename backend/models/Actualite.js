@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 
-const Actualite = (sequelize) => {
-  return sequelize.define('Actualite', {
+const ActualiteModel = (sequelize) => {
+  const Actualite = sequelize.define('Actualite', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -21,13 +21,15 @@ const Actualite = (sequelize) => {
     },
     imageURL: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     date: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
     }
   });
+
+  return Actualite;
 };
 
-export default Actualite;
+export default ActualiteModel;

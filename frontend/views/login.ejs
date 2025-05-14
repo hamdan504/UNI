@@ -3,12 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http: https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <title>Login</title>
-    <link rel="stylesheet" href="/css/style_admin.css">
+    <link rel="stylesheet" href="/css/style_admin.css" media="all">
+    <style>
+      /* Prevent FOUC */
+      .form-container { visibility: hidden; }
+      .js-loaded .form-container { visibility: visible; }
+    </style>
   </head>
   <body>
     <div class="form-container">
         <h2>Login</h2>
+        <% if (typeof error !== 'undefined') { %>
+          <div class="alert alert-danger"><%= error %></div>
+        <% } %>
         <form action="/login" method="post">
         <div class="form-group">
         <label for="username">Name:</label>
@@ -22,5 +33,10 @@
         </form>
         <p>Don't have an account? <a href="/signup">signup</p>
         </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.classList.add('js-loaded');
+      });
+    </script>
   </body>
 </html>
