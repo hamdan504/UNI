@@ -42,14 +42,14 @@ const upload = multer({ storage: storage });
 
 
 cloudinary.config({ 
-  cloud_name: 'dwzy7clpv', 
-  api_key: '335752399965959', 
-  api_secret: 'o0UMKQAPeuf6lVsh1zxwJDfpEls' 
+  cloud_name: '', 
+  api_key: '', 
+  api_secret: '' 
 });
 
 const mongoose = require("mongoose");
 
- mongoose.connect("mongodb+srv://mariem:WecrMJfHDGZ7Jh1c@cluster2.8cbx6bk.mongodb.net/ISIMM_Test",{
+ mongoose.connect("",{
  });
 
 // app.use(
